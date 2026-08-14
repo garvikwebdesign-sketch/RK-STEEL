@@ -6,6 +6,8 @@ import { connectToDatabase } from "@/lib/db";
 import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
 
+export const dynamic = "force-dynamic";
+
 async function getFeaturedData() {
   try {
     await connectToDatabase();

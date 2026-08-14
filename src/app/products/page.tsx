@@ -3,6 +3,8 @@ import { Product } from "@/models/Product";
 import Link from "next/link";
 import { ShieldCheck, CheckCircle, ArrowRight, Tag, Search, Filter } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Steel Products Catalogue | RK Steel Company Noida",
   description: "Browse Tata Tiscon, Tata Structura, Tata Durashine, SAIL SEQR, JSW Neosteel, AP Apollo pipes, MS Weldmesh, and Structural Steel.",

@@ -3,6 +3,8 @@ import { BlogPost } from "@/models/BlogPost";
 import Link from "next/link";
 import { FileText, Calendar, User, ChevronRight } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Steel News & Technical Blog | RK Steel Company Noida",
   description: "Industry news, steel weight calculation formulas, Tata Tiscon features, and construction tips from RK Steel Noida.",
