@@ -5,6 +5,7 @@ import { ShieldCheck, ArrowRight, Calculator, Award, Phone, CheckCircle, Chevron
 import { connectToDatabase } from "@/lib/db";
 import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
+import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,7 @@ async function getFeaturedData() {
 }
 
 export default async function HomePage() {
+  await headers();
   const { products, posts } = await getFeaturedData();
 
   const categories = [

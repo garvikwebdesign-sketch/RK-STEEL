@@ -2,6 +2,7 @@ import { connectToDatabase } from "@/lib/db";
 import { BlogPost } from "@/models/BlogPost";
 import Link from "next/link";
 import { FileText, Calendar, User, ChevronRight } from "lucide-react";
+import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,7 @@ export const metadata = {
 };
 
 export default async function BlogListPage() {
+  await headers();
   await connectToDatabase();
   const posts = await BlogPost.find({ published: true }).sort({ createdAt: -1 }).lean();
 

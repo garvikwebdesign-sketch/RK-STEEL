@@ -2,6 +2,7 @@ import { connectToDatabase } from "@/lib/db";
 import { Product } from "@/models/Product";
 import Link from "next/link";
 import { ShieldCheck, CheckCircle, ArrowRight, Tag, Search, Filter } from "lucide-react";
+import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +29,7 @@ export default async function ProductsPage({
 }: {
   searchParams: Promise<{ category?: string; brand?: string; search?: string }>;
 }) {
+  await headers();
   await connectToDatabase();
   const params = await searchParams;
   const activeCategory = params.category || "All";
