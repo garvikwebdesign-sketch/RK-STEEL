@@ -8,19 +8,28 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  await connectToDatabase();
-  const product = await Product.findOne({ slug }).lean();
-  if (!product) return { title: "Product Not Found" };
-  return {
-    title: `${product.name} | RK Steel Company Noida`,
-    description: product.description ? product.description.substring(0, 160) : "",
-  };
+  try {
+    await connectToDatabase();
+    const product = await Product.findOne({ slug }).lean();
+    if (!product) return { title: "Product Not Found" };
+    return {
+      title: `${product.name} | RK Steel Company Noida`,
+      description: product.description ? product.description.substring(0, 160) : "",
+    };
+  } catch {
+    return { title: "Steel Product" };
+  }
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  await connectToDatabase();
-  const product = await Product.findOne({ slug }).lean();
+  let product: any = null;
+  try {
+    await connectToDatabase();
+    product = await Product.findOne({ slug }).lean();
+  } catch (err) {
+    console.error("Failed to fetch product:", err);
+  }
 
   if (!product) {
     notFound();

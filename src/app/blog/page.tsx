@@ -13,8 +13,13 @@ export const metadata = {
 
 export default async function BlogListPage() {
   await headers();
-  await connectToDatabase();
-  const posts = await BlogPost.find({ published: true }).sort({ createdAt: -1 }).lean();
+  let posts: any[] = [];
+  try {
+    await connectToDatabase();
+    posts = await BlogPost.find({ published: true }).sort({ createdAt: -1 }).lean();
+  } catch (err) {
+    console.error("Failed to fetch blog posts:", err);
+  }
 
   return (
     <div className="space-y-0 bg-steel-100 min-h-screen">

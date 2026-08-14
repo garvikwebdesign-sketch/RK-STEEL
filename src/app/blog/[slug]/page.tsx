@@ -8,19 +8,28 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  await connectToDatabase();
-  const post = await BlogPost.findOne({ slug }).lean();
-  if (!post) return { title: "Article Not Found" };
-  return {
-    title: `${post.title} | RK Steel Company Blog`,
-    description: post.excerpt || post.title,
-  };
+  try {
+    await connectToDatabase();
+    const post = await BlogPost.findOne({ slug }).lean();
+    if (!post) return { title: "Article Not Found" };
+    return {
+      title: `${post.title} | RK Steel Company Blog`,
+      description: post.excerpt || post.title,
+    };
+  } catch {
+    return { title: "Blog Article" };
+  }
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  await connectToDatabase();
-  const post = await BlogPost.findOne({ slug }).lean();
+  let post: any = null;
+  try {
+    await connectToDatabase();
+    post = await BlogPost.findOne({ slug }).lean();
+  } catch (err) {
+    console.error("Failed to fetch blog post:", err);
+  }
 
   if (!post) {
     notFound();

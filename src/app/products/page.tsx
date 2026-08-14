@@ -30,7 +30,6 @@ export default async function ProductsPage({
   searchParams: Promise<{ category?: string; brand?: string; search?: string }>;
 }) {
   await headers();
-  await connectToDatabase();
   const params = await searchParams;
   const activeCategory = params.category || "All";
   const activeBrand = params.brand || "All";
@@ -51,7 +50,13 @@ export default async function ProductsPage({
     ];
   }
 
-  const products = await Product.find(query).lean();
+  let products: any[] = [];
+  try {
+    await connectToDatabase();
+    products = await Product.find(query).lean();
+  } catch (err) {
+    console.error("Failed to fetch products:", err);
+  }
 
   return (
     <div className="space-y-0">
