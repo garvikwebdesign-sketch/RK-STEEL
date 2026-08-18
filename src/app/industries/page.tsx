@@ -8,126 +8,131 @@ export const metadata = {
 
 const INDUSTRIES = [
   {
-    icon: Building2,
-    title: "High-Rise Construction & Civil Engineering",
-    desc: "Supplying Fe 550SD Super Ductile TMT rebars (Tata Tiscon & SAIL SEQR) for high-rise earthquake resistant building structures across NCR.",
-    products: "Tata Tiscon 550SD, SAIL SEQR, MS Weldmesh",
+    title: "Construction",
+    desc: "Supplying TMT bars, structural steel, sheets, pipes & more for residential, commercial and infrastructure projects.",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+    link: "/products?category=TMT+Bars",
   },
   {
-    icon: Landmark,
-    title: "Infrastructure & Heavy Engineering",
-    desc: "Structural channels, parallel flange beams, and heavy HR plates for bridge spans, flyover piers, and metro rail girders.",
-    products: "SAIL NEX Beams, MS Channels & Angles, HR Plates",
+    title: "Engineering",
+    desc: "High-grade steel products for engineering fabrication, machinery, and heavy engineering applications.",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+    link: "/products?category=Structural+Steel",
   },
   {
-    icon: Home,
-    title: "Real Estate & Residential Housing",
-    desc: "Reliable distribution of primary brand steel for residential builders, villas, and group housing projects with mill test certificates.",
-    products: "JSW Neosteel, Tata Tiscon, Structural Pipes",
+    title: "Infrastructure",
+    desc: "Reliable steel solutions for bridges, highways, metro, airports, and other large-scale infrastructure projects.",
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80",
+    link: "/products?category=Structural+Steel",
   },
   {
-    icon: Factory,
-    title: "Industrial Warehousing & Roofing Sheds",
-    desc: "Colour coated roofing sheets, Galvalume accessories, and hollow sections for PEB industrial sheds and logistics parks.",
-    products: "Tata Durashine, Tata Structura MS Hollow Tubes",
+    title: "Manufacturing",
+    desc: "Quality steel for manufacturing units, fabrication, automotive, and industrial equipment production.",
+    image: "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=600&q=80",
+    link: "/products?category=MS%2FHR%2FCR%2FGI+Sheets+%26+Plates",
   },
   {
-    icon: Wrench,
-    title: "Fabrication & Heavy Machinery",
-    desc: "Hot rolled and cold rolled sheets with tight thickness tolerances and superior weldability for machine beds and enclosures.",
-    products: "Tata Astrum HR Sheets, Tata Steelium CR Sheets",
+    title: "Oil & Gas / Energy",
+    desc: "Pipes, tubes and plates for oil & gas, power plants, refineries, and renewable energy projects.",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+    link: "/products?category=Pipes+%26+Hollow+Sections",
   },
   {
-    icon: Shield,
-    title: "Perimeter Security & Agricultural Fencing",
-    desc: "Heavy galvanised chain link wire mesh, stay poles, and weldmesh panels for boundary wall security across industrial plots.",
-    products: "GI Chain Link Fencing, GI Stay Accessories",
-  },
-  {
-    icon: Fuel,
-    title: "Oil, Gas & Plumbing Networks",
-    desc: "ERW seamless circular pipes and hot-dip GI pipes for fire safety sprinkler networks, fluid transfer, and HVAC lines.",
-    products: "AP Apollo MS & GI Pipes, Seamless Tubes",
-  },
-  {
-    icon: Car,
-    title: "Automotive & Auto-Ancillary",
-    desc: "High drawability CR steel coils and precision steel tubes for auto frames, brackets, and structural components.",
-    products: "Tata Steelium CR Coils, Precision Tubes",
-  },
-  {
-    icon: Train,
-    title: "Railways & Government Public Works",
-    desc: "Supplying government PSU projects with SAIL integrated mill certified structural steel and heavy plates.",
-    products: "SAIL Certified Beams, Channels, Plates",
+    title: "Agriculture",
+    desc: "Steel pipes, tubes and structures for irrigation, fencing, and other agricultural applications.",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+    link: "/products?category=Chain+Link+%26+Accessories",
   },
 ];
 
 export default function IndustriesPage() {
   return (
-    <div className="space-y-0">
-      {/* Banner */}
-      <section className="bg-navy-950 text-white py-16 border-b-4 border-red-600">
+    <div className="space-y-0 bg-gray-50">
+      {/* Banner (Matching Screenshot 3) */}
+      <section className="bg-navy-950 text-white py-14 border-b-4 border-red-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs font-bold text-gold-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded border border-navy-700">
+          <div className="text-xs font-bold text-red-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded inline-block border border-navy-700 mb-2">
             DISTRIBUTION & SUPPLY SOLUTIONS
-          </span>
-          <h1 className="font-heading text-4xl sm:text-5xl font-black text-white mt-3">
-            Industries We Serve
+          </div>
+          <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
+            Strengthening Every Industry <span className="text-red-500">We Serve</span>
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            With 30+ years of steel trading experience, RK Steel Company delivers tailor-made supply logistics for major industrial and civil infrastructure sectors.
+            We supply high-quality steel products to a wide range of industries. Our commitment to quality, timely delivery and competitive pricing makes us the preferred steel partner across India.
           </p>
         </div>
       </section>
 
-      {/* Grid of Sectors */}
-      <section className="py-16 bg-steel-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Grid of Sectors (Exact Screenshot 3 Match) */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center">
+            <span className="text-xs font-bold text-red-600 uppercase tracking-widest bg-red-50 px-3 py-1 rounded border border-red-200">
+              SECTORS & APPLICATIONS
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl text-navy-950 font-bold tracking-tight mt-2">
+              Industries We Serve
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {INDUSTRIES.map((ind, idx) => {
-              const IconComp = ind.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white p-8 rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-gold-500/50 transition-all flex flex-col justify-between group"
-                >
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 bg-navy-950 text-gold-400 rounded-lg flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors">
-                      <IconComp className="w-6 h-6" />
-                    </div>
-                    <h3 className="font-heading text-xl font-bold text-navy-900 group-hover:text-red-600 transition-colors">
+            {INDUSTRIES.map((ind, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="relative h-48 bg-navy-950 overflow-hidden">
+                    <img
+                      src={ind.image}
+                      alt={ind.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                    />
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <h3 className="font-heading text-2xl font-bold text-navy-950 group-hover:text-red-600 transition-colors">
                       {ind.title}
                     </h3>
                     <p className="text-xs text-gray-600 leading-relaxed">{ind.desc}</p>
                   </div>
-
-                  <div className="mt-6 pt-4 border-t border-gray-100 space-y-2">
-                    <div className="text-[11px] font-bold text-navy-900 uppercase">Primary Steel Lines Supplied:</div>
-                    <div className="text-xs font-semibold text-red-600 bg-red-50 p-2 rounded border border-red-100">
-                      {ind.products}
-                    </div>
-                  </div>
                 </div>
-              );
-            })}
+
+                <div className="p-6 pt-0">
+                  <Link
+                    href={ind.link}
+                    className="text-xs font-bold text-red-600 hover:text-navy-950 flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                  >
+                    Read More →
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* CTA Box */}
-          <div className="mt-16 bg-navy-950 p-8 rounded-2xl border-2 border-gold-500/50 text-white flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-heading text-2xl font-bold">Have Specific Industrial Specifications?</h3>
-              <p className="text-gray-300 text-xs mt-1">
-                Our technical team provides grade matching and standard size cutting tailored for bulk project deliveries.
+          {/* Bottom Callout Banner (Matching Screenshot 3 bottom banner) */}
+          <div className="bg-navy-950 text-white p-8 rounded-2xl border-2 border-navy-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-1">
+              <h3 className="font-heading text-2xl font-bold text-white">Your Industry. Our Strength.</h3>
+              <p className="text-gray-300 text-xs">
+                Let's build something great together. Get in touch with our technical steel specialists.
               </p>
             </div>
-            <Link
-              href="/contact"
-              className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase px-6 py-3 rounded-lg flex items-center gap-2 shadow-lg"
-            >
-              Consult Technical Team
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/contact"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase px-6 py-3 rounded-lg flex items-center gap-2 shadow-lg"
+              >
+                Request A Quote
+              </Link>
+              <a
+                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20have%20an%20industrial%20requirement."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-navy-900 hover:bg-navy-800 text-white border border-navy-700 font-bold text-xs px-6 py-3 rounded-lg uppercase"
+              >
+                WhatsApp Us
+              </a>
+            </div>
           </div>
         </div>
       </section>

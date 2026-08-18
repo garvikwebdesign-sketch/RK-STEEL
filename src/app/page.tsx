@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { HeroSlider } from "@/components/HeroSlider";
 import { WhyUsStrip } from "@/components/WhyUsStrip";
 import { BrandStrip } from "@/components/BrandStrip";
-import { ShieldCheck, ArrowRight, Calculator, Award, Phone, CheckCircle, ChevronRight, Layers, FileText } from "lucide-react";
+import { ShieldCheck, ArrowRight, Calculator, Award, Phone, CheckCircle, ChevronRight, Layers, TrendingUp, Download, FileText, PackageCheck } from "lucide-react";
 import { connectToDatabase } from "@/lib/db";
 import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
@@ -32,92 +33,68 @@ export default async function HomePage() {
   ];
 
   return (
-    <div className="space-y-0">
-      {/* HERO SECTION */}
-      <section className="relative bg-navy-950 text-white min-h-[600px] flex items-center overflow-hidden border-b-4 border-red-600">
-        {/* Background Image with Dark Navy Overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80')`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-transparent" />
+    <div className="space-y-0 bg-gray-50">
+      {/* 1. HERO SLIDER WITH ROTATING BACKGROUND IMAGES */}
+      <HeroSlider />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 bg-red-600/90 text-white px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow">
-              <ShieldCheck className="w-4 h-4 text-gold-400" />
-              ESTABLISHED IN 1993 • 30+ YEARS OF STEEL EXCELLENCE
+      {/* 2. REUSABLE WHY US STRIP */}
+      <WhyUsStrip />
+
+      {/* 3. BRAND PARTNERSHIPS STRIP */}
+      <BrandStrip />
+
+      {/* 4. DAILY PRICE HIGHLIGHT & TREND PROMO BANNER (CLIENT REQUIREMENT) */}
+      <section className="py-12 bg-white border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-navy-950 text-white rounded-2xl p-8 shadow-xl border-2 border-red-600 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="space-y-3 max-w-2xl">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-red-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded border border-navy-800">
+                <TrendingUp className="w-4 h-4 text-red-500" />
+                DAILY MARKET RATES & 30-DAY PRICE HISTORY
+              </div>
+              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                Track Today's Steel Prices in Noida & Delhi NCR
+              </h2>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Stay updated with daily rate movements for Tata Tiscon, SAIL SEQR, Tata Structura, and APL Apollo pipes. View historical price graphs to time your project procurement efficiently.
+              </p>
             </div>
 
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-none tracking-tight">
-              BUILDING STRENGTH. <br />
-              <span className="text-gold-400">DELIVERING TRUST.</span>
-            </h1>
-
-            <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-              RK Steel Company is Noida's leading authorized dealer and premier stockist of{" "}
-              <strong className="text-white font-semibold">Tata Steel, SAIL, JSW Steel, and AP Apollo</strong> product lines. Providing genuine mill-certified steel for over three decades.
-            </p>
-
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap sm:flex-nowrap gap-4 w-full lg:w-auto">
               <Link
-                href="/products"
-                className="bg-red-600 hover:bg-red-700 text-white font-heading font-bold text-base px-6 py-3.5 rounded-lg uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg hover:shadow-red-600/30"
+                href="/price-list"
+                className="w-full sm:w-auto text-center bg-red-600 hover:bg-red-700 text-white font-bold text-sm uppercase px-6 py-3.5 rounded-lg tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all"
               >
-                Explore Product Lines
-                <ArrowRight className="w-5 h-5" />
+                View Daily Price List
+                <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/calculators"
-                className="bg-navy-800 hover:bg-navy-700 text-gold-400 border border-gold-500/50 font-heading font-bold text-base px-6 py-3.5 rounded-lg tracking-wider flex items-center gap-2 transition-all shadow-md"
+                href="/catalogues"
+                className="w-full sm:w-auto text-center bg-navy-900 hover:bg-navy-800 text-gray-200 border border-navy-700 font-bold text-sm px-6 py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all"
               >
-                <Calculator className="w-5 h-5 text-gold-500" />
-                Steel Calculators
+                <Download className="w-4 h-4 text-red-400" />
+                PDF Catalogues
               </Link>
-            </div>
-
-            {/* Micro badge row */}
-            <div className="pt-6 border-t border-navy-800 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-gray-300">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-gold-500 flex-shrink-0" />
-                <span>Tata Steel Authorised Dealer</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-gold-500 flex-shrink-0" />
-                <span>SAIL SEQR 550D Stockist</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-gold-500 flex-shrink-0" />
-                <span>Immediate Dispatches Pan-India</span>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* WHY RK STEEL STRIP */}
-      <WhyUsStrip />
-
-      {/* BRAND PARTNERSHIPS STRIP */}
-      <BrandStrip />
-
-      {/* FEATURED CATEGORIES GRID */}
-      <section className="py-16 bg-white">
+      {/* 5. FEATURED CATEGORIES GRID */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
             <div>
               <span className="text-xs font-bold text-red-600 uppercase tracking-widest bg-red-50 px-3 py-1 rounded border border-red-200">
-                PRODUCT RANGE
+                CORE PRODUCT RANGE
               </span>
-              <h2 className="font-heading text-3xl md:text-4xl text-navy-900 font-bold tracking-tight mt-2 heading-accent">
-                Core Steel Categories
+              <h2 className="font-heading text-3xl md:text-4xl text-navy-950 font-bold tracking-tight mt-2">
+                Primary Steel Categories
               </h2>
             </div>
             <Link
               href="/products"
-              className="mt-4 md:mt-0 text-sm font-bold text-red-600 hover:text-navy-900 flex items-center gap-1 transition-colors"
+              className="mt-4 md:mt-0 text-sm font-bold text-red-600 hover:text-navy-950 flex items-center gap-1 transition-colors"
             >
               View Full Product Catalog ({products.length > 0 ? products.length : "13+"} Products) →
             </Link>
@@ -137,10 +114,10 @@ export default async function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent" />
 
                 <div className="relative mt-auto p-6 z-10 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-gold-400 bg-navy-900/80 px-2 py-0.5 rounded border border-navy-700">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-red-400 bg-navy-900/80 px-2 py-0.5 rounded border border-navy-700">
                     {cat.brand}
                   </span>
-                  <h3 className="font-heading text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">
+                  <h3 className="font-heading text-2xl font-bold text-white group-hover:text-red-400 transition-colors">
                     {cat.title}
                   </h3>
                   <div className="text-xs text-gray-300 flex items-center gap-1 font-medium group-hover:translate-x-1 transition-transform">
@@ -154,11 +131,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* CALCULATOR PROMO SECTION */}
-      <section className="bg-[#0F2A4A] text-white py-16 relative overflow-hidden border-y border-navy-800">
+      {/* 6. CALCULATOR PROMO SECTION */}
+      <section className="bg-[#0B1E36] text-white py-16 relative overflow-hidden border-y border-navy-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
           <div className="space-y-4 max-w-xl">
-            <span className="text-xs font-bold text-gold-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded border border-navy-700">
+            <span className="text-xs font-bold text-red-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded border border-navy-700">
               ENGINEERING UTILITY
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl text-white font-bold tracking-tight">
@@ -170,7 +147,7 @@ export default async function HomePage() {
             <div className="pt-2 flex flex-wrap gap-4">
               <Link
                 href="/calculators"
-                className="bg-gold-500 hover:bg-gold-600 text-navy-950 font-heading font-bold text-sm px-6 py-3 rounded-lg uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg"
+                className="bg-red-600 hover:bg-red-700 text-white font-heading font-bold text-sm px-6 py-3 rounded-lg uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg"
               >
                 <Calculator className="w-4 h-4" />
                 Open Weight Calculators
@@ -180,7 +157,7 @@ export default async function HomePage() {
 
           <div className="bg-navy-900 border border-navy-700 p-6 rounded-xl shadow-xl w-full max-w-md space-y-4 text-xs">
             <div className="flex items-center justify-between border-b border-navy-800 pb-3">
-              <span className="font-bold text-gold-400">Sample Calculation (Tata Tiscon 12mm)</span>
+              <span className="font-bold text-red-400">Sample Calculation (Tata Tiscon 12mm)</span>
               <span className="text-[10px] bg-red-600 text-white px-2 py-0.5 rounded">IS 1786</span>
             </div>
             <div className="space-y-2">
@@ -194,22 +171,22 @@ export default async function HomePage() {
               </div>
               <div className="flex justify-between text-gray-300">
                 <span>Nominal Weight per Meter:</span>
-                <span className="font-bold text-gold-400">0.888 kg/m</span>
+                <span className="font-bold text-red-400">0.888 kg/m</span>
               </div>
               <div className="pt-2 border-t border-navy-800 flex justify-between text-sm font-bold">
                 <span>Total Piece Weight:</span>
-                <span className="text-gold-400">10.66 kg</span>
+                <span className="text-red-400">10.66 kg</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* PULL QUOTE BANNER */}
-      <section className="bg-steel-100 py-16 text-center border-b border-gray-200">
+      {/* 7. PULL QUOTE BANNER */}
+      <section className="bg-white py-16 text-center border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4">
-          <Award className="w-12 h-12 text-gold-500 mx-auto mb-4" />
-          <blockquote className="font-heading text-2xl sm:text-3xl md:text-4xl text-navy-900 font-bold italic leading-tight">
+          <Award className="w-12 h-12 text-red-600 mx-auto mb-4" />
+          <blockquote className="font-heading text-2xl sm:text-3xl md:text-4xl text-navy-950 font-bold italic leading-tight">
             "From strong foundations to iconic structures, our steel builds the future."
           </blockquote>
           <div className="mt-4 text-xs font-bold uppercase tracking-widest text-red-600">
@@ -218,20 +195,20 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* LATEST NEWS & ARTICLES */}
+      {/* 8. LATEST NEWS & ARTICLES */}
       {posts.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-end mb-10">
               <div>
                 <span className="text-xs font-bold text-red-600 uppercase tracking-widest bg-red-50 px-3 py-1 rounded border border-red-200">
                   INSIGHTS & GUIDES
                 </span>
-                <h2 className="font-heading text-3xl text-navy-900 font-bold tracking-tight mt-2 heading-accent">
+                <h2 className="font-heading text-3xl text-navy-950 font-bold tracking-tight mt-2">
                   Latest Steel News & Technical Guides
                 </h2>
               </div>
-              <Link href="/blog" className="text-sm font-bold text-red-600 hover:text-navy-900">
+              <Link href="/blog" className="text-sm font-bold text-red-600 hover:text-navy-950">
                 View All Articles →
               </Link>
             </div>
@@ -241,7 +218,7 @@ export default async function HomePage() {
                 <Link
                   key={post._id}
                   href={`/blog/${post.slug}`}
-                  className="bg-steel-50 rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-gold-500/50 transition-all flex flex-col group"
+                  className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-red-500/50 transition-all flex flex-col group"
                 >
                   {post.coverImage?.url && (
                     <div
@@ -253,12 +230,12 @@ export default async function HomePage() {
                     <div className="space-y-2">
                       <div className="flex flex-wrap gap-1">
                         {post.tags?.map((t: string, tidx: number) => (
-                          <span key={tidx} className="text-[10px] bg-navy-100 text-navy-900 font-semibold px-2 py-0.5 rounded">
+                          <span key={tidx} className="text-[10px] bg-red-50 text-red-600 font-semibold px-2 py-0.5 rounded">
                             {t}
                           </span>
                         ))}
                       </div>
-                      <h3 className="font-heading text-xl font-bold text-navy-900 group-hover:text-red-600 transition-colors">
+                      <h3 className="font-heading text-xl font-bold text-navy-950 group-hover:text-red-600 transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
@@ -277,7 +254,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* CONTACT CTA BANNER */}
+      {/* 9. CONTACT CTA BANNER */}
       <section className="bg-navy-950 text-white py-12 border-t-4 border-red-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
@@ -296,7 +273,7 @@ export default async function HomePage() {
             </a>
             <Link
               href="/contact"
-              className="bg-navy-800 hover:bg-navy-700 text-gold-400 border border-gold-500/50 font-heading font-bold text-base px-6 py-3 rounded-lg uppercase shadow-md"
+              className="bg-navy-800 hover:bg-navy-700 text-red-400 border border-red-500/50 font-heading font-bold text-base px-6 py-3 rounded-lg uppercase shadow-md"
             >
               Request Price Quote
             </Link>
