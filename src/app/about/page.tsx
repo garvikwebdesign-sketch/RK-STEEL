@@ -1,6 +1,6 @@
 import { WhyUsStrip } from "@/components/WhyUsStrip";
 import { BrandStrip } from "@/components/BrandStrip";
-import { ShieldCheck, Target, Eye, Award, CheckCircle, MapPin, Phone, Building2, Users, PackageCheck, Globe } from "lucide-react";
+import { ShieldCheck, Users, Box, Truck, Calendar, Award, CheckCircle2, ChevronRight, ArrowRight, Phone, MessageSquare } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -9,210 +9,216 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  const stats = [
+    { value: "1993", label: "Year of Establishment", icon: Calendar },
+    { value: "30+", label: "Years of Experience", icon: Award, highlight: true },
+    { value: "5000+", label: "Happy Customers", icon: Users },
+    { value: "50,000+", label: "MT Stock Ready", icon: Box, highlight: true },
+    { value: "Pan India", label: "Supply Network", icon: Truck },
+  ];
+
+  const values = [
+    {
+      title: "Integrity",
+      desc: "We believe in honest dealings and transparent business.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "Quality",
+      desc: "We provide only premium quality steel from trusted brands.",
+      icon: Award,
+    },
+    {
+      title: "Reliability",
+      desc: "Commitment to timely delivery and consistent service.",
+      icon: CheckCircle2,
+    },
+    {
+      title: "Customer First",
+      desc: "Our customers are at the heart of everything we do.",
+      icon: Users,
+    },
+    {
+      title: "Growth",
+      desc: "Continuous growth through innovation and strong partnerships.",
+      icon: Box,
+    },
+  ];
+
   return (
-    <div className="space-y-0 bg-gray-50">
-      {/* Banner Header */}
-      <section className="bg-navy-950 text-white py-14 border-b-4 border-red-600 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <span className="text-xs font-bold text-red-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded border border-navy-700">
-            HERITAGE & TRUST SINCE 1993
-          </span>
-          <h1 className="font-heading text-4xl sm:text-5xl font-black text-white mt-3">
-            About RK Steel Company
-          </h1>
-          <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            Over three decades of delivering high quality steel solutions, unmatched service, and long-lasting relationships across Delhi-NCR and India.
-          </p>
-        </div>
-      </section>
-
-      {/* Main Story & Clean Container Card Layout (Matching Screenshot 2) */}
-      <section className="py-16 bg-white">
+    <div className="space-y-0 bg-white">
+      {/* Subpage Header & Story (Matches Reference Image 3) */}
+      <section className="py-12 lg:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <Link href="/" className="hover:text-slate-900 transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <span className="text-red-600">About Us</span>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Story Text */}
+            {/* Left Story */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs font-bold text-red-600 uppercase tracking-wider bg-red-50 px-3 py-1 rounded border border-red-200">
-                <ShieldCheck className="w-4 h-4 text-red-600" />
-                ESTABLISHED IN 1993 — NOIDA, UTTAR PRADESH
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-sans">
+                About RK Steel
               </div>
 
-              <h2 className="font-heading text-3xl sm:text-4xl text-navy-950 font-bold tracking-tight">
-                Building Strength. <span className="text-red-600">Delivering Trust.</span>
-              </h2>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight font-sans">
+                Building <span className="text-red-600">Strength.</span> <br />
+                Delivering <span className="text-red-600">Trust.</span>
+              </h1>
 
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                Established in <strong>1993</strong>, RK Steel Company has grown to become a trusted name in the steel industry. With 30+ years of experience, we are committed to providing premium quality steel products, competitive prices, and timely delivery to our valuable customers across India.
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Established in <strong>1993</strong>, RK Steel has grown to become a trusted name in the steel industry. With 30+ years of experience, we are committed to providing premium quality steel products, competitive prices and timely delivery to our valuable customers across India.
               </p>
 
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                Our strong relationships with leading manufacturers and a customer-first approach have helped us build long-term partnerships based on trust, transparency, and reliability.
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Our strong relationships with leading manufacturers and a customer-first approach have helped us build long-term partnerships based on trust, transparency and reliability.
               </p>
-
-              {/* Stat Pills Grid (Exact screenshot match) */}
-              <div className="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-gray-100">
-                <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-200">
-                  <div className="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center font-bold text-base">
-                    1993
-                  </div>
-                  <div>
-                    <div className="font-heading text-lg font-bold text-navy-950">1993</div>
-                    <div className="text-[11px] text-gray-500 font-medium">Year of Establishment</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-200">
-                  <div className="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center font-bold text-base">
-                    30+
-                  </div>
-                  <div>
-                    <div className="font-heading text-lg font-bold text-navy-950">30+</div>
-                    <div className="text-[11px] text-gray-500 font-medium">Years Experience</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-200">
-                  <div className="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center font-bold text-base">
-                    5000+
-                  </div>
-                  <div>
-                    <div className="font-heading text-lg font-bold text-navy-950">5,000+</div>
-                    <div className="text-[11px] text-gray-500 font-medium">Happy Customers</div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Card with Yard Image & Overlay Badge (Screenshot 2 Match) */}
+            {/* Right Yard Photo with Floating Highlights Card (Matching Image 3) */}
             <div className="lg:col-span-6 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200">
                 <img
                   src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80"
-                  alt="RK Steel Company Stockyard"
-                  className="w-full h-[380px] object-cover"
+                  alt="RK Steel Company Warehouse"
+                  className="w-full h-[360px] sm:h-[400px] object-cover"
                 />
-                <div className="absolute inset-0 bg-navy-950/20" />
+                <div className="absolute inset-0 bg-[#0B192C]/30" />
 
-                {/* Floating Card Overlay */}
-                <div className="absolute top-6 right-6 bg-navy-950/90 text-white p-5 rounded-xl border border-navy-700 shadow-xl space-y-3 max-w-xs backdrop-blur-sm">
-                  <div className="flex items-center gap-2 text-xs font-bold text-red-400">
-                    <ShieldCheck className="w-4 h-4 text-red-500" />
-                    30+ Years of Experience
+                {/* Floating Highlights Glass Card */}
+                <div className="absolute top-6 right-6 bg-[#0B192C]/90 text-white p-5 rounded-2xl border border-slate-700 shadow-2xl space-y-3.5 max-w-[260px] backdrop-blur-md">
+                  <div className="flex items-center gap-3 text-xs font-bold text-white">
+                    <ShieldCheck className="w-5 h-5 text-red-500 flex-shrink-0" />
+                    <span>30+ Years of Experience</span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-white">
-                    <Users className="w-4 h-4 text-gray-300" />
-                    Thousands of Happy Clients
+                  <div className="flex items-center gap-3 text-xs font-bold text-white">
+                    <Users className="w-5 h-5 text-red-500 flex-shrink-0" />
+                    <span>Thousands of Happy Customers</span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-white">
-                    <PackageCheck className="w-4 h-4 text-gray-300" />
-                    Huge Ready Stock Inventory
+                  <div className="flex items-center gap-3 text-xs font-bold text-white">
+                    <Box className="w-5 h-5 text-red-500 flex-shrink-0" />
+                    <span>Huge Inventory Ready Stock</span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-white">
-                    <Globe className="w-4 h-4 text-gray-300" />
-                    Pan India Supply Network
+                  <div className="flex items-center gap-3 text-xs font-bold text-white">
+                    <Truck className="w-5 h-5 text-red-500 flex-shrink-0" />
+                    <span>Pan India Supply Network</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Stats Bar */}
-          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200 grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
-            <div>
-              <div className="font-heading text-3xl font-black text-navy-950">1993</div>
-              <div className="text-xs text-gray-500 font-medium">Year of Establishment</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-black text-red-600">30+</div>
-              <div className="text-xs text-gray-500 font-medium">Years of Experience</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-black text-navy-950">5000+</div>
-              <div className="text-xs text-gray-500 font-medium">Happy Customers</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-black text-red-600">50,000+</div>
-              <div className="text-xs text-gray-500 font-medium">MT Stock Ready</div>
-            </div>
-            <div>
-              <div className="font-heading text-3xl font-black text-navy-950">Pan India</div>
-              <div className="text-xs text-gray-500 font-medium">Supply Network</div>
-            </div>
+          {/* 5 Stats Row Card (Matching Image 3) */}
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+            {stats.map((s, idx) => {
+              const Icon = s.icon;
+              return (
+                <div key={idx} className="flex flex-col items-center justify-center space-y-1">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-1">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-sans">
+                    {s.value}
+                  </div>
+                  <div className="text-xs text-slate-500 font-medium">{s.label}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* OUR VALUES CARDS (Screenshot 2 Match) */}
-      <section className="py-16 bg-gray-50 border-t border-gray-200">
+      {/* OUR VALUES SECTION (Matching Image 3) */}
+      <section className="py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="text-center">
-            <span className="text-xs font-bold text-red-600 uppercase tracking-widest bg-red-50 px-3 py-1 rounded border border-red-200">
-              OUR VALUES
+          <div className="text-left">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-sans">
+              Our Values
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl text-navy-950 font-bold tracking-tight mt-2">
-              Principles That Drive Us Forward
-            </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center space-y-3 hover:border-red-500 transition-all">
-              <div className="w-12 h-12 bg-navy-950 text-white rounded-full flex items-center justify-center mx-auto font-bold text-xl">
-                🛡️
-              </div>
-              <h3 className="font-heading text-lg font-bold text-navy-950">Integrity</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                We believe in honest dealings and transparent business.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center space-y-3 hover:border-red-500 transition-all">
-              <div className="w-12 h-12 bg-navy-950 text-white rounded-full flex items-center justify-center mx-auto font-bold text-xl">
-                ⭐
-              </div>
-              <h3 className="font-heading text-lg font-bold text-navy-950">Quality</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                We provide only premium quality steel from trusted brands.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center space-y-3 hover:border-red-500 transition-all">
-              <div className="w-12 h-12 bg-navy-950 text-white rounded-full flex items-center justify-center mx-auto font-bold text-xl">
-                🤝
-              </div>
-              <h3 className="font-heading text-lg font-bold text-navy-950">Reliability</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Commitment to timely delivery and consistent service.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center space-y-3 hover:border-red-500 transition-all">
-              <div className="w-12 h-12 bg-navy-950 text-white rounded-full flex items-center justify-center mx-auto font-bold text-xl">
-                👤
-              </div>
-              <h3 className="font-heading text-lg font-bold text-navy-950">Customer First</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Our customers are at the heart of everything we do.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center space-y-3 hover:border-red-500 transition-all">
-              <div className="w-12 h-12 bg-navy-950 text-white rounded-full flex items-center justify-center mx-auto font-bold text-xl">
-                📈
-              </div>
-              <h3 className="font-heading text-lg font-bold text-navy-950">Growth</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Continuous growth through innovation and trust.
-              </p>
-            </div>
+            {values.map((v, idx) => {
+              const Icon = v.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-red-500 transition-all text-center space-y-3 flex flex-col items-center justify-between"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#0B192C] text-red-500 flex items-center justify-center shadow-md">
+                    <Icon className="w-6 h-6 stroke-[1.75]" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 font-sans">
+                      {v.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                      {v.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* WHY RK STEEL STRIP */}
+      {/* WHY PARTNER STRIP & BRAND PARTNERSHIPS */}
       <WhyUsStrip />
-
-      {/* BRAND PARTNERSHIPS STRIP */}
       <BrandStrip />
+
+      {/* BOTTOM REQUIREMENT CTA BANNER */}
+      <section className="bg-[#0B192C] text-white py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white flex-shrink-0">
+              <Phone className="w-6 h-6 fill-current" />
+            </div>
+            <div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white font-sans">
+                Have a requirement?
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm">
+                Call us for best rates & quick support.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-col text-right sm:text-left">
+              <a href="tel:9810073557" className="text-base font-extrabold text-white hover:text-red-400 transition-colors">
+                +91 98100 73557
+              </a>
+              <a href="tel:9910073557" className="text-base font-extrabold text-white hover:text-red-400 transition-colors">
+                +91 99100 73557
+              </a>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <a
+                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20have%20a%20steel%20requirement."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl border border-slate-700 flex items-center gap-2"
+              >
+                <MessageSquare className="w-4 h-4 text-green-400" />
+                WhatsApp Us
+              </a>
+
+              <Link
+                href="/contact"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3 rounded-xl flex items-center gap-2 shadow-lg shadow-red-600/30"
+              >
+                Get Today's Rate
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

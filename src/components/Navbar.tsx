@@ -3,256 +3,271 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Mail, MapPin, Menu, X, ShieldCheck, ChevronDown, TrendingUp, Calculator } from "lucide-react";
+import { Phone, MapPin, Clock, Menu, X, ShieldCheck, ChevronDown } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [brandsOpen, setBrandsOpen] = useState(false);
-  const [pricesOpen, setPricesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [calculatorsOpen, setCalculatorsOpen] = useState(false);
+  const [knowledgeOpen, setKnowledgeOpen] = useState(false);
   const pathname = usePathname();
 
-  const brandLinks = [
-    { name: "Tata Tiscon", href: "/brands/tata-tiscon", desc: "TMT Rebars (550SD)" },
-    { name: "SAIL SEQR", href: "/brands/sail-seqr", desc: "Integrated Mill Rebars" },
-    { name: "Tata Structura", href: "/brands/tata-structura", desc: "Hollow Sections" },
-    { name: "Tata Durashine", href: "/brands/tata-durashine", desc: "Roofing Sheets" },
-    { name: "Tata Astrum & Steelium", href: "/brands/tata-astrum", desc: "HR/CR Sheets" },
-    { name: "JSW Neosteel", href: "/brands/jsw-neosteel", desc: "Primary Grade TMT" },
-    { name: "APL Apollo Pipes", href: "/brands/apl-apollo", desc: "MS & GI Pipes" },
+  const productLinks = [
+    { name: "TMT Rebars (550SD / 500D)", href: "/products?category=TMT+Bars", brand: "Tata Tiscon & SAIL SEQR" },
+    { name: "Pipes & Hollow Sections", href: "/products?category=Pipes+%26+Hollow+Sections", brand: "Tata Structura & APL Apollo" },
+    { name: "Colour Coated & Roofing", href: "/products?category=Colour+Coated+%26+Roofing+Sheets", brand: "Tata Durashine" },
+    { name: "MS / HR / CR / GI Sheets", href: "/products?category=MS%2FHR%2FCR%2FGI+Sheets+%26+Plates", brand: "Tata Astrum & Steelium" },
+    { name: "Heavy Structural Steel", href: "/products?category=Structural+Steel", brand: "Beams, Channels & Angles" },
+    { name: "View All Products", href: "/products", brand: "Full Steel Inventory" },
   ];
 
-  const priceLinks = [
-    { name: "Daily Market Rates Hub", href: "/price-list", desc: "View today's live rates" },
-    { name: "Tata Tiscon Today's Rate", href: "/price-list/tata-tiscon", desc: "Noida / NCR Rate Chart" },
-    { name: "SAIL SEQR 550D Rate", href: "/price-list/sail-seqr", desc: "Mill Direct Pricing & Trend" },
-    { name: "Tata Structura Price List", href: "/price-list/tata-structura", desc: "Hollow Section Rates" },
+  const calculatorLinks = [
+    { name: "TMT Weight Calculator", href: "/calculators#tmt-calculator", desc: "Weight by bar dia & count" },
+    { name: "Structural Steel Weight", href: "/calculators#structural-calculator", desc: "Beams, channels & angles" },
+    { name: "Pipe & Hollow Section Weight", href: "/calculators#pipe-calculator", desc: "MS pipes & RHS/SHS" },
+    { name: "MS Plate Weight Calculator", href: "/calculators#plate-calculator", desc: "Sheets & coils by thickness" },
+    { name: "All 9 Steel Calculators", href: "/calculators", desc: "IS standard calculations" },
   ];
+
+  const knowledgeLinks = [
+    { name: "Daily Market Rates Hub", href: "/price-list", desc: "Live Noida & NCR rates" },
+    { name: "PDF Product Catalogues", href: "/catalogues", desc: "Download brochures & specs" },
+    { name: "Authorised Brands Hub", href: "/brands", desc: "Tata, SAIL, JSW, Apollo" },
+    { name: "Steel Insights & News", href: "/blog", desc: "Market trends & buyer guides" },
+  ];
+
+  const isActive = (path: string) => {
+    if (path === "/" && pathname === "/") return true;
+    if (path !== "/" && pathname.startsWith(path)) return true;
+    return false;
+  };
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-      {/* Top Bar - Clean & Concise */}
-      <div className="bg-[#0B1E36] text-gray-200 text-xs py-1.5 px-4 border-b border-navy-800">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="flex items-center gap-1 text-red-400 font-medium">
-              <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
-              Est. 1993 • 30+ Years Trust
-            </span>
-            <span className="hidden md:inline text-gray-600">|</span>
-            <span className="hidden md:flex items-center gap-1 text-gray-300">
-              <MapPin className="w-3.5 h-3.5 text-red-400" />
-              G-38, Sector-9, Noida, UP
-            </span>
+    <header className="w-full sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm transition-all">
+      {/* Top Utility Bar */}
+      <div className="bg-[#0B192C] text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-[12px]">
+          {/* Left: Trust Badge */}
+          <div className="flex items-center gap-2 font-medium">
+            <ShieldCheck className="w-4 h-4 text-red-500 flex-shrink-0" />
+            <span className="text-white font-semibold">Est. 1993</span>
+            <span className="text-slate-500">|</span>
+            <span className="text-slate-300">30+ Years of Trust</span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 text-[11px]">
-            <a href="tel:9999307984" className="hover:text-red-400 transition-colors flex items-center gap-1 font-bold text-white">
-              <Phone className="w-3 h-3 text-red-500" />
-              +91 99993 07984
-            </a>
-            <span className="text-gray-600">|</span>
-            <a href="mailto:sn_rksteel@yahoo.co.in" className="hover:text-red-400 transition-colors hidden sm:inline text-gray-300">
-              sn_rksteel@yahoo.co.in
-            </a>
+          {/* Center: Stockyard Location */}
+          <div className="hidden lg:flex items-center gap-1.5 text-slate-300">
+            <MapPin className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />
+            <span>Stockyard: B-51, Site 4, Industrial Area, Sahibabad, Ghaziabad, UP-201010</span>
+          </div>
+
+          {/* Right: Working Hours & Admin */}
+          <div className="flex items-center gap-4 text-slate-300">
+            <div className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />
+              <span>Mon – Sat: 8:30 AM - 7:00 PM</span>
+            </div>
+            <span className="text-slate-600 hidden sm:inline">|</span>
             <Link
               href="/admin/login"
-              className="bg-navy-900 hover:bg-navy-800 text-gray-300 px-2 py-0.5 rounded border border-navy-700 transition-colors"
+              className="text-slate-400 hover:text-white transition-colors text-[11px] font-medium"
             >
-              Admin
+              Admin Portal
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Main Nav Bar */}
+      {/* Main Navigation Bar */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo Crest */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 bg-white rounded border border-gray-200 flex items-center justify-center p-0.5 group-hover:border-red-600 transition-colors">
-              <img
-                src="/logo.jpg"
-                alt="RK Steel Company logo"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <div className="font-heading font-black text-xl tracking-tight text-navy-950 leading-none">
-                RK STEEL <span className="text-red-600">COMPANY</span>
-              </div>
-              <div className="text-[10px] text-gray-500 font-medium tracking-wide uppercase mt-0.5">
-                Authorised Dealer • Tata Steel | SAIL | JSW | AP Apollo
-              </div>
-            </div>
-          </Link>
+        <div className="flex items-center justify-between h-20">
+          {/* Clean Company Logo */}
+          <Logo variant="light" size="md" />
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+            {/* Home */}
             <Link
               href="/"
-              className={`px-2.5 py-1.5 text-xs font-bold transition-all rounded ${
-                pathname === "/" ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
+              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+                isActive("/") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Home
+              {isActive("/") && (
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+              )}
             </Link>
 
+            {/* About Us */}
             <Link
               href="/about"
-              className={`px-2.5 py-1.5 text-xs font-bold transition-all rounded ${
-                pathname === "/about" ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
+              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+                isActive("/about") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
-              About
+              About Us
+              {isActive("/about") && (
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+              )}
             </Link>
 
-            {/* Brands Dropdown */}
+            {/* Products Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setBrandsOpen(true)}
-              onMouseLeave={() => setBrandsOpen(false)}
+              onMouseEnter={() => setProductsOpen(true)}
+              onMouseLeave={() => setProductsOpen(false)}
             >
               <button
-                className={`flex items-center gap-0.5 px-2.5 py-1.5 text-xs font-bold rounded transition-all ${
-                  pathname.startsWith("/brands") ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                  isActive("/products") || isActive("/brands") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
                 }`}
               >
-                Brands
-                <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
+                Products
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
               </button>
 
-              {brandsOpen && (
-                <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-xl border border-gray-100 p-2 z-50 grid grid-cols-1 gap-0.5">
-                  {brandLinks.map((b) => (
-                    <Link
-                      key={b.href}
-                      href={b.href}
-                      className="px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors group flex justify-between items-center"
-                    >
-                      <span className="text-xs font-bold text-navy-900 group-hover:text-red-600">
-                        {b.name}
-                      </span>
-                      <span className="text-[10px] text-gray-400">{b.desc}</span>
-                    </Link>
-                  ))}
-                  <div className="border-t border-gray-100 pt-1 mt-1">
-                    <Link
-                      href="/brands"
-                      className="block px-3 py-1 text-[11px] font-bold text-red-600 hover:bg-gray-50 rounded text-center"
-                    >
-                      All Brands Hub →
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Price Lists Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setPricesOpen(true)}
-              onMouseLeave={() => setPricesOpen(false)}
-            >
-              <button
-                className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold rounded transition-all ${
-                  pathname.startsWith("/price-list") ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
-                }`}
-              >
-                Price Lists
-                <span className="bg-red-600 text-white text-[8px] font-extrabold px-1 rounded uppercase">
-                  LIVE
-                </span>
-                <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
-              </button>
-
-              {pricesOpen && (
-                <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-xl border border-gray-100 p-2 z-50 grid grid-cols-1 gap-0.5">
-                  {priceLinks.map((p) => (
+              {productsOpen && (
+                <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-xl border border-slate-100 p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  {productLinks.map((p) => (
                     <Link
                       key={p.href}
                       href={p.href}
-                      className="px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors group"
+                      className="p-2.5 rounded-lg hover:bg-slate-50 transition-colors block group"
                     >
-                      <div className="text-xs font-bold text-navy-900 group-hover:text-red-600">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-red-600">
                         {p.name}
                       </div>
-                      <div className="text-[10px] text-gray-400">{p.desc}</div>
+                      <div className="text-[11px] text-slate-500">{p.brand}</div>
                     </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <Link
-              href="/products"
-              className={`px-2.5 py-1.5 text-xs font-bold transition-all rounded ${
-                pathname === "/products" ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
-              }`}
-            >
-              Products
-            </Link>
-
+            {/* Industries */}
             <Link
               href="/industries"
-              className={`px-2.5 py-1.5 text-xs font-bold transition-all rounded ${
-                pathname === "/industries" ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
+              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+                isActive("/industries") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Industries
+              {isActive("/industries") && (
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+              )}
             </Link>
 
-            <Link
-              href="/calculators"
-              className={`px-2.5 py-1.5 text-xs font-bold transition-all rounded ${
-                pathname === "/calculators" ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
-              }`}
+            {/* Calculators Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCalculatorsOpen(true)}
+              onMouseLeave={() => setCalculatorsOpen(false)}
             >
-              Calculators
-            </Link>
+              <button
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                  isActive("/calculators") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
+                }`}
+              >
+                Calculators
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${calculatorsOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
+              </button>
 
-            <Link
-              href="/catalogues"
-              className={`px-2.5 py-1.5 text-xs font-bold transition-all rounded ${
-                pathname === "/catalogues" ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
-              }`}
+              {calculatorsOpen && (
+                <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-xl border border-slate-100 p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  {calculatorLinks.map((c) => (
+                    <Link
+                      key={c.name}
+                      href={c.href}
+                      className="p-2.5 rounded-lg hover:bg-slate-50 transition-colors block group"
+                    >
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-red-600">
+                        {c.name}
+                      </div>
+                      <div className="text-[11px] text-slate-500">{c.desc}</div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Knowledge Center */}
+            <div
+              className="relative"
+              onMouseEnter={() => setKnowledgeOpen(true)}
+              onMouseLeave={() => setKnowledgeOpen(false)}
             >
-              Catalogues
-            </Link>
+              <button
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                  isActive("/price-list") || isActive("/catalogues") || isActive("/blog") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
+                }`}
+              >
+                Knowledge Center
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${knowledgeOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
+              </button>
 
+              {knowledgeOpen && (
+                <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-xl border border-slate-100 p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                  {knowledgeLinks.map((k) => (
+                    <Link
+                      key={k.name}
+                      href={k.href}
+                      className="p-2.5 rounded-lg hover:bg-slate-50 transition-colors block group"
+                    >
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-red-600">
+                        {k.name}
+                      </div>
+                      <div className="text-[11px] text-slate-500">{k.desc}</div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Contact Us */}
             <Link
               href="/contact"
-              className={`px-2.5 py-1.5 text-xs font-bold transition-all rounded ${
-                pathname === "/contact" ? "text-red-600 bg-red-50" : "text-navy-900 hover:text-red-600 hover:bg-gray-50"
+              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+                isActive("/contact") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
-              Contact
+              Contact Us
+              {isActive("/contact") && (
+                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+              )}
             </Link>
           </div>
 
-          {/* Right Compact Actions */}
-          <div className="hidden xl:flex items-center gap-2">
+          {/* Right Rate & Phone Call Widget (Matches AI Reference Screenshot) */}
+          <div className="hidden sm:flex items-center gap-3">
             <a
-              href="tel:9999307984"
-              className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase px-3 py-2 rounded-lg flex items-center gap-1.5 shadow-sm transition-all whitespace-nowrap"
+              href="tel:9810073557"
+              className="flex items-center gap-3 group p-1.5 rounded-xl hover:bg-slate-50 transition-all"
             >
-              <Phone className="w-3.5 h-3.5" />
-              Today's Rate
-            </a>
-            <a
-              href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20today%27s%20price%20quote."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#128C7E] hover:bg-[#075E54] text-white font-bold text-xs px-3 py-2 rounded-lg flex items-center gap-1 shadow-sm transition-all whitespace-nowrap"
-            >
-              WhatsApp
+              <div className="w-11 h-11 bg-red-600 group-hover:bg-red-700 text-white rounded-xl flex items-center justify-center shadow-md shadow-red-600/20 transition-all flex-shrink-0">
+                <Phone className="w-5 h-5 fill-current" />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-[10px] uppercase font-semibold text-slate-500 tracking-wider leading-none mb-1">
+                  Call for Today's Rate
+                </span>
+                <span className="text-sm font-extrabold text-slate-900 group-hover:text-red-600 leading-tight transition-colors">
+                  +91 98100 73557
+                </span>
+                <span className="text-sm font-extrabold text-slate-900 group-hover:text-red-600 leading-tight transition-colors">
+                  +91 99100 73557
+                </span>
+              </div>
             </a>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-1.5 rounded-md text-navy-900 hover:bg-gray-100 focus:outline-none"
+              className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none transition-colors"
+              aria-label="Toggle Navigation Menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -262,107 +277,77 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 px-4 pt-2 pb-6 space-y-2 shadow-lg max-h-[85vh] overflow-y-auto">
+        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl max-h-[85vh] overflow-y-auto">
           <Link
             href="/"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-semibold text-navy-950 hover:bg-gray-50"
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
           >
             Home
           </Link>
-
           <Link
             href="/about"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-semibold text-navy-950 hover:bg-gray-50"
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
           >
             About Us
           </Link>
-
-          <div className="border-t border-b border-gray-100 py-2 my-1 space-y-1">
-            <div className="px-3 text-xs font-bold text-red-600 uppercase tracking-wider">
-              Brands Hub
-            </div>
-            {brandLinks.map((b) => (
-              <Link
-                key={b.href}
-                href={b.href}
-                onClick={() => setMobileOpen(false)}
-                className="block px-4 py-1 text-xs text-gray-700 hover:text-red-600"
-              >
-                {b.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="border-b border-gray-100 pb-2 mb-1 space-y-1">
-            <div className="px-3 text-xs font-bold text-red-600 uppercase tracking-wider">
-              Price Lists & Daily Rates
-            </div>
-            {priceLinks.map((p) => (
-              <Link
-                key={p.href}
-                href={p.href}
-                onClick={() => setMobileOpen(false)}
-                className="block px-4 py-1 text-xs text-gray-700 hover:text-red-600"
-              >
-                {p.name}
-              </Link>
-            ))}
-          </div>
-
           <Link
             href="/products"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-semibold text-navy-950 hover:bg-gray-50"
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
           >
-            Products Catalogue
+            Products & Brands
           </Link>
-
           <Link
             href="/industries"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-semibold text-navy-950 hover:bg-gray-50"
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
           >
             Industries We Serve
           </Link>
-
           <Link
             href="/calculators"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-semibold text-navy-950 hover:bg-gray-50"
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
           >
             Steel Calculators
           </Link>
-
+          <Link
+            href="/price-list"
+            onClick={() => setMobileOpen(false)}
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+          >
+            Daily Price Lists
+          </Link>
           <Link
             href="/catalogues"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-semibold text-navy-950 hover:bg-gray-50"
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
           >
             Product Catalogues PDF
           </Link>
-
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-semibold text-navy-950 hover:bg-gray-50"
+            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
           >
-            Contact Head Office
+            Contact Us
           </Link>
 
-          <div className="pt-4 space-y-2">
+          <div className="pt-3 border-t border-slate-100 space-y-2">
             <a
-              href="tel:9999307984"
-              className="w-full text-center bg-red-600 text-white py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider block"
+              href="tel:9810073557"
+              className="w-full text-center bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md"
             >
-              Call For Today's Rate
+              <Phone className="w-4 h-4 fill-current" />
+              Call +91 98100 73557
             </a>
             <a
-              href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20today%27s%20steel%20price%20quote."
+              href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20to%20get%20today%27s%20steel%20price%20quote."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full text-center bg-[#25D366] text-white py-2.5 rounded-lg text-xs font-bold block"
+              className="w-full text-center bg-[#25D366] hover:bg-[#128C7E] text-white py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md"
             >
               WhatsApp Price Enquiry
             </a>

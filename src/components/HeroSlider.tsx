@@ -2,32 +2,29 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Phone, ShieldCheck, ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Phone, ArrowRight, Award, Box, Truck, CheckCircle2, MessageSquare } from "lucide-react";
 
 const HERO_SLIDES = [
   {
     title: "BUILT ON TRUST.",
-    subtitle: "DELIVERED IN STRENGTH.",
-    desc: "Noida's premier stockist & authorised distributor of Tata Steel, SAIL, JSW Steel, and AP Apollo lines. Providing 100% genuine mill-certified steel for over 30 years.",
+    highlightWord: "STRENGTH.",
+    desc: "Your trusted steel supplier for 30+ years. We deliver premium quality steel products with best rates, timely delivery & unmatched service.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80",
-    badge: "TATA TISCON 550SD & SAIL SEQR REBARS",
-    highlightText: "Ready Stock for Immediate Dispatch",
+    badge: "RK STEEL | EST. 1993",
   },
   {
-    title: "STRUCTURAL TUBES & PIPES.",
-    subtitle: "PRECISION & DURABILITY.",
-    desc: "Authorised stockist of Tata Structura MS hollow sections (RHS / SHS) and APL Apollo pipes for heavy infrastructure, warehouses, and industrial sheds.",
+    title: "AUTHORISED DEALER.",
+    highlightWord: "GENUINE STEEL.",
+    desc: "Noida's premier stockist for Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, and AP Apollo pipes.",
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80",
-    badge: "TATA STRUCTURA & APL APOLLO",
-    highlightText: "Complete Range of Square & Round Sections",
+    badge: "100% MILL CERTIFIED",
   },
   {
-    title: "COLOUR COATED & ROOFING.",
-    subtitle: "LONG LASTING PROTECTION.",
-    desc: "Genuine Tata Durashine roofing sheets, Galvalume accessories, and Tata Steelium CR/HR sheets directly from primary steel mills.",
+    title: "READY INVENTORY.",
+    highlightWord: "FAST DISPATCH.",
+    desc: "Over 50,000 MT ready stock across Noida & Ghaziabad stockyards for immediate delivery to residential, commercial and industrial sites.",
     image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80",
-    badge: "TATA DURASHINE & ASTRUM SHEETS",
-    highlightText: "Custom Lengths & Mill Test Certificates",
+    badge: "PAN NCR LOGISTICS",
   },
 ];
 
@@ -37,172 +34,149 @@ export function HeroSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
 
   const slide = HERO_SLIDES[currentSlide];
 
   return (
-    <section className="relative bg-navy-950 text-white min-h-[580px] lg:min-h-[620px] flex items-center overflow-hidden border-b-4 border-red-600">
-      {/* Background Image Carousel with Overlay */}
+    <section className="relative bg-[#0B192C] text-white min-h-[580px] lg:min-h-[600px] flex items-center overflow-hidden">
+      {/* Background Images with smooth transitions */}
       {HERO_SLIDES.map((s, index) => (
         <div
           key={index}
           className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? "opacity-35 scale-100" : "opacity-0 scale-105 pointer-events-none"
+            index === currentSlide ? "opacity-30 scale-100" : "opacity-0 scale-105 pointer-events-none"
           }`}
           style={{ backgroundImage: `url('${s.image}')` }}
         />
       ))}
 
-      {/* Dark Gradient Overlay for Readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/40" />
+      {/* Clean Modern Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#071322] via-[#0B192C]/90 to-[#0B192C]/40" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Main Hero Content */}
-          <div className="lg:col-span-8 space-y-6">
-            <div className="inline-flex items-center gap-2 bg-red-600/90 text-white px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow">
-              <ShieldCheck className="w-4 h-4 text-gold-400" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 w-full z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Column: Hero Content */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="text-xs font-bold tracking-[0.18em] text-slate-300 uppercase">
               {slide.badge}
             </div>
 
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-none tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-white leading-[1.12] tracking-tight font-sans">
               {slide.title} <br />
-              <span className="text-red-500">{slide.subtitle}</span>
+              DELIVERED IN <span className="text-red-500">{slide.highlightWord}</span>
             </h1>
 
-            <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
               {slide.desc}
             </p>
 
+            {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
               <a
-                href="tel:9999307984"
-                className="bg-red-600 hover:bg-red-700 text-white font-heading font-bold text-sm sm:text-base px-6 py-3.5 rounded-lg uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg hover:shadow-red-600/30"
+                href="tel:9810073557"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-lg uppercase tracking-wide flex items-center gap-2.5 transition-all shadow-lg shadow-red-600/30 hover:-translate-y-0.5 active:translate-y-0"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-5 fill-current" />
                 Call For Today's Rate
               </a>
               <a
-                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20to%20get%20today%27s%20price%20quote."
+                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20to%20enquire%20about%20today%27s%20steel%20rates."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#128C7E] hover:bg-[#075E54] text-white font-heading font-bold text-sm sm:text-base px-6 py-3.5 rounded-lg tracking-wider flex items-center gap-2 transition-all shadow-md"
+                className="bg-white/5 hover:bg-white/10 text-white border border-white/25 font-bold text-sm sm:text-base px-7 py-3.5 rounded-lg tracking-wide flex items-center gap-2.5 transition-all backdrop-blur-sm hover:-translate-y-0.5"
               >
+                <MessageSquare className="w-5 h-5 text-green-400" />
                 WhatsApp Enquiry
-                <ArrowRight className="w-5 h-5" />
               </a>
             </div>
 
-            {/* Quick Badges Bar */}
-            <div className="pt-6 border-t border-navy-800 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-gray-300">
-              <div className="flex items-center gap-2">
+            {/* Badges Line */}
+            <div className="pt-4 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-300">
+              <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>Tata Steel Authorised Dealer</span>
+                <span>Ready Stock</span>
               </div>
-              <div className="flex items-center gap-2">
+              <span className="text-slate-600">•</span>
+              <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>SAIL SEQR 550D Stockist</span>
+                <span>Best Prices</span>
               </div>
-              <div className="flex items-center gap-2">
+              <span className="text-slate-600">•</span>
+              <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>Pan-NCR Immediate Dispatch</span>
+                <span>Quick Dispatch</span>
               </div>
             </div>
           </div>
 
-          {/* Right Floating Stats Box (Matching Client Screenshot) */}
-          <div className="lg:col-span-4 hidden lg:block">
-            <div className="bg-navy-900/90 border-2 border-navy-700 p-6 rounded-2xl shadow-2xl backdrop-blur-sm space-y-5">
-              <div className="border-b border-navy-800 pb-3 flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-red-400">RK STEEL EXCELLENCE</span>
-                <span className="text-[10px] bg-red-600 text-white font-bold px-2 py-0.5 rounded">EST. 1993</span>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-red-600/20 text-red-500 rounded-lg flex items-center justify-center font-bold text-lg">
-                    30+
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">Years of Experience</div>
-                    <div className="text-[11px] text-gray-400">Serving Noida & Delhi NCR since 1993</div>
-                  </div>
+          {/* Right Column: Floating Dark Glass Feature Card (Matching AI Screenshot 2) */}
+          <div className="lg:col-span-5 hidden lg:block">
+            <div className="bg-[#081526]/85 border border-slate-700/60 p-7 rounded-2xl shadow-2xl backdrop-blur-md space-y-6">
+              {/* Stat 1: 30+ Years */}
+              <div className="flex items-center gap-4">
+                <div className="text-3xl font-black text-red-500 min-w-[58px]">
+                  30+
                 </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gold-500/20 text-gold-400 rounded-lg flex items-center justify-center font-bold text-lg">
-                    100%
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">Authorised Dealer</div>
-                    <div className="text-[11px] text-gray-400">Tata Steel, SAIL, JSW, AP Apollo</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center font-bold text-lg">
-                    50k+
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">Huge Ready Inventory</div>
-                    <div className="text-[11px] text-gray-400">Wide Range of TMT & Pipes</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-500/20 text-green-400 rounded-lg flex items-center justify-center font-bold text-lg">
-                    ⚡
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">Quick Logistics Network</div>
-                    <div className="text-[11px] text-gray-400">Same-day dispatch to site</div>
-                  </div>
+                <div>
+                  <div className="text-sm font-bold text-white">Years of Experience</div>
+                  <div className="text-xs text-slate-400">Since 1993</div>
                 </div>
               </div>
 
-              <div className="pt-2">
-                <Link
-                  href="/price-list"
-                  className="w-full text-center bg-navy-800 hover:bg-navy-700 text-red-400 border border-red-500/30 py-2.5 rounded-lg text-xs font-bold block transition-all"
-                >
-                  View Today's Market Price List →
-                </Link>
+              <div className="border-t border-slate-800" />
+
+              {/* Stat 2: Authorised Dealer */}
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center flex-shrink-0">
+                  <Award className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-white">Authorised Dealer</div>
+                  <div className="text-xs text-slate-400">Tata Steel, SAIL, JSW, AP Apollo</div>
+                </div>
+              </div>
+
+              <div className="border-t border-slate-800" />
+
+              {/* Stat 3: Wide Range */}
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center flex-shrink-0">
+                  <Box className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-white">Wide Range</div>
+                  <div className="text-xs text-slate-400">TMT Bars, Structural, Pipes, Sheets & More</div>
+                </div>
+              </div>
+
+              <div className="border-t border-slate-800" />
+
+              {/* Stat 4: Quick Delivery */}
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center flex-shrink-0">
+                  <Truck className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-white">Quick Delivery</div>
+                  <div className="text-xs text-slate-400">Strong logistics network across NCR & India</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Slider Nav Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-navy-900/60 hover:bg-navy-900 text-white p-2.5 rounded-full backdrop-blur-sm transition-all border border-navy-700"
-        aria-label="Previous Slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-navy-900/60 hover:bg-navy-900 text-white p-2.5 rounded-full backdrop-blur-sm transition-all border border-navy-700"
-        aria-label="Next Slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
       {/* Slide Indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
         {HERO_SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            className={`h-2 rounded-full transition-all ${
-              i === currentSlide ? "w-8 bg-red-600" : "w-2 bg-white/40 hover:bg-white/70"
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === currentSlide ? "w-7 bg-red-600" : "w-2 bg-white/40 hover:bg-white/70"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />

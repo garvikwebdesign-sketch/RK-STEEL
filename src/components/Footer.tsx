@@ -1,34 +1,35 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, ShieldCheck, Award, ArrowRight, FileText, Download } from "lucide-react";
+import { Phone, Mail, MapPin, ShieldCheck, Download, Award, MessageSquare } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 export function Footer() {
   return (
-    <footer className="bg-[#071526] text-gray-300 border-t-4 border-red-600">
+    <footer className="bg-[#071322] text-slate-300 border-t border-slate-800">
       {/* Top Banner Accent */}
-      <div className="bg-[#0F2A4A] py-6 border-b border-navy-800">
+      <div className="bg-[#0B192C] py-6 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Award className="w-8 h-8 text-red-500 flex-shrink-0" />
             <div>
-              <h4 className="font-heading text-lg text-white font-bold tracking-wide">
+              <h4 className="text-base text-white font-bold tracking-tight font-sans">
                 Authorised Stockist & Dealer — Tata Steel, SAIL, JSW & AP Apollo
               </h4>
-              <p className="text-xs text-gray-300">
+              <p className="text-xs text-slate-400">
                 Tata Tiscon • Tata Structura • Tata Durashine • SAIL SEQR • JSW Neosteel • APL Apollo
               </p>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
             <a
-              href="tel:9999307984"
-              className="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2.5 rounded-lg text-xs tracking-wider uppercase flex items-center gap-2 transition-all shadow-md"
+              href="tel:9810073557"
+              className="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs tracking-wider uppercase flex items-center gap-2 transition-all shadow-md"
             >
-              <Phone className="w-4 h-4" />
-              Call 9999307984
+              <Phone className="w-4 h-4 fill-current" />
+              Call +91 98100 73557
             </a>
             <Link
               href="/catalogues"
-              className="bg-navy-800 hover:bg-navy-700 text-white font-bold px-4 py-2.5 rounded-lg text-xs flex items-center gap-1.5 border border-navy-700"
+              className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center gap-1.5 border border-slate-700"
             >
               <Download className="w-4 h-4 text-red-400" />
               Download Catalogues
@@ -41,20 +42,9 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         {/* Col 1: About */}
         <div className="space-y-4 lg:col-span-2">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center p-0.5">
-              <img
-                src="/logo.jpg"
-                alt="RK Steel Company logo"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <span className="font-heading font-bold text-xl text-white">RK STEEL COMPANY</span>
-              <div className="text-[10px] text-red-400 font-semibold tracking-wider uppercase">ESTABLISHED IN 1993 • NOIDA, UP</div>
-            </div>
-          </div>
-          <p className="text-xs text-gray-300 leading-relaxed pr-4">
+          <Logo variant="dark" size="md" />
+
+          <p className="text-xs text-slate-400 leading-relaxed pr-4 mt-2">
             Established in 1993, RK Steel Company is Noida's premier stockist & authorised distributor of genuine Tata Steel, SAIL, JSW Steel, and AP Apollo product lines with ready mill-certified inventory for construction & industrial projects.
           </p>
           <div className="flex items-center gap-2 text-xs text-red-400 font-semibold">
@@ -65,10 +55,10 @@ export function Footer() {
 
         {/* Col 2: Authorised Brands Hub */}
         <div>
-          <h4 className="font-heading text-sm text-white font-bold tracking-wider mb-4 border-b border-navy-800 pb-2 uppercase text-red-400">
+          <h4 className="text-xs text-white font-bold tracking-wider mb-4 uppercase font-sans border-b border-slate-800 pb-2">
             Authorised Brands
           </h4>
-          <ul className="space-y-2 text-xs">
+          <ul className="space-y-2 text-xs text-slate-400">
             <li><Link href="/brands/tata-tiscon" className="hover:text-white transition-colors">Tata Tiscon TMT</Link></li>
             <li><Link href="/brands/sail-seqr" className="hover:text-white transition-colors">SAIL SEQR 550D</Link></li>
             <li><Link href="/brands/tata-structura" className="hover:text-white transition-colors">Tata Structura Pipes</Link></li>
@@ -81,11 +71,11 @@ export function Footer() {
 
         {/* Col 3: Price Updates & Tools */}
         <div>
-          <h4 className="font-heading text-sm text-white font-bold tracking-wider mb-4 border-b border-navy-800 pb-2 uppercase text-red-400">
+          <h4 className="text-xs text-white font-bold tracking-wider mb-4 uppercase font-sans border-b border-slate-800 pb-2">
             Price Rates & Tools
           </h4>
-          <ul className="space-y-2 text-xs">
-            <li><Link href="/price-list" className="hover:text-white font-semibold text-red-300">Daily Market Rates Hub</Link></li>
+          <ul className="space-y-2 text-xs text-slate-400">
+            <li><Link href="/price-list" className="hover:text-white font-semibold text-red-400">Daily Market Rates Hub</Link></li>
             <li><Link href="/price-list/tata-tiscon" className="hover:text-white">Tata Tiscon Today's Rate</Link></li>
             <li><Link href="/price-list/sail-seqr" className="hover:text-white">SAIL SEQR TMT Price</Link></li>
             <li><Link href="/price-list/tata-structura" className="hover:text-white">Tata Structura Price List</Link></li>
@@ -97,10 +87,10 @@ export function Footer() {
 
         {/* Col 4: Head Office Contact */}
         <div>
-          <h4 className="font-heading text-sm text-white font-bold tracking-wider mb-4 border-b border-navy-800 pb-2 uppercase text-red-400">
+          <h4 className="text-xs text-white font-bold tracking-wider mb-4 uppercase font-sans border-b border-slate-800 pb-2">
             Head Office
           </h4>
-          <ul className="space-y-3 text-xs">
+          <ul className="space-y-3 text-xs text-slate-400">
             <li className="flex items-start gap-2">
               <MapPin className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
               <span>G-38, Sector-9, Noida, Uttar Pradesh — 201301</span>
@@ -108,8 +98,8 @@ export function Footer() {
             <li className="flex items-start gap-2">
               <Phone className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
               <div className="flex flex-col">
-                <a href="tel:9999307984" className="hover:text-white font-bold text-white">+91 99993 07984</a>
-                <a href="tel:9953364645" className="hover:text-white font-bold text-white">+91 99533 64645</a>
+                <a href="tel:9810073557" className="hover:text-white font-bold text-white">+91 98100 73557</a>
+                <a href="tel:9910073557" className="hover:text-white font-bold text-white">+91 99100 73557</a>
               </div>
             </li>
             <li className="flex items-center gap-2">
@@ -121,15 +111,15 @@ export function Footer() {
       </div>
 
       {/* Bottom Legal Bar */}
-      <div className="bg-[#040C17] py-4 border-t border-navy-900 text-center text-xs text-gray-400">
+      <div className="bg-[#030914] py-4 border-t border-slate-900 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <div>
             © {new Date().getFullYear()} RK Steel Company. All Rights Reserved. Building Strength. Delivering Trust.
           </div>
           <div className="flex gap-4">
-            <Link href="/admin/login" className="hover:text-gray-200">Admin Portal</Link>
+            <Link href="/admin/login" className="hover:text-slate-300">Admin Portal</Link>
             <span>•</span>
-            <Link href="/contact" className="hover:text-gray-200">Google Map Location</Link>
+            <Link href="/contact" className="hover:text-slate-300">Google Map Location</Link>
           </div>
         </div>
       </div>

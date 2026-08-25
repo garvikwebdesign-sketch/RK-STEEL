@@ -1,62 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-950: #071526;
-  --color-navy-900: #0F2A4A;
-  --color-navy-800: #193A63;
-  --color-navy-700: #254F82;
+  --color-navy-950: #071322;
+  --color-navy-900: #0B192C;
+  --color-navy-800: #152A4A;
+  --color-navy-700: #1E3E68;
   
-  --color-red-700: #7E1515;
-  --color-red-600: #A11D1D;
-  --color-red-500: #C22727;
-  
-  --color-gold-600: #B8851B;
-  --color-gold-500: #D9A429;
-  --color-gold-400: #E6B748;
+  --color-red-700: #991B1B;
+  --color-red-600: #DC2626;
+  --color-red-500: #EF4444;
 
-  --color-charcoal-900: #121518;
-  --color-charcoal-800: #1F2328;
-  --color-charcoal-700: #2D333B;
-  
-  --color-steel-500: #6B7280;
-  --color-steel-100: #F4F5F7;
-  --color-steel-50: #FAFBFD;
+  --color-slate-900: #0F172A;
+  --color-slate-800: #1E293B;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748B;
+  --color-slate-400: #94A3B8;
+  --color-slate-200: #E2E8F0;
+  --color-slate-100: #F1F5F9;
+  --color-slate-50: #F8FAFC;
 
-  --font-heading: var(--font-oswald), sans-serif;
-  --font-body: var(--font-inter), sans-serif;
+  --font-heading: var(--font-heading), var(--font-body), system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-body), system-ui, -apple-system, sans-serif;
 }
 
 :root {
   --background: #FFFFFF;
-  --foreground: #1F2328;
+  --foreground: #0F172A;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
+  letter-spacing: -0.01em;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: var(--font-oswald), sans-serif;
-  letter-spacing: 0.02em;
+  font-family: var(--font-heading), sans-serif;
+  letter-spacing: -0.025em;
+  font-weight: 700;
 }
 
-/* Custom Diagonal Dividers */
-.diagonal-divider-bottom {
-  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-}
-
-.diagonal-divider-top {
-  clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
-}
-
-.diagonal-banner {
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
-
-/* Rule under headings */
+/* Subtle clean red accent divider */
 .heading-accent {
   position: relative;
   display: inline-block;
@@ -67,9 +54,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #A11D1D 0%, #D9A429 100%);
+  width: 48px;
+  height: 3px;
+  background: #DC2626;
   border-radius: 2px;
 }
 
@@ -79,23 +66,23 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #A11D1D 0%, #D9A429 100%);
+  width: 48px;
+  height: 3px;
+  background: #DC2626;
   border-radius: 2px;
 }
 
-/* Custom Scrollbar */
+/* Modern clean scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F2A4A;
+  background: #0B192C;
 }
 ::-webkit-scrollbar-thumb {
-  background: #A11D1D;
+  background: #DC2626;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D9A429;
+  background: #B91C1C;
 }
