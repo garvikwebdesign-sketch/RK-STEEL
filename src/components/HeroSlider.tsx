@@ -8,23 +8,26 @@ const HERO_SLIDES = [
   {
     title: "BUILT ON TRUST.",
     highlightWord: "STRENGTH.",
-    desc: "Your trusted steel supplier for 30+ years. We deliver premium quality steel products with best rates, timely delivery & unmatched service.",
+    desc: "Your trusted steel supplier for 30+ years. We deliver premium quality steel products with best rates, timely delivery & unmatched service across India.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80",
-    badge: "RK STEEL | EST. 1993",
+    badge: "RK STEEL CO | EST. 1993",
+    tagline: "ALL STEEL AND IRON ITEMS UNDER ONE ROOF",
   },
   {
     title: "AUTHORISED DEALER.",
     highlightWord: "GENUINE STEEL.",
-    desc: "Noida's premier stockist for Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, and AP Apollo pipes.",
+    desc: "Noida's premier stockist for Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, JSW Neosteel, and AP Apollo pipes.",
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80",
     badge: "100% MILL CERTIFIED",
+    tagline: "DIRECT FROM PRIMARY MILLS",
   },
   {
     title: "READY INVENTORY.",
     highlightWord: "FAST DISPATCH.",
     desc: "Over 50,000 MT ready stock across Noida & Ghaziabad stockyards for immediate delivery to residential, commercial and industrial sites.",
     image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80",
-    badge: "PAN NCR LOGISTICS",
+    badge: "PAN NCR & INDIA LOGISTICS",
+    tagline: "ALL SIZES & GRADES IN STOCK",
   },
 ];
 
@@ -60,8 +63,13 @@ export function HeroSlider() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="text-xs font-bold tracking-[0.18em] text-slate-300 uppercase">
-              {slide.badge}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="text-xs font-bold tracking-[0.18em] text-red-400 uppercase bg-red-950/60 border border-red-500/30 px-3 py-1 rounded-md">
+                {slide.badge}
+              </span>
+              <span className="text-[11px] font-extrabold tracking-wider text-slate-300 uppercase bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700">
+                {slide.tagline}
+              </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-white leading-[1.12] tracking-tight font-sans">
@@ -76,14 +84,14 @@ export function HeroSlider() {
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
               <a
-                href="tel:9810073557"
+                href="tel:9999307984"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-lg uppercase tracking-wide flex items-center gap-2.5 transition-all shadow-lg shadow-red-600/30 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Phone className="w-5 h-5 fill-current" />
-                Call For Today's Rate
+                Call For Today's Rate (+91 99993 07984)
               </a>
               <a
-                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20to%20enquire%20about%20today%27s%20steel%20rates."
+                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20want%20to%20enquire%20about%20today%27s%20steel%20rates."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white/5 hover:bg-white/10 text-white border border-white/25 font-bold text-sm sm:text-base px-7 py-3.5 rounded-lg tracking-wide flex items-center gap-2.5 transition-all backdrop-blur-sm hover:-translate-y-0.5"
@@ -112,7 +120,7 @@ export function HeroSlider() {
             </div>
           </div>
 
-          {/* Right Column: Floating Dark Glass Feature Card (Matching AI Screenshot 2) */}
+          {/* Right Column: Floating Dark Glass Feature Card */}
           <div className="lg:col-span-5 hidden lg:block">
             <div className="bg-[#081526]/85 border border-slate-700/60 p-7 rounded-2xl shadow-2xl backdrop-blur-md space-y-6">
               {/* Stat 1: 30+ Years */}
@@ -122,7 +130,7 @@ export function HeroSlider() {
                 </div>
                 <div>
                   <div className="text-sm font-bold text-white">Years of Experience</div>
-                  <div className="text-xs text-slate-400">Since 1993</div>
+                  <div className="text-xs text-slate-400">RK STEEL CO • Since 1993</div>
                 </div>
               </div>
 
@@ -134,8 +142,8 @@ export function HeroSlider() {
                   <Award className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white">Authorised Dealer</div>
-                  <div className="text-xs text-slate-400">Tata Steel, SAIL, JSW, AP Apollo</div>
+                  <div className="text-sm font-bold text-white">Authorised Dealer &amp; Stockist</div>
+                  <div className="text-xs text-slate-400">Tata Steel, SAIL, JSW Steel, Jindal (JE), AP Apollo</div>
                 </div>
               </div>
 

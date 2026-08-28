@@ -56,10 +56,10 @@ export function Navbar() {
             <span className="text-slate-300">30+ Years of Trust</span>
           </div>
 
-          {/* Center: Stockyard Location */}
+          {/* Center: Head Office Location */}
           <div className="hidden lg:flex items-center gap-1.5 text-slate-300">
             <MapPin className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />
-            <span>Stockyard: B-51, Site 4, Industrial Area, Sahibabad, Ghaziabad, UP-201010</span>
+            <span>Head Office: G-38, Sector - 9, Noida</span>
           </div>
 
           {/* Right: Working Hours & Admin */}
@@ -239,10 +239,10 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Right Rate & Phone Call Widget (Matches AI Reference Screenshot) */}
+          {/* Right Rate & Phone Call Widget */}
           <div className="hidden sm:flex items-center gap-3">
             <a
-              href="tel:9810073557"
+              href="tel:9999307984"
               className="flex items-center gap-3 group p-1.5 rounded-xl hover:bg-slate-50 transition-all"
             >
               <div className="w-11 h-11 bg-red-600 group-hover:bg-red-700 text-white rounded-xl flex items-center justify-center shadow-md shadow-red-600/20 transition-all flex-shrink-0">
@@ -253,10 +253,10 @@ export function Navbar() {
                   Call for Today's Rate
                 </span>
                 <span className="text-sm font-extrabold text-slate-900 group-hover:text-red-600 leading-tight transition-colors">
-                  +91 98100 73557
+                  +91 99993 07984
                 </span>
-                <span className="text-sm font-extrabold text-slate-900 group-hover:text-red-600 leading-tight transition-colors">
-                  +91 99100 73557
+                <span className="text-[11px] font-semibold text-slate-500 group-hover:text-slate-700 leading-tight transition-colors">
+                  9953364645 | 9811364645
                 </span>
               </div>
             </a>
@@ -337,14 +337,14 @@ export function Navbar() {
 
           <div className="pt-3 border-t border-slate-100 space-y-2">
             <a
-              href="tel:9810073557"
+              href="tel:9999307984"
               className="w-full text-center bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md"
             >
               <Phone className="w-4 h-4 fill-current" />
-              Call +91 98100 73557
+              Call +91 99993 07984
             </a>
             <a
-              href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20to%20get%20today%27s%20steel%20price%20quote."
+              href="https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20want%20to%20get%20today%27s%20steel%20price%20quote."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full text-center bg-[#25D366] hover:bg-[#128C7E] text-white py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md"

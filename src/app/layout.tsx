@@ -19,15 +19,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "RK Steel Company | Tata Steel, SAIL, JSW, AP Apollo | Noida & Delhi NCR",
+  title: "RK STEEL CO | Tata Steel, SAIL, JSW, Jindal, AP Apollo | All Steel and Iron Items Under One Roof",
   description:
-    "Established in 1993, RK Steel Company is Noida's premier stockist & authorised dealer of Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, JSW Neosteel, and AP Apollo pipes. 30+ years of excellence.",
+    "Established in 1993, RK STEEL CO is Noida's premier stockist & authorised dealer of Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, JSW Neosteel, Jindal Panther, and AP Apollo pipes. All steel and iron items under one roof with 30+ years of excellence.",
   keywords: [
-    "RK Steel Company",
+    "RK STEEL CO",
+    "RK Steel Co",
+    "All Steel and Iron Items Under One Roof",
     "Tata Steel Noida",
     "Tata Tiscon Dealer Noida",
     "SAIL TMT Bars Noida",
     "JSW Neosteel Noida",
+    "Jindal Steel Noida",
     "AP Apollo Pipes Noida",
     "Steel Supplier Sector 9 Noida",
     "Steel Weight Calculator India",

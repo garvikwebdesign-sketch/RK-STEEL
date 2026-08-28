@@ -2,8 +2,8 @@ import { Building2, Factory, Landmark, Cpu, Flame, Sprout, ChevronRight, ArrowRi
 import Link from "next/link";
 
 export const metadata = {
-  title: "Industries We Serve | RK Steel Company — Infrastructure, Construction & Manufacturing",
-  description: "Steel distribution solutions for Construction, Infrastructure, Engineering, Manufacturing, Oil & Gas, and Agriculture across India.",
+  title: "Industries We Serve | RK STEEL CO — Infrastructure, Construction & Manufacturing",
+  description: "Steel distribution solutions for Construction, Infrastructure, Engineering, Manufacturing, Oil & Gas, and Agriculture across India. All steel and iron items under one roof by RK STEEL CO.",
 };
 
 const INDUSTRIES = [
@@ -54,7 +54,7 @@ const INDUSTRIES = [
 export default function IndustriesPage() {
   return (
     <div className="space-y-0 bg-white">
-      {/* Subpage Hero Header (Matching Image 4) */}
+      {/* Subpage Hero Header */}
       <section className="relative bg-[#0B192C] text-white py-16 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
@@ -71,12 +71,16 @@ export default function IndustriesPage() {
             <span className="text-red-400 font-bold">Industries</span>
           </div>
 
+          <div className="inline-block bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
+            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          </div>
+
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight font-sans">
             Strengthening Every Industry <span className="text-red-500">We Serve</span>
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
-            We supply high-quality steel products to a wide range of industries. Our commitment to quality, timely delivery and competitive pricing makes us the preferred steel partner across India.
+            At RK STEEL CO, we supply high-quality steel products to a wide range of industries. Our commitment to quality, timely delivery and competitive pricing makes us the preferred steel partner across India.
           </p>
         </div>
       </section>

@@ -8,7 +8,7 @@ import { Package, FileText, MessageSquare, Plus, ShieldCheck } from "lucide-reac
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Admin Dashboard | RK Steel Company",
+  title: "Admin Dashboard | RK STEEL CO",
 };
 
 export default async function AdminDashboardPage() {

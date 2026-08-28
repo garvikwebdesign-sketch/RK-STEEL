@@ -7,8 +7,8 @@ import { headers } from "next/headers";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Steel News & Technical Blog | RK Steel Company Noida",
-  description: "Industry news, steel weight calculation formulas, Tata Tiscon features, and construction tips from RK Steel Noida.",
+  title: "Steel News & Technical Blog | RK STEEL CO Noida",
+  description: "Industry news, steel weight calculation formulas, Tata Tiscon features, and construction tips from RK STEEL CO. All steel and iron items under one roof.",
 };
 
 export default async function BlogListPage() {
@@ -28,14 +28,17 @@ export default async function BlogListPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 bg-navy-900 text-gold-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
             <FileText className="w-4 h-4 text-gold-500" />
-            TECHNICAL ARTICLES & NEWS
+            TECHNICAL ARTICLES &amp; NEWS • RK STEEL CO
           </div>
           <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
-            RK Steel Insights & Blog
+            RK STEEL CO Insights &amp; Blog
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
             Stay informed with technical steel guides, IS standard specifications, material selection tips, and market insights.
           </p>
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
+            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          </div>
         </div>
       </section>
 

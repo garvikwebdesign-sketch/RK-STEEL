@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ShieldCheck, CheckCircle2, ArrowRight, Download, Phone, Calculator, FileText, TrendingUp, PackageCheck, Award } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export const dynamic = "force-dynamic";
 
@@ -82,6 +83,95 @@ const BRAND_DETAILS: Record<string, any> = {
       "Uniform Wall Thickness Tolerances",
     ],
   },
+  "tata-durashine": {
+    name: "Tata Durashine Roofing Sheets",
+    parentCompany: "Tata Steel Ltd.",
+    tagline: "Premium Colour-Coated Galvalume Profile Sheets",
+    overview: "Tata Durashine colour-coated Galvalume roofing sheets offer unparalleled corrosion resistance, vibrant aesthetics, and superior thermal insulation for industrial sheds, warehouses, and modern residential roofs.",
+    availableSizes: ["0.45mm", "0.50mm", "0.60mm"],
+    grades: ["AZ150 Galvalume / IS 15965"],
+    bundleDetails: "Supplied in standard sheets and custom cut-to-length options.",
+    todayPricePerMT: "68,500",
+    pdfCatalogueUrl: "/catalogues",
+    weightChart: [
+      { size: "0.45 mm x 1060 mm", weightPerMeterKg: 3.85, standardLengthM: 3.66, pieceWeightKg: 14.09 },
+      { size: "0.50 mm x 1060 mm", weightPerMeterKg: 4.28, standardLengthM: 3.66, pieceWeightKg: 15.66 },
+      { size: "0.60 mm x 1060 mm", weightPerMeterKg: 5.12, standardLengthM: 3.66, pieceWeightKg: 18.74 },
+    ],
+    features: [
+      "AZ150 Aluminium-Zinc Alloy Coating",
+      "Anti-Capillary Leak Proof Groove",
+      "High Solar Reflectance Index (Cool Roof)",
+      "100% Genuine Tata Steel Quality",
+    ],
+  },
+  "jsw-neosteel": {
+    name: "JSW Neosteel TMT Rebars",
+    parentCompany: "JSW Steel Ltd.",
+    tagline: "High Strength Virgin Ore TMT Bars",
+    overview: "JSW Neosteel Fe 550D TMT bars are manufactured from 100% virgin iron ore with lowest level of tramp elements. Engineered for high tensile strength, bendability, and seismic resistance in infrastructure.",
+    availableSizes: ["8mm", "10mm", "12mm", "16mm", "20mm", "25mm", "32mm"],
+    grades: ["Fe 500D", "Fe 550D"],
+    bundleDetails: "Supplied in 12m standard lengths with mill test certificates.",
+    todayPricePerMT: "53,500",
+    pdfCatalogueUrl: "/catalogues",
+    weightChart: [
+      { size: "8 mm", weightPerMeterKg: 0.395, standardLengthM: 12.0, pieceWeightKg: 4.74 },
+      { size: "10 mm", weightPerMeterKg: 0.617, standardLengthM: 12.0, pieceWeightKg: 7.40 },
+      { size: "12 mm", weightPerMeterKg: 0.888, standardLengthM: 12.0, pieceWeightKg: 10.66 },
+      { size: "16 mm", weightPerMeterKg: 1.580, standardLengthM: 12.0, pieceWeightKg: 18.96 },
+      { size: "20 mm", weightPerMeterKg: 2.470, standardLengthM: 12.0, pieceWeightKg: 29.64 },
+    ],
+    features: [
+      "100% Virgin Iron Ore Manufacturing",
+      "Low Phosphorus and Sulphur Content",
+      "Super Ductility and Fatigue Resistance",
+    ],
+  },
+  "apl-apollo": {
+    name: "APL Apollo MS & GI Pipes",
+    parentCompany: "APL Apollo Tubes Ltd.",
+    tagline: "Structural Tubes & Galvanised Steel Pipes",
+    overview: "APL Apollo is India's largest structural steel tube and pipe manufacturer. Used extensively in fire fighting, plumbing, industrial sheds, solar mounting structures, and modern framing.",
+    availableSizes: ["15mm NB", "25mm NB", "50mm NB", "100mm NB", "150mm NB", "200mm NB"],
+    grades: ["IS 1239", "IS 3589", "IS 4923"],
+    bundleDetails: "Supplied in 6m standard lengths with mill caps.",
+    todayPricePerMT: "59,000",
+    pdfCatalogueUrl: "/catalogues",
+    weightChart: [
+      { size: "25 mm NB (Medium)", weightPerMeterKg: 2.41, standardLengthM: 6.0, pieceWeightKg: 14.46 },
+      { size: "50 mm NB (Medium)", weightPerMeterKg: 5.03, standardLengthM: 6.0, pieceWeightKg: 30.18 },
+      { size: "100 mm NB (Medium)", weightPerMeterKg: 12.10, standardLengthM: 6.0, pieceWeightKg: 72.60 },
+    ],
+    features: [
+      "High Frequency ERW Welding",
+      "Uniform Wall Thickness & Hot Dip Galvanising",
+      "Hydrostatically Tested Quality",
+    ],
+  },
+  "jindal-panther": {
+    name: "Jindal Panther TMT (JE)",
+    parentCompany: "Jindal Steel & Power Ltd.",
+    tagline: "Parallel Rib High Yield Rebars for Seismic Protection",
+    overview: "Jindal Panther Fe 550D TMT rebars are produced from pure virgin iron ore in integrated plants. With superior yield strength and uniform elongation, Jindal Panther protects high-rise and infrastructure projects across India.",
+    availableSizes: ["8mm", "10mm", "12mm", "16mm", "20mm", "25mm", "32mm"],
+    grades: ["Fe 500D", "Fe 550D"],
+    bundleDetails: "Standard 12-meter straight lengths with test certificates.",
+    todayPricePerMT: "53,200",
+    pdfCatalogueUrl: "/catalogues",
+    weightChart: [
+      { size: "8 mm", weightPerMeterKg: 0.395, standardLengthM: 12.0, pieceWeightKg: 4.74 },
+      { size: "10 mm", weightPerMeterKg: 0.617, standardLengthM: 12.0, pieceWeightKg: 7.40 },
+      { size: "12 mm", weightPerMeterKg: 0.888, standardLengthM: 12.0, pieceWeightKg: 10.66 },
+      { size: "16 mm", weightPerMeterKg: 1.580, standardLengthM: 12.0, pieceWeightKg: 18.96 },
+      { size: "20 mm", weightPerMeterKg: 2.470, standardLengthM: 12.0, pieceWeightKg: 29.64 },
+    ],
+    features: [
+      "Produced from Clean Virgin Steel",
+      "Parallel Rib Pattern for Strong Concrete Bond",
+      "High Weldability and Seismic Resilience",
+    ],
+  },
 };
 
 export default async function BrandDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -93,16 +183,25 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
       {/* Header Banner */}
       <section className="bg-navy-950 text-white py-14 border-b-4 border-red-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
-            <ShieldCheck className="w-4 h-4 text-red-500" />
-            DIRECT AUTHORISED MILL LANDING PAGE
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider border border-navy-700">
+                <ShieldCheck className="w-4 h-4 text-red-500" />
+                DIRECT AUTHORISED MILL LANDING PAGE • RK STEEL CO
+              </div>
+              <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
+                {brand.name}
+              </h1>
+              <p className="text-gray-300 text-sm max-w-2xl font-light">
+                {brand.tagline} • Authorised Stockist &amp; Dealer at RK STEEL CO Noida &amp; Delhi NCR.
+              </p>
+            </div>
+
+            {/* Official Vector Brand Logo Card */}
+            <div className="bg-white p-4 rounded-2xl border-2 border-white/20 shadow-xl flex items-center justify-center self-start md:self-auto min-w-[200px] h-20">
+              <BrandLogo brand={slug} className="max-h-12" />
+            </div>
           </div>
-          <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
-            {brand.name}
-          </h1>
-          <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            {brand.tagline} • Authorised Stockist & Dealer in Noida, Delhi NCR.
-          </p>
         </div>
       </section>
 
@@ -130,7 +229,7 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
             </div>
 
             <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center gap-4">
-              <Award className="w-8 h-8 text-gold-500" />
+              <Award className="w-8 h-8 text-yellow-500" />
               <div>
                 <div className="text-xs text-gray-500 font-medium">Mill Parent</div>
                 <div className="font-heading text-base font-bold text-navy-950">{brand.parentCompany}</div>
@@ -139,7 +238,7 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
 
             <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center justify-center">
               <a
-                href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20want%20to%20inquire%20about%20today%27s%20price%20for%20${encodeURIComponent(brand.name)}.`}
+                href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20want%20to%20inquire%20about%20today%27s%20price%20for%20${encodeURIComponent(brand.name)}.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-[#128C7E] hover:bg-[#075E54] text-white font-bold text-xs py-3 rounded-lg text-center uppercase tracking-wider block"
@@ -153,7 +252,7 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-7 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-6">
               <h2 className="font-heading text-2xl font-bold text-navy-950 border-b border-gray-100 pb-3">
-                Product Overview & Technical Description
+                Product Overview &amp; Technical Description
               </h2>
               <p className="text-gray-700 text-sm leading-relaxed">
                 {brand.overview}
@@ -176,22 +275,25 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
             <div className="lg:col-span-5 bg-navy-950 text-white p-8 rounded-2xl border-2 border-navy-800 shadow-xl space-y-6">
               <h3 className="font-heading text-2xl font-bold">Request Instant Tonnage Quote</h3>
               <p className="text-xs text-gray-300">
-                Get mill-direct pricing and dispatch timelines directly from RK Steel Noida sales advisors.
+                Get mill-direct pricing and dispatch timelines directly from RK STEEL CO sales advisors.
               </p>
+              <div className="text-[11px] font-bold text-red-400 uppercase bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+              </div>
               <div className="space-y-4 pt-2">
                 <a
                   href="tel:9999307984"
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase py-3 rounded-lg flex items-center justify-center gap-2 shadow-md"
                 >
                   <Phone className="w-4 h-4" />
-                  Call 9999307984 / 9953364645
+                  Call +91 99993 07984 / 9953364645
                 </a>
                 <Link
                   href="/calculators"
                   className="w-full bg-navy-900 hover:bg-navy-800 text-red-400 border border-red-500/30 font-bold text-xs py-3 rounded-lg flex items-center justify-center gap-2"
                 >
                   <Calculator className="w-4 h-4" />
-                  Calculate Rebar Weight Online
+                  Calculate Steel Weight Online
                 </Link>
                 <Link
                   href="/catalogues"
@@ -209,7 +311,7 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-100 pb-4">
               <div>
                 <h3 className="font-heading text-2xl font-bold text-navy-950">
-                  Standard Nominal Weight & Size Chart
+                  Standard Nominal Weight &amp; Size Chart
                 </h3>
                 <p className="text-xs text-gray-500">As per IS 1786 / IS 4923 standard specification guidelines.</p>
               </div>
@@ -241,7 +343,7 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
                       <td className="p-3 font-bold text-navy-950">{row.pieceWeightKg} kg</td>
                       <td className="p-3">
                         <a
-                          href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20am%20interested%20in%20${encodeURIComponent(brand.name)}%20size%20${encodeURIComponent(row.size)}.`}
+                          href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20am%20interested%20in%20${encodeURIComponent(brand.name)}%20size%20${encodeURIComponent(row.size)}.`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-[11px] bg-red-50 text-red-600 font-bold px-2.5 py-1 rounded hover:bg-red-600 hover:text-white transition-colors"

@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Thank you! Your quote request has been received. Our sales team at RK Steel Noida will contact you shortly.",
+      message: "Thank you! Your quote request has been received. Our sales team at RK STEEL CO Noida will contact you shortly.",
       leadId: newLead._id,
     }, { status: 201 });
   } catch (error: any) {

@@ -2,8 +2,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { MapPin, Phone, Mail, Clock, ShieldCheck, Award, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Contact Us | RK Steel Company Noida Head Office",
-  description: "Contact RK Steel Company at G-38 Sector-9 Noida. Call 9999307984 / 9953364645 / 9811364645 or email sn_rksteel@yahoo.co.in.",
+  title: "Contact Us | RK STEEL CO Noida Head Office",
+  description: "Contact RK STEEL CO at G-38, Sector - 9, Noida. Call 9999307984 | 9953364645 | 9811364645 or email sn_rksteel@yahoo.co.in. All steel and iron items under one roof.",
 };
 
 export default async function ContactPage({
@@ -16,22 +16,27 @@ export default async function ContactPage({
 
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
-      {/* Banner Header (Matching Screenshot 5) */}
+      {/* Banner Header */}
       <section className="bg-navy-950 text-white py-14 border-b-4 border-red-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-xs font-bold text-red-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded inline-block border border-navy-700 mb-2">
-            NOIDA HEAD OFFICE & STOCKYARD
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <span className="text-xs font-bold text-red-400 uppercase tracking-widest bg-navy-900 px-3 py-1 rounded border border-navy-700">
+              RK STEEL CO • NOIDA HEAD OFFICE &amp; STOCKYARD
+            </span>
+            <span className="text-xs font-bold text-slate-300 uppercase tracking-wider bg-slate-800 px-3 py-1 rounded border border-slate-700">
+              ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+            </span>
           </div>
           <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
             Let's Build Stronger <span className="text-red-500">Together.</span>
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            Have a requirement? Get in touch with our team for the best rates, product availability and quick support.
+            Have a requirement? Get in touch with our team at RK STEEL CO for the best rates, product availability and quick support across India.
           </p>
         </div>
       </section>
 
-      {/* Main Content (Exact Screenshot 5 Match) */}
+      {/* Main Content */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* 3-Column Structured Layout */}
@@ -47,22 +52,22 @@ export default async function ContactPage({
             {/* Column 2: Get In Touch Details */}
             <div className="lg:col-span-3 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-6">
               <h3 className="font-heading text-xl font-bold text-navy-950 uppercase tracking-wide">
-                Get In Touch
+                OUR CONTACT DETAILS
               </h3>
 
               <div className="space-y-4 text-xs">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-navy-950 font-bold">Visit Our Stockyard:</strong>
-                    <span className="text-gray-600">G-38, Sector-9, Noida, Uttar Pradesh — 201301</span>
+                    <strong className="block text-navy-950 font-bold uppercase tracking-wider">HEAD OFFICE:</strong>
+                    <span className="text-gray-700 font-medium">G-38, Sector - 9, Noida</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-navy-950 font-bold">Call Us:</strong>
+                    <strong className="block text-navy-950 font-bold uppercase tracking-wider">CONTACT US:</strong>
                     <div className="text-gray-700 space-y-0.5 font-bold">
                       <div><a href="tel:9999307984" className="hover:text-red-600">+91 99993 07984</a></div>
                       <div><a href="tel:9953364645" className="hover:text-red-600">+91 99533 64645</a></div>

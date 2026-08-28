@@ -13,11 +13,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const post = await BlogPost.findOne({ slug }).lean();
     if (!post) return { title: "Article Not Found" };
     return {
-      title: `${post.title} | RK Steel Company Blog`,
+      title: `${post.title} | RK STEEL CO Technical Insights`,
       description: post.excerpt || post.title,
     };
   } catch {
-    return { title: "Blog Article" };
+    return { title: "Blog Article | RK STEEL CO" };
   }
 }
 
@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="flex items-center gap-4 text-xs text-gray-500 border-y border-gray-100 py-3">
               <span className="flex items-center gap-1">
                 <User className="w-4 h-4 text-gold-500" />
-                {post.author || "RK Steel Editorial"}
+                {post.author || "RK STEEL CO Editorial"}
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">

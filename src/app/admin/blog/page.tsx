@@ -5,7 +5,7 @@ import { AdminBlogManager } from "@/components/AdminBlogManager";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Admin Blog CRUD | RK Steel Company",
+  title: "Admin Blog CRUD | RK STEEL CO",
 };
 
 export default async function AdminBlogPage() {

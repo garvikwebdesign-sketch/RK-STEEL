@@ -7,8 +7,8 @@ import { headers } from "next/headers";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Steel Products Catalogue | RK Steel Company Noida",
-  description: "Browse Tata Tiscon, Tata Structura, Tata Durashine, SAIL SEQR, JSW Neosteel, AP Apollo pipes, MS Weldmesh, and Structural Steel.",
+  title: "Steel Products Catalogue | RK STEEL CO Noida",
+  description: "Browse Tata Tiscon, Tata Structura, Tata Durashine, SAIL SEQR, JSW Neosteel, Jindal Panther, AP Apollo pipes, MS Weldmesh, and Structural Steel at RK STEEL CO. All steel and iron items under one roof.",
 };
 
 const CATEGORIES = [
@@ -22,7 +22,7 @@ const CATEGORIES = [
   "Chain Link & Accessories",
 ];
 
-const BRANDS = ["All", "Tata Steel", "Tata Tiscon", "Tata Structura", "Tata Durashine", "SAIL", "JSW Steel", "AP Apollo"];
+const BRANDS = ["All", "Tata Steel", "Tata Tiscon", "Tata Structura", "Tata Durashine", "SAIL", "JSW Steel", "Jindal Steel", "AP Apollo"];
 
 export default async function ProductsPage({
   searchParams,
@@ -65,7 +65,7 @@ export default async function ProductsPage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 bg-navy-900 text-gold-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
             <ShieldCheck className="w-4 h-4 text-gold-500" />
-            DIRECT AUTHORISED MILL DISTRIBUTOR CATALOGUE
+            DIRECT AUTHORISED MILL DISTRIBUTOR CATALOGUE • RK STEEL CO
           </div>
           <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
             Steel Product Catalogue
@@ -73,6 +73,9 @@ export default async function ProductsPage({
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
             Search our comprehensive inventory of TMT bars, structural pipes, roofing sheets, hot/cold rolled plates, weldmesh, and chain link fencing.
           </p>
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
+            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          </div>
         </div>
       </section>
 
@@ -164,7 +167,7 @@ export default async function ProductsPage({
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-navy-700 font-heading text-xl">
-                        RK STEEL
+                        RK STEEL CO
                       </div>
                     )}
 
@@ -222,7 +225,7 @@ export default async function ProductsPage({
                       </Link>
                       <div className="flex items-center gap-1.5">
                         <a
-                          href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20am%20interested%20in%20inquiring%20about%20the%20product%3A%20${encodeURIComponent(prod.name)}.%20Please%20provide%20the%20latest%20rates.`}
+                          href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20am%20interested%20in%20inquiring%20about%20the%20product%3A%20${encodeURIComponent(prod.name)}.%20Please%20provide%20the%20latest%20rates.`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-[#25D366] hover:bg-[#128C7E] text-white p-2 rounded transition-colors flex items-center justify-center shadow-sm"

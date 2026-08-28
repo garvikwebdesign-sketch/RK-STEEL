@@ -26,7 +26,7 @@ const BlogPostSchema = new Schema<IBlogPost>(
       url: { type: String, default: "" },
       publicId: { type: String, default: "" },
     },
-    author: { type: String, default: "RK Steel Editorial" },
+    author: { type: String, default: "RK STEEL CO Editorial" },
     tags: { type: [String], default: [] },
     published: { type: Boolean, default: true },
   },

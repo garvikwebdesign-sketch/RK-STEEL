@@ -5,7 +5,7 @@ import { AdminProductManager } from "@/components/AdminProductManager";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Admin Products CRUD | RK Steel Company",
+  title: "Admin Products CRUD | RK STEEL CO",
 };
 
 export default async function AdminProductsPage() {

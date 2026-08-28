@@ -44,7 +44,7 @@ export default function AdminLoginPage() {
           <div className="w-12 h-12 bg-white rounded-full p-1 mx-auto flex items-center justify-center border-2 border-gold-500">
             <span className="font-heading font-black text-navy-900 text-lg">RK</span>
           </div>
-          <h1 className="font-heading text-2xl font-bold">RK Steel Admin Panel</h1>
+          <h1 className="font-heading text-2xl font-bold">RK STEEL CO Admin Panel</h1>
           <p className="text-xs text-gold-400">Single Admin Full-Access Portal</p>
         </div>
 

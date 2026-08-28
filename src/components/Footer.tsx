@@ -12,20 +12,20 @@ export function Footer() {
             <Award className="w-8 h-8 text-red-500 flex-shrink-0" />
             <div>
               <h4 className="text-base text-white font-bold tracking-tight font-sans">
-                Authorised Stockist & Dealer — Tata Steel, SAIL, JSW & AP Apollo
+                Authorised Stockist &amp; Dealer — Tata Steel, SAIL, JSW Steel, Jindal (JE) &amp; AP Apollo
               </h4>
               <p className="text-xs text-slate-400">
-                Tata Tiscon • Tata Structura • Tata Durashine • SAIL SEQR • JSW Neosteel • APL Apollo
+                Tata Tiscon • Tata Structura • Tata Durashine • SAIL SEQR • JSW Neosteel • APL Apollo • Jindal Panther
               </p>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
             <a
-              href="tel:9810073557"
+              href="tel:9999307984"
               className="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs tracking-wider uppercase flex items-center gap-2 transition-all shadow-md"
             >
               <Phone className="w-4 h-4 fill-current" />
-              Call +91 98100 73557
+              Call +91 99993 07984
             </a>
             <Link
               href="/catalogues"
@@ -45,11 +45,14 @@ export function Footer() {
           <Logo variant="dark" size="md" />
 
           <p className="text-xs text-slate-400 leading-relaxed pr-4 mt-2">
-            Established in 1993, RK Steel Company is Noida's premier stockist & authorised distributor of genuine Tata Steel, SAIL, JSW Steel, and AP Apollo product lines with ready mill-certified inventory for construction & industrial projects.
+            Established in 1993, <strong className="text-white">RK STEEL CO</strong> is Noida's premier stockist &amp; authorised distributor of genuine Tata Steel, SAIL, JSW Steel, Jindal Steel, and AP Apollo product lines with ready mill-certified inventory for construction &amp; industrial projects.
           </p>
-          <div className="flex items-center gap-2 text-xs text-red-400 font-semibold">
+          <div className="text-[11px] font-bold text-red-400 uppercase tracking-wide bg-slate-900/90 border border-slate-800 p-2.5 rounded-lg inline-block">
+            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          </div>
+          <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold">
             <ShieldCheck className="w-4 h-4 text-red-500" />
-            <span>30+ Years of Unwavering Excellence & Trust</span>
+            <span>30+ Years of Unwavering Excellence &amp; Trust (Est. 1993)</span>
           </div>
         </div>
 
@@ -66,13 +69,14 @@ export function Footer() {
             <li><Link href="/brands/tata-astrum" className="hover:text-white transition-colors">Tata Astrum HR Sheets</Link></li>
             <li><Link href="/brands/jsw-neosteel" className="hover:text-white transition-colors">JSW Neosteel</Link></li>
             <li><Link href="/brands/apl-apollo" className="hover:text-white transition-colors">APL Apollo Tubes</Link></li>
+            <li><Link href="/brands" className="hover:text-white transition-colors">Jindal Steel &amp; Power</Link></li>
           </ul>
         </div>
 
         {/* Col 3: Price Updates & Tools */}
         <div>
           <h4 className="text-xs text-white font-bold tracking-wider mb-4 uppercase font-sans border-b border-slate-800 pb-2">
-            Price Rates & Tools
+            Price Rates &amp; Tools
           </h4>
           <ul className="space-y-2 text-xs text-slate-400">
             <li><Link href="/price-list" className="hover:text-white font-semibold text-red-400">Daily Market Rates Hub</Link></li>
@@ -88,18 +92,26 @@ export function Footer() {
         {/* Col 4: Head Office Contact */}
         <div>
           <h4 className="text-xs text-white font-bold tracking-wider mb-4 uppercase font-sans border-b border-slate-800 pb-2">
-            Head Office
+            HEAD OFFICE
           </h4>
           <ul className="space-y-3 text-xs text-slate-400">
             <li className="flex items-start gap-2">
               <MapPin className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-              <span>G-38, Sector-9, Noida, Uttar Pradesh — 201301</span>
+              <div>
+                <strong className="text-white block font-semibold">HEAD OFFICE</strong>
+                <span>G-38, Sector - 9, Noida</span>
+              </div>
             </li>
             <li className="flex items-start gap-2">
               <Phone className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
-              <div className="flex flex-col">
-                <a href="tel:9810073557" className="hover:text-white font-bold text-white">+91 98100 73557</a>
-                <a href="tel:9910073557" className="hover:text-white font-bold text-white">+91 99100 73557</a>
+              <div className="flex flex-col space-y-0.5">
+                <strong className="text-white font-semibold">CONTACT US</strong>
+                <a href="tel:9999307984" className="hover:text-white font-bold text-white">+91 99993 07984</a>
+                <div className="flex flex-wrap gap-x-2 text-slate-300">
+                  <a href="tel:9953364645" className="hover:text-white">9953364645</a>
+                  <span>|</span>
+                  <a href="tel:9811364645" className="hover:text-white">9811364645</a>
+                </div>
               </div>
             </li>
             <li className="flex items-center gap-2">
@@ -114,7 +126,7 @@ export function Footer() {
       <div className="bg-[#030914] py-4 border-t border-slate-900 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <div>
-            © {new Date().getFullYear()} RK Steel Company. All Rights Reserved. Building Strength. Delivering Trust.
+            © {new Date().getFullYear()} RK STEEL CO. All Steel and Iron Items Under One Roof. All Rights Reserved.
           </div>
           <div className="flex gap-4">
             <Link href="/admin/login" className="hover:text-slate-300">Admin Portal</Link>
@@ -126,3 +138,4 @@ export function Footer() {
     </footer>
   );
 }
+

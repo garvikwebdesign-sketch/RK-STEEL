@@ -203,17 +203,19 @@ export default function CalculatorsPage() {
 
           <div className="flex flex-wrap items-center gap-6">
             <div className="flex flex-col text-right sm:text-left">
-              <a href="tel:9810073557" className="text-base font-extrabold text-white hover:text-red-400 transition-colors">
-                +91 98100 73557
+              <a href="tel:9999307984" className="text-base font-extrabold text-white hover:text-red-400 transition-colors">
+                +91 99993 07984
               </a>
-              <a href="tel:9910073557" className="text-base font-extrabold text-white hover:text-red-400 transition-colors">
-                +91 99100 73557
-              </a>
+              <div className="text-xs text-slate-300 font-semibold flex gap-2">
+                <a href="tel:9953364645" className="hover:text-white">9953364645</a>
+                <span>|</span>
+                <a href="tel:9811364645" className="hover:text-white">9811364645</a>
+              </div>
             </div>
 
             <div className="flex items-center gap-3">
               <a
-                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20have%20a%20steel%20requirement."
+                href="https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20have%20a%20steel%20requirement."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl border border-slate-700 flex items-center gap-2"

@@ -1,25 +1,28 @@
 import Link from "next/link";
 import { ShieldCheck, Download, FileText, ExternalLink, Phone } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Official Steel Product Catalogues PDF 2026 | Tata Steel, SAIL, JSW, AP Apollo",
-  description: "View and download official product catalogues and weight charts for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, JSW Neosteel, APL Apollo, and RK Steel Master Catalogue 2026.",
+  title: "Official Steel Product Catalogues PDF 2026 | Tata Steel, SAIL, JSW, AP Apollo, Jindal | RK STEEL CO",
+  description: "View and download official product catalogues and weight charts for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, JSW Neosteel, APL Apollo, Jindal Panther, and RK STEEL CO Master Catalogue 2026.",
 };
 
 const CATALOGUES = [
   {
-    title: "RK STEEL – MASTER PRODUCT CATALOGUE 2026",
-    brand: "RK Steel Company",
-    desc: "Complete comprehensive product catalogue covering TMT rebars, structural channels, beams, hollow sections, sheets, plates, roofing, and fencing accessories.",
+    title: "RK STEEL CO – MASTER PRODUCT CATALOGUE 2026",
+    brand: "RK STEEL CO",
+    brandKey: "tata-steel",
+    desc: "Complete comprehensive master product catalogue covering TMT rebars, structural channels, beams, hollow sections, sheets, plates, roofing, and fencing accessories. Tagline: All Steel & Iron Items Under One Roof.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: true,
     fileSize: "4.2 MB PDF",
   },
   {
     title: "Tata Tiscon 550SD Product Catalogue",
-    brand: "Tata Steel",
+    brand: "Tata Tiscon",
+    brandKey: "tata-tiscon",
     desc: "Official Tata Tiscon technical brochure with mechanical properties, rib pattern details, bendability guidelines, and chemical composition specs.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: false,
@@ -28,6 +31,7 @@ const CATALOGUES = [
   {
     title: "SAIL SEQR 550D TMT Brochure",
     brand: "SAIL",
+    brandKey: "sail",
     desc: "Official Steel Authority of India Ltd. SEQR TMT rebar specifications, weight tolerances, and IS 1786 certification charts.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: false,
@@ -35,7 +39,8 @@ const CATALOGUES = [
   },
   {
     title: "Tata Structura Hollow Sections Catalogue",
-    brand: "Tata Steel",
+    brand: "Tata Structura",
+    brandKey: "tata-structura",
     desc: "Square and rectangular hollow tube size matrix, section modulus properties, radius of gyration, and fabrication guidelines.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: false,
@@ -43,7 +48,8 @@ const CATALOGUES = [
   },
   {
     title: "Tata Durashine Roofing Sheets Catalogue",
-    brand: "Tata Steel",
+    brand: "Tata Durashine",
+    brandKey: "tata-durashine",
     desc: "Colour coated Galvalume profile dimensions, roof truss spacing recommendations, ridge cap accessories, and colour swatches.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: false,
@@ -51,7 +57,8 @@ const CATALOGUES = [
   },
   {
     title: "Tata Astrum & Steelium Sheets Brochure",
-    brand: "Tata Steel",
+    brand: "Tata Astrum",
+    brandKey: "tata-astrum",
     desc: "Hot rolled and cold rolled steel sheet specifications, coil width ranges, thickness tolerances, and chemical grades.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: false,
@@ -60,6 +67,7 @@ const CATALOGUES = [
   {
     title: "JSW Neosteel TMT Rebars Catalogue",
     brand: "JSW Steel",
+    brandKey: "jsw-steel",
     desc: "JSW Neosteel product range, physical properties, grade Fe 550D test results, and standard bundle details.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: false,
@@ -68,10 +76,20 @@ const CATALOGUES = [
   {
     title: "APL Apollo Tubes & Pipes Catalogue",
     brand: "APL Apollo",
+    brandKey: "apl-apollo",
     desc: "ERW black steel pipes, galvanised (GI) tubes, structural hollow sections size & wall thickness chart.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: false,
     fileSize: "3.1 MB PDF",
+  },
+  {
+    title: "Jindal Panther TMT Rebars (JE) Catalogue",
+    brand: "Jindal Steel & Power",
+    brandKey: "jindal-steel",
+    desc: "Jindal Panther Fe 550D rebar engineering specs, parallel rib bond values, and bendability test standards.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "2.5 MB PDF",
   },
 ];
 
@@ -83,14 +101,17 @@ export default async function CataloguesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
             <Download className="w-4 h-4 text-red-500" />
-            DIGITAL PRODUCT CATALOGUES & WEIGHT CHARTS
+            DIGITAL PRODUCT CATALOGUES &amp; WEIGHT CHARTS • RK STEEL CO
           </div>
           <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
             Steel Catalogues Download Center
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            Download official mill technical brochures and RK Steel Company's Complete Master Product Catalogue 2026 in high-resolution PDF format.
+            Download official mill technical brochures and RK STEEL CO's Complete Master Product Catalogue 2026 in high-resolution PDF format.
           </p>
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
+            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          </div>
         </div>
       </section>
 
@@ -102,16 +123,20 @@ export default async function CataloguesPage() {
               <div
                 key={idx}
                 className={`bg-white rounded-2xl border p-6 shadow-sm hover:shadow-xl transition-all space-y-4 flex flex-col justify-between ${
-                  cat.isMaster ? "border-2 border-red-600 ring-2 ring-red-100" : "border-gray-200"
+                  cat.isMaster ? "border-2 border-red-600 ring-2 ring-red-100 bg-gradient-to-br from-white to-red-50/20" : "border-gray-200"
                 }`}
               >
                 <div className="space-y-3">
-                  <div className="flex justify-between items-start">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded ${
-                      cat.isMaster ? "bg-red-600 text-white" : "bg-navy-950 text-white"
-                    }`}>
-                      {cat.brand}
-                    </span>
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
+                    <div className="h-8 flex items-center">
+                      {!cat.isMaster ? (
+                        <BrandLogo brand={cat.brandKey} className="max-h-7" />
+                      ) : (
+                        <span className="font-extrabold text-xs text-red-600 uppercase tracking-widest font-sans">
+                          RK STEEL CO MASTER
+                        </span>
+                      )}
+                    </div>
                     <span className="text-xs text-gray-400 font-semibold">{cat.fileSize}</span>
                   </div>
 
@@ -136,7 +161,7 @@ export default async function CataloguesPage() {
                   </a>
 
                   <a
-                    href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20please%20send%20the%20PDF%20catalogue%20for%20${encodeURIComponent(cat.title)}.`}
+                    href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20please%20send%20the%20PDF%20catalogue%20for%20${encodeURIComponent(cat.title)}.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-[#128C7E] hover:underline flex items-center gap-1"
@@ -152,3 +177,4 @@ export default async function CataloguesPage() {
     </div>
   );
 }
+

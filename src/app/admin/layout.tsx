@@ -34,12 +34,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="w-9 h-9 bg-white rounded-full overflow-hidden border border-gold-500 flex items-center justify-center">
               <img
                 src="/logo.jpg"
-                alt="RK Steel Company Noida logo"
+                alt="RK STEEL CO Noida logo"
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
-              <div className="font-heading font-bold text-base text-white">RK STEEL ADMIN</div>
+              <div className="font-heading font-bold text-base text-white">RK STEEL CO ADMIN</div>
               <div className="text-[10px] text-gold-400 font-semibold uppercase">Single Admin Panel</div>
             </div>
           </div>

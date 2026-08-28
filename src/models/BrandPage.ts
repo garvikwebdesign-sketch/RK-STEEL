@@ -27,9 +27,9 @@ const WeightChartSchema = new Schema(
     standardLengthM: { type: Number, required: true },
     pieceWeightKg: { type: Number, required: true },
   },
-  { _id: false }
+  { _id: false }  
 );
-
+ 
 const BrandPageSchema = new Schema<IBrandPage>(
   {
     slug: { type: String, required: true, unique: true, index: true },

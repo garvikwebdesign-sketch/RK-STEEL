@@ -13,7 +13,7 @@ export function AdminBlogManager({ initialPosts }: { initialPosts: any[] }) {
     excerpt: "",
     contentHtml: "",
     coverImageUrl: "",
-    author: "RK Steel Technical Team",
+    author: "RK STEEL CO Technical Team",
     tagsText: "",
     published: true,
   });
@@ -54,7 +54,7 @@ export function AdminBlogManager({ initialPosts }: { initialPosts: any[] }) {
       excerpt: "",
       contentHtml: "",
       coverImageUrl: "",
-      author: "RK Steel Technical Team",
+      author: "RK STEEL CO Technical Team",
       tagsText: "",
       published: true,
     });
@@ -69,7 +69,7 @@ export function AdminBlogManager({ initialPosts }: { initialPosts: any[] }) {
   const handleOpenEdit = (post: any) => {
     setEditingId(post._id);
     setFormData({
-      author: post.author || "RK Steel Technical Team",
+      author: post.author || "RK STEEL CO Technical Team",
       tagsText: post.tags ? post.tags.join(", ") : "",
       published: !!post.published,
       title: post.title || "",
@@ -319,7 +319,7 @@ export function AdminBlogManager({ initialPosts }: { initialPosts: any[] }) {
                     type="text"
                     value={formData.author}
                     onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                    placeholder="RK Steel Technical Team"
+                    placeholder="RK STEEL CO Technical Team"
                     className="w-full border border-gray-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-navy-900 focus:outline-none"
                   />
                 </div>

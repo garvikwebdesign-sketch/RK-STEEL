@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ShieldCheck, TrendingUp, TrendingDown, Download, Phone, ArrowRight, FileText } from "lucide-react";
 import { headers } from "next/headers";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Daily Steel Price List & Market Updates Noida | Tata Tiscon, SAIL, JSW",
-  description: "Check today's live steel price list in Noida & Delhi NCR for Tata Tiscon TMT, SAIL SEQR 550D, Tata Structura, Tata Durashine, JSW Neosteel, and APL Apollo.",
+  title: "Daily Steel Price List & Market Updates Noida | Tata Tiscon, SAIL, JSW, Jindal | RK STEEL CO",
+  description: "Check today's live steel price list in Noida & Delhi NCR for Tata Tiscon TMT, SAIL SEQR 550D, Tata Structura, Tata Durashine, JSW Neosteel, Jindal Panther, and APL Apollo at RK STEEL CO.",
 };
 
 const PRICE_HUB_DATA = [
@@ -122,6 +123,22 @@ const PRICE_HUB_DATA = [
       { day: "30 Days Ago", price: "60,200" },
     ],
   },
+  {
+    brandSlug: "jindal-panther",
+    brandName: "JINDAL PANTHER (JE)",
+    category: "High Yield TMT Bars",
+    todayPrice: "53,200",
+    yesterdayPrice: "53,500",
+    changeVsPrev: -300,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    history: [
+      { day: "Today", price: "53,200" },
+      { day: "Yesterday", price: "53,500" },
+      { day: "7 Days Ago", price: "53,800" },
+      { day: "30 Days Ago", price: "54,500" },
+    ],
+  },
 ];
 
 export default async function PriceListHubPage() {
@@ -133,14 +150,17 @@ export default async function PriceListHubPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
             <TrendingUp className="w-4 h-4 text-red-500" />
-            DAILY MARKET UPDATES & 30-DAY PRICE HISTORY
+            DAILY MARKET UPDATES &amp; 30-DAY PRICE HISTORY • RK STEEL CO
           </div>
           <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
-            Steel Price Lists & Market Updates
+            Steel Price Lists &amp; Market Updates
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            Live today's steel price list for Tata Tiscon, SAIL SEQR, Tata Structura, JSW, and AP Apollo in Noida & Delhi NCR with historical trend tracking.
+            Live today's steel price list for Tata Tiscon, SAIL SEQR, Tata Structura, JSW Steel, Jindal (JE), and AP Apollo in Noida &amp; Delhi NCR with historical trend tracking.
           </p>
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
+            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          </div>
         </div>
       </section>
 
@@ -155,14 +175,10 @@ export default async function PriceListHubPage() {
                 className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-red-500/50 transition-all p-6 space-y-6 flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider bg-red-50 px-2 py-0.5 rounded border border-red-100">
-                        {item.category}
-                      </span>
-                      <h3 className="font-heading text-2xl font-bold text-navy-950 mt-1">
-                        {item.brandName}
-                      </h3>
+                  {/* Card Brand Header */}
+                  <div className="flex justify-between items-start border-b border-gray-100 pb-3">
+                    <div className="h-8 flex items-center">
+                      <BrandLogo brand={item.brandSlug} className="max-h-7" />
                     </div>
                     {item.changeVsPrev < 0 ? (
                       <span className="inline-flex items-center gap-1 text-xs font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded border border-green-200">
@@ -179,6 +195,15 @@ export default async function PriceListHubPage() {
                         Stable
                       </span>
                     )}
+                  </div>
+
+                  <div>
+                    <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider bg-red-50 px-2 py-0.5 rounded border border-red-100">
+                      {item.category}
+                    </span>
+                    <h3 className="font-heading text-xl font-bold text-navy-950 mt-1">
+                      {item.brandName}
+                    </h3>
                   </div>
 
                   {/* Today Price Highlight */}
@@ -223,7 +248,7 @@ export default async function PriceListHubPage() {
                       PDF Catalogue
                     </Link>
                     <a
-                      href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20please%20send%20today%27s%20price%20list%20for%20${encodeURIComponent(item.brandName)}.`}
+                      href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20please%20send%20today%27s%20price%20list%20for%20${encodeURIComponent(item.brandName)}.`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-[#128C7E] hover:bg-[#075E54] text-white font-bold text-[11px] py-2 rounded-lg text-center flex items-center justify-center gap-1"
@@ -240,3 +265,4 @@ export default async function PriceListHubPage() {
     </div>
   );
 }
+

@@ -1,55 +1,72 @@
 import Link from "next/link";
+import {
+  TataSteelLogo,
+  TataTisconLogo,
+  TataStructuraLogo,
+  TataDurashineLogo,
+  SailLogo,
+  JswSteelLogo,
+  AplApolloLogo,
+  JindalSteelLogo,
+} from "@/components/BrandLogo";
 
 export function BrandStrip() {
   const brands = [
     {
-      name: "TATA STEEL",
-      tagline: "#WeAlsoMakeTomorrow",
+      name: "Tata Steel",
       type: "Authorised Distributor",
-      logoClass: "text-[#005A9C] font-black",
+      component: TataSteelLogo,
       href: "/brands/tata-tiscon",
+      subtext: "Est. Distribution 1993",
     },
     {
-      name: "TATA TISCON",
-      tagline: "JOY OF BUILDING",
+      name: "Tata Tiscon",
       type: "550SD Rebars",
-      logoClass: "text-[#1E3A8A] font-extrabold",
+      component: TataTisconLogo,
       href: "/brands/tata-tiscon",
+      subtext: "GreenPro 550SD",
     },
     {
-      name: "TATA STRUCTURA",
-      tagline: "STEEL HOLLOW SECTIONS",
-      type: "RHS / SHS Pipes",
-      logoClass: "text-[#0284C7] font-black",
+      name: "Tata Structura",
+      type: "Hollow Sections",
+      component: TataStructuraLogo,
       href: "/brands/tata-structura",
+      subtext: "SHS / RHS Pipes",
     },
     {
-      name: "TATA DURASHINE",
-      tagline: "COLOR COATED SHEETS",
+      name: "Tata Durashine",
       type: "Roofing Sheets",
-      logoClass: "text-[#DC2626] font-black",
+      component: TataDurashineLogo,
       href: "/brands/tata-durashine",
+      subtext: "Galvalume Sheets",
     },
     {
-      name: "सेल SAIL",
-      tagline: "STEEL AUTHORITY OF INDIA",
-      type: "SEQR 550D Rebars",
-      logoClass: "text-[#1E3A8A] font-black",
+      name: "SAIL",
+      type: "Integrated Mill",
+      component: SailLogo,
       href: "/brands/sail-seqr",
+      subtext: "SEQR 550D Rebars",
     },
     {
       name: "JSW Steel",
-      tagline: "BETTER EVERYDAY",
-      type: "Neosteel TMT",
-      logoClass: "text-[#0284C7] font-black",
+      type: "Primary Grade",
+      component: JswSteelLogo,
       href: "/brands/jsw-neosteel",
+      subtext: "Neosteel TMT",
     },
     {
-      name: "APOLLO",
-      tagline: "STEEL PIPES",
+      name: "APL Apollo",
       type: "MS & GI Pipes",
-      logoClass: "text-[#DC2626] font-black",
+      component: AplApolloLogo,
       href: "/brands/apl-apollo",
+      subtext: "Pipes & Tubes",
+    },
+    {
+      name: "Jindal Steel (JE)",
+      type: "Panther TMT",
+      component: JindalSteelLogo,
+      href: "/brands",
+      subtext: "Jindal Steel & Power",
     },
   ];
 
@@ -57,32 +74,39 @@ export function BrandStrip() {
     <section className="bg-white py-10 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-7">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-700 text-[11px] font-bold uppercase tracking-wider mb-1.5 border border-red-100">
+            Authorised Dealer &amp; Mill Stockist Hub
+          </div>
           <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500 font-sans">
-            Authorised Dealer & Stockist
+            Direct Primary Steel Mill Partnerships
           </h2>
         </div>
 
-        {/* Brand Logos Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 items-center justify-center">
-          {brands.map((b, idx) => (
-            <Link
-              key={idx}
-              href={b.href}
-              className="flex flex-col items-center justify-center p-3 rounded-xl border border-transparent hover:border-slate-200 hover:bg-slate-50/80 transition-all group text-center"
-            >
-              <div className="h-10 flex items-center justify-center">
-                <span className={`text-base sm:text-lg tracking-tight group-hover:scale-105 transition-transform ${b.logoClass}`}>
-                  {b.name}
-                </span>
-              </div>
-              <span className="text-[9px] font-bold tracking-wider text-slate-500 uppercase mt-0.5">
-                {b.tagline}
-              </span>
-            </Link>
-          ))}
+        {/* Brand Logos Row - Authentic Logos */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 items-stretch justify-center">
+          {brands.map((b, idx) => {
+            const LogoComp = b.component;
+            return (
+              <Link
+                key={idx}
+                href={b.href}
+                className="flex flex-col items-center justify-between p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-red-300 hover:shadow-md transition-all group text-center"
+              >
+                <div className="h-12 w-full flex items-center justify-center py-1 group-hover:scale-105 transition-transform">
+                  <LogoComp className="max-h-10 max-w-full" />
+                </div>
+                <div className="w-full pt-1.5 border-t border-slate-100 mt-1">
+                  <span className="text-[9.5px] font-bold tracking-tight text-slate-600 group-hover:text-red-600 transition-colors uppercase block truncate">
+                    {b.subtext}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
+

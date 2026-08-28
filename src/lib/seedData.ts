@@ -53,11 +53,28 @@ export const initialProducts = [
       "Conforms to IS 4923 & IS 1161 structural standards",
       "Superior torsional rigidity and light dead-weight",
       "Easy welding and galvanizing compatibility",
-      "Authorised distribution from RK Steel Company Noida stockyard"
+      "Authorised distribution from RK STEEL CO Noida stockyard"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" }],
     authorisedDealer: true,
     slug: "tata-structura-ms-pipes"
+  },
+  {
+    name: "Jindal Panther 550D TMT Rebars (JE)",
+    brand: "Jindal Steel",
+    category: "TMT Bars",
+    gradeStandard: "Fe 550D / IS 1786",
+    sizeRange: "8mm, 10mm, 12mm, 16mm, 20mm, 25mm, 32mm",
+    description: "Jindal Panther Fe 550D high-yield TMT bars manufactured from virgin iron ore. Engineered with parallel rib design for superior bonding and seismic safety.",
+    specs: [
+      "Produced in integrated steel plants from virgin iron ore",
+      "Superior bendability and high yield strength",
+      "Direct mill test certificate with each consignment",
+      "Available ready stock at RK STEEL CO stockyard"
+    ],
+    images: [{ url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" }],
+    authorisedDealer: true,
+    slug: "jindal-panther-550d-tmt"
   },
   {
     name: "Tata Astrum HR Sheets & Coils",
@@ -180,7 +197,7 @@ export const initialProducts = [
     category: "Structural Steel",
     gradeStandard: "IS 2062 E250A",
     sizeRange: "Angles: 25x25x3mm to 150x150x16mm | Channels: 75x40mm to 300x90mm",
-    description: "High grade Mild Steel equal angles, unequal angles, and structural channels stocked at RK Steel Noida. Crucial for shed trusses, tower structures, and machinery beds.",
+    description: "High grade Mild Steel equal angles, unequal angles, and structural channels stocked at RK STEEL CO Noida. Crucial for shed trusses, tower structures, and machinery beds.",
     specs: [
       "High yield strength and easy weldability",
       "Straight length accuracy with minimal twist",
@@ -192,7 +209,7 @@ export const initialProducts = [
   },
   {
     name: "MS Weldmesh Construction Fabric",
-    brand: "RK Steel Line",
+    brand: "RK STEEL CO Line",
     category: "Weldmesh",
     gradeStandard: "IS 4948 / Commercial High Tensile",
     sizeRange: "Wire Dia: 2.0mm to 6.0mm | Mesh Grid: 25x25mm to 100x100mm",
@@ -208,7 +225,7 @@ export const initialProducts = [
   },
   {
     name: "GI Chain Link Fencing & Accessories",
-    brand: "RK Steel Line",
+    brand: "RK STEEL CO Line",
     category: "Chain Link & Accessories",
     gradeStandard: "IS 2721 Heavy Galvanised",
     sizeRange: "Height: 3ft to 12ft | Gauge: 8 SWG to 14 SWG | Mesh: 2 inch to 4 inch",
@@ -237,9 +254,9 @@ export const initialBlogPosts = [
       <li><strong>Uniform Rib Pattern:</strong> Formulated using CNC-notch machines to ensure bond strength with concrete matrix.</li>
       <li><strong>GreenPro Certified:</strong> Reduced environmental impact during manufacturing.</li>
     </ul>
-    <p>As an <strong>Authorised Dealer of Tata Steel in Noida since 1993</strong>, RK Steel Company supplies 100% genuine Tata Tiscon rebars complete with manufacturer test certificates for every batch.</p>`,
+    <p>As an <strong>Authorised Dealer of Tata Steel in Noida since 1993</strong>, RK STEEL CO supplies 100% genuine Tata Tiscon rebars complete with manufacturer test certificates for every batch. Tagline: All Steel and Iron Items Under One Roof.</p>`,
     coverImage: { url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" },
-    author: "RK Steel Technical Team",
+    author: "RK STEEL CO Technical Team",
     tags: ["Tata Tiscon", "TMT Bars", "Construction Tips", "Noida Steel"],
     published: true
   },
@@ -255,9 +272,9 @@ export const initialBlogPosts = [
       <li><strong>Square Hollow Tube:</strong> Weight (kg/m) = 0.0314 × Thickness (mm) × (Side - Thickness)</li>
       <li><strong>Round TMT Bar:</strong> Weight (kg/m) = 0.006165 × Diameter² (mm)</li>
     </ol>
-    <p>You can also use the live interactive <a href="/calculators">RK Steel Weight Calculators</a> on our website for instant estimates across 9 different shapes!</p>`,
+    <p>You can also use the live interactive <a href="/calculators">RK STEEL CO Weight Calculators</a> on our website for instant estimates across 9 different shapes!</p>`,
     coverImage: { url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" },
-    author: "RK Steel Editorial",
+    author: "RK STEEL CO Editorial",
     tags: ["Calculators", "Civil Engineering", "Steel Specs"],
     published: true
   },
@@ -275,7 +292,7 @@ export const initialBlogPosts = [
       <li>Vibrant long-lasting paint finishes (Castle Red, Ocean Blue).</li>
     </ul>`,
     coverImage: { url: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" },
-    author: "RK Steel Technical Team",
+    author: "RK STEEL CO Technical Team",
     tags: ["Tata Durashine", "Roofing Sheets", "Industrial Sheds"],
     published: true
   }

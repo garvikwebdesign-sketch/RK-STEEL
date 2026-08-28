@@ -13,11 +13,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const product = await Product.findOne({ slug }).lean();
     if (!product) return { title: "Product Not Found" };
     return {
-      title: `${product.name} | RK Steel Company Noida`,
+      title: `${product.name} | RK STEEL CO Noida`,
       description: product.description ? product.description.substring(0, 160) : "",
     };
   } catch {
-    return { title: "Steel Product" };
+    return { title: "Steel Product | RK STEEL CO" };
   }
 }
 
@@ -56,7 +56,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-500 font-heading text-2xl">
-                RK STEEL
+                RK STEEL CO
               </div>
             )}
 
@@ -104,7 +104,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               {product.specs && product.specs.length > 0 && (
                 <div className="border-t border-gray-100 pt-4 space-y-2">
                   <h3 className="font-heading text-base font-bold text-navy-900 uppercase tracking-wider">
-                    Technical Specs & Key Features
+                    Technical Specs &amp; Key Features
                   </h3>
                   <div className="space-y-1.5">
                     {product.specs.map((spec: string, idx: number) => (
@@ -122,12 +122,12 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <div className="bg-navy-950 p-5 rounded-xl border border-navy-800 text-white space-y-3 mt-6">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div>
-                  <div className="text-xs text-gold-400 font-bold uppercase tracking-wider">Direct Order / Inquiries</div>
-                  <div className="text-sm font-bold text-white">Noida Stockyard Dispatches</div>
+                  <div className="text-xs text-gold-400 font-bold uppercase tracking-wider">Direct Order / Inquiries • RK STEEL CO</div>
+                  <div className="text-sm font-bold text-white">All Steel and Iron Items Under One Roof</div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2.5">
                   <a
-                    href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%2C%20I%20am%20interested%20in%20inquiring%20about%20the%20product%3A%20${encodeURIComponent(product.name)}.%20Please%20provide%20the%20latest%20rates%20and%20specifications.`}
+                    href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20am%20interested%20in%20inquiring%20about%20the%20product%3A%20${encodeURIComponent(product.name)}.%20Please%20provide%20the%20latest%20rates%20and%20specifications.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#25D366] hover:bg-[#128C7E] text-white font-heading font-bold text-xs uppercase px-5 py-2.5 rounded-lg shadow-md transition-all flex items-center justify-center gap-2"
@@ -149,7 +149,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               <div className="border-t border-navy-800 pt-2 flex flex-wrap gap-4 text-[11px] text-gray-300">
                 <span className="flex items-center gap-1">
                   <Phone className="w-3.5 h-3.5 text-gold-500" />
-                  Call Sales: 9999307984 / 9953364645
+                  Call Sales: +91 99993 07984 | 9953364645 | 9811364645
                 </span>
                 <span className="flex items-center gap-1">
                   <Mail className="w-3.5 h-3.5 text-red-500" />

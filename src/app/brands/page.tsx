@@ -4,12 +4,23 @@ import { PriceList } from "@/models/PriceList";
 import Link from "next/link";
 import { ShieldCheck, CheckCircle2, ArrowRight, Download, Phone, FileText, ChevronRight, Calculator } from "lucide-react";
 import { headers } from "next/headers";
+import {
+  TataSteelLogo,
+  TataTisconLogo,
+  TataStructuraLogo,
+  TataDurashineLogo,
+  TataAstrumLogo,
+  SailLogo,
+  JswSteelLogo,
+  AplApolloLogo,
+  JindalSteelLogo,
+} from "@/components/BrandLogo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Authorised Steel Brands Hub | Tata Steel, SAIL, JSW, AP Apollo | RK Steel Noida",
-  description: "Explore dedicated brand hubs for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, Tata Astrum, JSW Neosteel, and APL Apollo pipes.",
+  title: "Authorised Steel Brands Hub | Tata Steel, SAIL, JSW, AP Apollo, Jindal | RK STEEL CO",
+  description: "Explore dedicated brand hubs for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, Tata Astrum, JSW Neosteel, Jindal Panther, and APL Apollo pipes at RK STEEL CO.",
 };
 
 const BRANDS_LIST = [
@@ -17,6 +28,7 @@ const BRANDS_LIST = [
     slug: "tata-tiscon",
     name: "Tata Tiscon TMT Bars",
     parent: "Tata Steel",
+    logoComponent: TataTisconLogo,
     desc: "Fe 550D Super Ductile TMT rebars engineered with GreenPro certification for earthquake-resistant high-rise construction.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
     badge: "Authorised Main Dealer",
@@ -27,6 +39,7 @@ const BRANDS_LIST = [
     slug: "sail-seqr",
     name: "SAIL SEQR 550D TMT",
     parent: "SAIL (Steel Authority of India)",
+    logoComponent: SailLogo,
     desc: "Primary integrated mill certified TMT rebars offering superior bendability, thermal resistance, and high yield strength.",
     image: "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=600&q=80",
     badge: "Premier Stockist",
@@ -37,6 +50,7 @@ const BRANDS_LIST = [
     slug: "tata-structura",
     name: "Tata Structura Hollow Tubes",
     parent: "Tata Steel",
+    logoComponent: TataStructuraLogo,
     desc: "Square and rectangular hollow structural steel sections (YST 310) designed for PEB industrial sheds, airports, and towers.",
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
     badge: "Authorised Distributor",
@@ -47,6 +61,7 @@ const BRANDS_LIST = [
     slug: "tata-durashine",
     name: "Tata Durashine Roofing Sheets",
     parent: "Tata Steel",
+    logoComponent: TataDurashineLogo,
     desc: "Premium Galvalume colour-coated trapezoidal roofing sheets, wall cladding, and accessories for residential & commercial roofs.",
     image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80",
     badge: "Authorised Dealer",
@@ -57,6 +72,7 @@ const BRANDS_LIST = [
     slug: "tata-astrum",
     name: "Tata Astrum & Steelium",
     parent: "Tata Steel",
+    logoComponent: TataAstrumLogo,
     desc: "Hot rolled (HR) & cold rolled (CR) steel sheets, plates, and coils processed with tight gauge tolerances for fabrication.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
     badge: "Authorised Stockist",
@@ -67,6 +83,7 @@ const BRANDS_LIST = [
     slug: "jsw-neosteel",
     name: "JSW Neosteel TMT Bars",
     parent: "JSW Steel",
+    logoComponent: JswSteelLogo,
     desc: "Pure steel TMT rebars produced from virgin iron ore with lowest level of tramp elements for maximum structural strength.",
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
     badge: "Direct Yard Partner",
@@ -77,11 +94,23 @@ const BRANDS_LIST = [
     slug: "apl-apollo",
     name: "APL Apollo MS & GI Pipes",
     parent: "APL Apollo Tubes Ltd.",
+    logoComponent: AplApolloLogo,
     desc: "Black MS ERW pipes, galvanised (GI) tubes, and hollow sections for plumbing, fire-fighting sprinklers, and structural framing.",
     image: "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=600&q=80",
     badge: "Authorised Stockist",
     sizes: "15mm NB - 300mm NB",
     grades: "IS 1239 / IS 3589",
+  },
+  {
+    slug: "jindal-panther",
+    name: "Jindal Panther TMT (JE)",
+    parent: "Jindal Steel & Power Ltd.",
+    logoComponent: JindalSteelLogo,
+    desc: "High yield primary rebar manufactured with parallel rib technology for superior earthquake resistance and concrete bonding.",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+    badge: "Authorised Stockist",
+    sizes: "8mm - 32mm",
+    grades: "Fe 550D, Fe 500D",
   },
 ];
 
@@ -94,13 +123,13 @@ export default async function BrandsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
             <ShieldCheck className="w-4 h-4 text-red-500" />
-            DIRECT AUTHORISED MILL DISTRIBUTOR HUB
+            DIRECT AUTHORISED MILL DISTRIBUTOR HUB • RK STEEL CO
           </div>
           <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
             Authorised Steel Brands
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            Dedicated brand landing hubs for Tata Steel, SAIL, JSW Steel, and APL Apollo with ready stock availability, weight charts, and today's mill pricing.
+            Dedicated brand landing hubs for Tata Steel, SAIL, JSW Steel, Jindal (JE), and APL Apollo with ready stock availability, weight charts, and today's mill pricing.
           </p>
         </div>
       </section>
@@ -109,70 +138,81 @@ export default async function BrandsPage() {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {BRANDS_LIST.map((b) => (
-              <div
-                key={b.slug}
-                className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-red-500/50 transition-all flex flex-col justify-between overflow-hidden group"
-              >
-                <div>
-                  <div className="relative h-48 bg-navy-950 overflow-hidden">
-                    <div
-                      className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80"
-                      style={{ backgroundImage: `url('${b.image}')` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent" />
-                    <div className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow">
-                      {b.badge}
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                      <span className="text-xs font-bold text-gray-200 uppercase tracking-wide">
-                        {b.parent}
+            {BRANDS_LIST.map((b) => {
+              const LogoComponent = b.logoComponent;
+              return (
+                <div
+                  key={b.slug}
+                  className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-red-500/50 transition-all flex flex-col justify-between overflow-hidden group"
+                >
+                  <div>
+                    {/* Header with Official Logo */}
+                    <div className="bg-white p-4 border-b border-gray-100 flex items-center justify-between">
+                      <div className="h-10 flex items-center">
+                        <LogoComponent className="max-h-9" />
+                      </div>
+                      <span className="text-[10px] font-bold text-red-600 uppercase bg-red-50 px-2.5 py-1 rounded border border-red-100">
+                        {b.badge}
                       </span>
                     </div>
-                  </div>
 
-                  <div className="p-6 space-y-3">
-                    <h3 className="font-heading text-2xl font-bold text-navy-950 group-hover:text-red-600 transition-colors">
-                      {b.name}
-                    </h3>
-                    <p className="text-xs text-gray-600 leading-relaxed">
-                      {b.desc}
-                    </p>
-
-                    <div className="border-t border-gray-100 pt-3 space-y-1.5 text-xs text-gray-700">
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-500">Available Sizes:</span>
-                        <span className="font-bold text-navy-900">{b.sizes}</span>
+                    <div className="relative h-44 bg-navy-950 overflow-hidden">
+                      <div
+                        className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80"
+                        style={{ backgroundImage: `url('${b.image}')` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent" />
+                      <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+                        <span className="text-xs font-bold text-gray-200 uppercase tracking-wide">
+                          {b.parent}
+                        </span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-500">Primary Grades:</span>
-                        <span className="font-bold text-navy-900">{b.grades}</span>
+                    </div>
+
+                    <div className="p-6 space-y-3">
+                      <h3 className="font-heading text-2xl font-bold text-navy-950 group-hover:text-red-600 transition-colors">
+                        {b.name}
+                      </h3>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        {b.desc}
+                      </p>
+
+                      <div className="border-t border-gray-100 pt-3 space-y-1.5 text-xs text-gray-700">
+                        <div className="flex justify-between">
+                          <span className="font-semibold text-gray-500">Available Sizes:</span>
+                          <span className="font-bold text-navy-900">{b.sizes}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="font-semibold text-gray-500">Primary Grades:</span>
+                          <span className="font-bold text-navy-900">{b.grades}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="p-6 pt-0 space-y-2">
-                  <Link
-                    href={`/brands/${b.slug}`}
-                    className="w-full bg-navy-950 hover:bg-red-600 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm"
-                  >
-                    Explore Brand Landing Page
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
+                  <div className="p-6 pt-0 space-y-2">
+                    <Link
+                      href={`/brands/${b.slug}`}
+                      className="w-full bg-navy-950 hover:bg-red-600 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                    >
+                      Explore Brand Landing Page
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
 
-                  <Link
-                    href={`/price-list/${b.slug}`}
-                    className="w-full bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs px-4 py-2 rounded-lg flex items-center justify-center gap-1.5 transition-colors border border-red-200"
-                  >
-                    View Today's Rate & Trend
-                  </Link>
+                    <Link
+                      href={`/price-list/${b.slug}`}
+                      className="w-full bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs px-4 py-2 rounded-lg flex items-center justify-center gap-1.5 transition-colors border border-red-200"
+                    >
+                      View Today's Rate &amp; Trend
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
     </div>
   );
 }
+

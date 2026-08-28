@@ -5,7 +5,7 @@ import { MessageSquare, Phone, Mail, Calendar } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Admin Inquiries & Leads | RK Steel Company",
+  title: "Admin Inquiries & Leads | RK STEEL CO",
 };
 
 export default async function AdminLeadsPage() {

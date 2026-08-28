@@ -9,29 +9,32 @@ interface LogoProps {
 export function Logo({ variant = "light", className = "", size = "md" }: LogoProps) {
   const isDark = variant === "dark";
   const textColor = isDark ? "text-white" : "text-slate-900";
-  const taglineColor = isDark ? "text-slate-400" : "text-slate-500";
+  const taglineColor = isDark ? "text-slate-300" : "text-slate-600";
 
   const sizeClasses = {
     sm: {
       img: "w-10 h-10",
       title: "text-lg",
-      tagline: "text-[8.5px] tracking-[0.18em]",
+      coTitle: "text-base",
+      tagline: "text-[7.5px] tracking-[0.14em]",
     },
     md: {
-      img: "w-14 h-14",
+      img: "w-13 h-13",
       title: "text-2xl",
-      tagline: "text-[10px] tracking-[0.22em]",
+      coTitle: "text-xl",
+      tagline: "text-[9px] tracking-[0.16em]",
     },
     lg: {
       img: "w-16 h-16",
       title: "text-3xl",
-      tagline: "text-[11.5px] tracking-[0.25em]",
+      coTitle: "text-2xl",
+      tagline: "text-[10.5px] tracking-[0.18em]",
     },
   }[size];
 
   return (
-    <Link href="/" className={`inline-flex items-center gap-3.5 group select-none ${className}`}>
-      {/* Authentic Company Logo Emblem - Large & Prominent */}
+    <Link href="/" className={`inline-flex items-center gap-3 group select-none ${className}`}>
+      {/* Authentic Company Logo Emblem */}
       <div
         className={`relative flex items-center justify-center flex-shrink-0 ${sizeClasses.img} rounded-full overflow-hidden border-2 ${
           isDark ? "border-slate-700 bg-white" : "border-slate-200 bg-white"
@@ -39,7 +42,7 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
       >
         <img
           src="/logo.jpg"
-          alt="RK Steel Company Logo"
+          alt="RK STEEL CO Logo"
           className="w-full h-full object-contain"
         />
       </div>
@@ -53,11 +56,15 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
           <span className={`font-black ${sizeClasses.title} text-red-600 tracking-tight font-sans`}>
             STEEL
           </span>
+          <span className={`font-black ${sizeClasses.coTitle} ${textColor} tracking-tight font-sans`}>
+            CO
+          </span>
         </div>
         <span className={`uppercase font-bold ${taglineColor} ${sizeClasses.tagline} font-sans mt-1 leading-none`}>
-          Your Partner in Strength
+          All Steel &amp; Iron Items Under One Roof
         </span>
       </div>
     </Link>
   );
 }
+
