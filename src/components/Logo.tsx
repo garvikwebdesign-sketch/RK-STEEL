@@ -14,18 +14,18 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
   const sizeClasses = {
     sm: {
       img: "w-10 h-10",
-      title: "text-lg",
-      tagline: "text-[8px] tracking-[0.14em]",
+      title: "text-xl",
+      tagline: "text-[9px] tracking-[0.15em]",
     },
     md: {
-      img: "w-12 h-12",
-      title: "text-2xl",
-      tagline: "text-[9.5px] tracking-[0.16em]",
+      img: "w-13 h-13",
+      title: "text-2xl sm:text-[26px]",
+      tagline: "text-[10px] tracking-[0.16em]",
     },
     lg: {
       img: "w-16 h-16",
-      title: "text-3xl",
-      tagline: "text-[11px] tracking-[0.18em]",
+      title: "text-3xl sm:text-4xl",
+      tagline: "text-[12px] tracking-[0.18em]",
     },
   }[size];
 
@@ -54,11 +54,11 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
             STEEL
           </span>
           <span className={`font-black ${sizeClasses.title} ${textColor} tracking-tight font-sans`}>
-            CO
+            CO.
           </span>
         </div>
-        <span className={`uppercase font-bold ${taglineColor} ${sizeClasses.tagline} font-sans mt-1.5 leading-none`}>
-          All Steel &amp; Iron Items Under One Roof
+        <span className={`uppercase font-extrabold ${taglineColor} ${sizeClasses.tagline} font-sans mt-1.5 leading-none`}>
+          Har Zaroorat Ka Steel
         </span>
       </div>
     </Link>

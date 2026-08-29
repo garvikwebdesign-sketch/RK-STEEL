@@ -60,7 +60,7 @@ export function BrandLogo({
   if (normKey.includes("apollo") || normKey.includes("apl")) {
     return <AplApolloLogo className={`${containerSizeClass} ${className}`} />;
   }
-  if (normKey.includes("jindal") || normKey.includes("je") || normKey.includes("jsp")) {
+  if (normKey.includes("jindal") || normKey.includes("panther") || normKey.includes("jsp")) {
     return <JindalSteelLogo className={`${containerSizeClass} ${className}`} />;
   }
 

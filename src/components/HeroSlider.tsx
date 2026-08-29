@@ -11,7 +11,7 @@ const HERO_SLIDES = [
     desc: "Your trusted steel supplier for 30+ years. We deliver premium quality steel products with best rates, timely delivery & unmatched service across India.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80",
     badge: "RK STEEL CO | EST. 1993",
-    tagline: "ALL STEEL AND IRON ITEMS UNDER ONE ROOF",
+    tagline: "HAR ZAROORAT KA STEEL • ALL STEEL & IRON ITEMS UNDER ONE ROOF",
   },
   {
     title: "AUTHORISED DEALER.",

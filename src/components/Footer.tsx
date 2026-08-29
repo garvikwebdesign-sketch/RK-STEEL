@@ -48,7 +48,7 @@ export function Footer() {
             Established in 1993, <strong className="text-white">RK STEEL CO</strong> is Noida's premier stockist &amp; authorised distributor of genuine Tata Steel, SAIL, JSW Steel, Jindal Steel, and APL Apollo product lines with ready mill-certified inventory for construction &amp; industrial projects.
           </p>
           <div className="text-xs font-extrabold text-red-400 uppercase tracking-wide bg-slate-900/90 border border-slate-800 px-3 py-2 rounded-lg inline-block font-sans">
-            All Steel &amp; Iron Items Under One Roof
+            Har Zaroorat Ka Steel • All Steel &amp; Iron Items Under One Roof
           </div>
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold">
             <ShieldCheck className="w-4 h-4 text-red-500" />
