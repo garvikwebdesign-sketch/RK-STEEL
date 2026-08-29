@@ -514,7 +514,7 @@ export function JindalSteelLogo({ className = "h-10" }: { className?: string }) 
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`w-auto object-contain select-none ${className}`}
-      aria-label="Jindal Steel & Power (JE) Official Logo"
+      aria-label="Jindal Steel & Power Official Logo"
     >
       {/* Jindal Flame/Arch Emblem */}
       <circle cx="28" cy="30" r="22" fill="#0284C7" />
@@ -566,7 +566,7 @@ export function JindalSteelLogo({ className = "h-10" }: { className?: string }) 
         fontWeight="700"
         letterSpacing="0.8"
       >
-        JINDAL STEEL & POWER (JE)
+        JINDAL STEEL & POWER
       </text>
     </svg>
   );

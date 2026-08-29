@@ -35,7 +35,7 @@ export default async function HomePage() {
     },
     {
       title: "Structural Pipes & Tubes",
-      brand: "Tata Structura & AP Apollo",
+      brand: "Tata Structura & APL Apollo",
       desc: "Square (SHS), Rectangular (RHS) and Circular MS pipes for heavy industrial infrastructure.",
       image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
       link: "/products?category=Pipes+%26+Hollow+Sections",

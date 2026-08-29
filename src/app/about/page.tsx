@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "About Us | RK STEEL CO — 30+ Years of Steel Excellence in Noida",
-  description: "Established in 1993, RK STEEL CO is an authorized dealer of Tata Steel, SAIL, JSW, Jindal, and AP Apollo lines with over three decades of trusted service. All steel and iron items under one roof.",
+  description: "Established in 1993, RK STEEL CO is an authorized dealer of Tata Steel, SAIL, JSW, Jindal, and APL Apollo lines with over three decades of trusted service. All steel and iron items under one roof.",
 };
 
 export default function AboutPage() {
@@ -74,9 +74,8 @@ export default function AboutPage() {
                 Delivering <span className="text-red-600">Trust.</span>
               </h1>
 
-              <div className="bg-red-50 border-l-4 border-red-600 p-3.5 rounded-r-lg">
-                <div className="text-xs font-black text-red-900 uppercase tracking-wider">Our Official Tagline:</div>
-                <div className="text-sm font-extrabold text-red-700 font-sans mt-0.5">
+              <div className="bg-red-50 border-l-4 border-red-600 px-4 py-3 rounded-r-lg">
+                <div className="text-sm sm:text-base font-extrabold text-red-700 font-sans tracking-wide">
                   ALL STEEL AND IRON ITEMS UNDER ONE ROOF
                 </div>
               </div>
@@ -86,7 +85,7 @@ export default function AboutPage() {
               </p>
 
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Our strong relationships with leading manufacturers like Tata Steel, SAIL, JSW Steel, Jindal Steel &amp; Power (JE), and APL Apollo, along with a customer-first approach, have helped us build long-term partnerships based on trust, transparency, and reliability.
+                Our strong relationships with leading manufacturers like Tata Steel, SAIL, JSW Steel, Jindal Steel &amp; Power, and APL Apollo, along with a customer-first approach, have helped us build long-term partnerships based on trust, transparency, and reliability.
               </p>
             </div>
 

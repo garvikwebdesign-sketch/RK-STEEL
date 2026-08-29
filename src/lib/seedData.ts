@@ -60,7 +60,7 @@ export const initialProducts = [
     slug: "tata-structura-ms-pipes"
   },
   {
-    name: "Jindal Panther 550D TMT Rebars (JE)",
+    name: "Jindal Panther 550D TMT Rebars",
     brand: "Jindal Steel",
     category: "TMT Bars",
     gradeStandard: "Fe 550D / IS 1786",
@@ -176,12 +176,12 @@ export const initialProducts = [
     slug: "jsw-neosteel-550d"
   },
   {
-    name: "AP Apollo MS & GI Steel Pipes",
-    brand: "AP Apollo",
+    name: "APL Apollo MS & GI Steel Pipes",
+    brand: "APL Apollo",
     category: "Pipes & Hollow Sections",
     gradeStandard: "IS 1239 / IS 3589 / IS 4923",
     sizeRange: "15mm NB to 300mm NB | Light, Medium, Heavy classes",
-    description: "AP Apollo Structural and Plumbing pipes for home construction, commercial fire sprinkler networks, and industrial piping. High quality ERW welded finish.",
+    description: "APL Apollo Structural and Plumbing pipes for home construction, commercial fire sprinkler networks, and industrial piping. High quality ERW welded finish.",
     specs: [
       "Precision ERW longitudinal weld",
       "Hot-dip galvanised coating available for rust prevention",

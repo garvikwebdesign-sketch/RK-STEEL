@@ -36,8 +36,8 @@ export default async function BlogListPage() {
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
             Stay informed with technical steel guides, IS standard specifications, material selection tips, and market insights.
           </p>
-          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
-            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-extrabold px-3.5 py-1.5 rounded font-sans">
+            ALL STEEL AND IRON ITEMS UNDER ONE ROOF
           </div>
         </div>
       </section>

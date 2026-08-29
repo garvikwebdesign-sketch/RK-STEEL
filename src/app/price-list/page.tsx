@@ -125,7 +125,7 @@ const PRICE_HUB_DATA = [
   },
   {
     brandSlug: "jindal-panther",
-    brandName: "JINDAL PANTHER (JE)",
+    brandName: "JINDAL PANTHER",
     category: "High Yield TMT Bars",
     todayPrice: "53,200",
     yesterdayPrice: "53,500",
@@ -156,10 +156,10 @@ export default async function PriceListHubPage() {
             Steel Price Lists &amp; Market Updates
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            Live today's steel price list for Tata Tiscon, SAIL SEQR, Tata Structura, JSW Steel, Jindal (JE), and AP Apollo in Noida &amp; Delhi NCR with historical trend tracking.
+            Live today's steel price list for Tata Tiscon, SAIL SEQR, Tata Structura, JSW Steel, Jindal Panther, and APL Apollo in Noida &amp; Delhi NCR with historical trend tracking.
           </p>
-          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
-            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-extrabold px-3.5 py-1.5 rounded font-sans">
+            ALL STEEL AND IRON ITEMS UNDER ONE ROOF
           </div>
         </div>
       </section>

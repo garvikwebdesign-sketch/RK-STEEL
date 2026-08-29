@@ -19,8 +19,8 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Authorised Steel Brands Hub | Tata Steel, SAIL, JSW, AP Apollo, Jindal | RK STEEL CO",
-  description: "Explore dedicated brand hubs for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, Tata Astrum, JSW Neosteel, Jindal Panther, and APL Apollo pipes at RK STEEL CO.",
+  title: "Authorised Steel Brands Hub | Tata Steel, SAIL, JSW, APL Apollo, Jindal | RK STEEL CO",
+  description: "Direct mill authorised stockist & dealer in Noida for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, JSW Neosteel, APL Apollo, and Jindal Panther.",
 };
 
 const BRANDS_LIST = [
@@ -103,7 +103,7 @@ const BRANDS_LIST = [
   },
   {
     slug: "jindal-panther",
-    name: "Jindal Panther TMT (JE)",
+    name: "Jindal Panther TMT",
     parent: "Jindal Steel & Power Ltd.",
     logoComponent: JindalSteelLogo,
     desc: "High yield primary rebar manufactured with parallel rib technology for superior earthquake resistance and concrete bonding.",
@@ -129,7 +129,7 @@ export default async function BrandsPage() {
             Authorised Steel Brands
           </h1>
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
-            Dedicated brand landing hubs for Tata Steel, SAIL, JSW Steel, Jindal (JE), and APL Apollo with ready stock availability, weight charts, and today's mill pricing.
+            Dedicated brand landing hubs for Tata Steel, SAIL, JSW Steel, Jindal Panther, and APL Apollo with ready stock availability, weight charts, and today's mill pricing.
           </p>
         </div>
       </section>

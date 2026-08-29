@@ -12,7 +12,7 @@ export function Footer() {
             <Award className="w-8 h-8 text-red-500 flex-shrink-0" />
             <div>
               <h4 className="text-base text-white font-bold tracking-tight font-sans">
-                Authorised Stockist &amp; Dealer — Tata Steel, SAIL, JSW Steel, Jindal (JE) &amp; AP Apollo
+                Authorised Stockist &amp; Dealer — Tata Steel, SAIL, JSW Steel, Jindal Steel &amp; APL Apollo
               </h4>
               <p className="text-xs text-slate-400">
                 Tata Tiscon • Tata Structura • Tata Durashine • SAIL SEQR • JSW Neosteel • APL Apollo • Jindal Panther
@@ -45,10 +45,10 @@ export function Footer() {
           <Logo variant="dark" size="md" />
 
           <p className="text-xs text-slate-400 leading-relaxed pr-4 mt-2">
-            Established in 1993, <strong className="text-white">RK STEEL CO</strong> is Noida's premier stockist &amp; authorised distributor of genuine Tata Steel, SAIL, JSW Steel, Jindal Steel, and AP Apollo product lines with ready mill-certified inventory for construction &amp; industrial projects.
+            Established in 1993, <strong className="text-white">RK STEEL CO</strong> is Noida's premier stockist &amp; authorised distributor of genuine Tata Steel, SAIL, JSW Steel, Jindal Steel, and APL Apollo product lines with ready mill-certified inventory for construction &amp; industrial projects.
           </p>
-          <div className="text-[11px] font-bold text-red-400 uppercase tracking-wide bg-slate-900/90 border border-slate-800 p-2.5 rounded-lg inline-block">
-            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          <div className="text-xs font-extrabold text-red-400 uppercase tracking-wide bg-slate-900/90 border border-slate-800 px-3 py-2 rounded-lg inline-block font-sans">
+            All Steel &amp; Iron Items Under One Roof
           </div>
           <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold">
             <ShieldCheck className="w-4 h-4 text-red-500" />

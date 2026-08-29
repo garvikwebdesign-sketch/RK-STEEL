@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Steel Products Catalogue | RK STEEL CO Noida",
-  description: "Browse Tata Tiscon, Tata Structura, Tata Durashine, SAIL SEQR, JSW Neosteel, Jindal Panther, AP Apollo pipes, MS Weldmesh, and Structural Steel at RK STEEL CO. All steel and iron items under one roof.",
+  description: "Browse Tata Tiscon, Tata Structura, Tata Durashine, SAIL SEQR, JSW Neosteel, Jindal Panther, APL Apollo pipes, MS Weldmesh, and Structural Steel at RK STEEL CO. All steel and iron items under one roof.",
 };
 
 const CATEGORIES = [
@@ -22,7 +22,7 @@ const CATEGORIES = [
   "Chain Link & Accessories",
 ];
 
-const BRANDS = ["All", "Tata Steel", "Tata Tiscon", "Tata Structura", "Tata Durashine", "SAIL", "JSW Steel", "Jindal Steel", "AP Apollo"];
+const BRANDS = ["All", "Tata Steel", "Tata Tiscon", "Tata Structura", "Tata Durashine", "SAIL", "JSW Steel", "Jindal Steel", "APL Apollo"];
 
 export default async function ProductsPage({
   searchParams,
@@ -73,8 +73,8 @@ export default async function ProductsPage({
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
             Search our comprehensive inventory of TMT bars, structural pipes, roofing sheets, hot/cold rolled plates, weldmesh, and chain link fencing.
           </p>
-          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
-            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-extrabold px-3.5 py-1.5 rounded font-sans">
+            ALL STEEL AND IRON ITEMS UNDER ONE ROOF
           </div>
         </div>
       </section>

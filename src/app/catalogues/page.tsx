@@ -5,7 +5,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Official Steel Product Catalogues PDF 2026 | Tata Steel, SAIL, JSW, AP Apollo, Jindal | RK STEEL CO",
+  title: "Official Steel Product Catalogues PDF 2026 | Tata Steel, SAIL, JSW, APL Apollo, Jindal | RK STEEL CO",
   description: "View and download official product catalogues and weight charts for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, JSW Neosteel, APL Apollo, Jindal Panther, and RK STEEL CO Master Catalogue 2026.",
 };
 
@@ -14,7 +14,7 @@ const CATALOGUES = [
     title: "RK STEEL CO – MASTER PRODUCT CATALOGUE 2026",
     brand: "RK STEEL CO",
     brandKey: "tata-steel",
-    desc: "Complete comprehensive master product catalogue covering TMT rebars, structural channels, beams, hollow sections, sheets, plates, roofing, and fencing accessories. Tagline: All Steel & Iron Items Under One Roof.",
+    desc: "Complete comprehensive master product catalogue covering TMT rebars, structural channels, beams, hollow sections, sheets, plates, roofing, and fencing accessories. All Steel & Iron Items Under One Roof.",
     pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     isMaster: true,
     fileSize: "4.2 MB PDF",
@@ -83,7 +83,7 @@ const CATALOGUES = [
     fileSize: "3.1 MB PDF",
   },
   {
-    title: "Jindal Panther TMT Rebars (JE) Catalogue",
+    title: "Jindal Panther TMT Rebars Catalogue",
     brand: "Jindal Steel & Power",
     brandKey: "jindal-steel",
     desc: "Jindal Panther Fe 550D rebar engineering specs, parallel rib bond values, and bendability test standards.",
@@ -109,8 +109,8 @@ export default async function CataloguesPage() {
           <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
             Download official mill technical brochures and RK STEEL CO's Complete Master Product Catalogue 2026 in high-resolution PDF format.
           </p>
-          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
-            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-extrabold px-3.5 py-1.5 rounded font-sans">
+            ALL STEEL AND IRON ITEMS UNDER ONE ROOF
           </div>
         </div>
       </section>

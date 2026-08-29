@@ -7,7 +7,7 @@ export interface IProductImage {
 
 export interface IProduct extends Document {
   name: string;
-  brand: string; // e.g. "Tata Steel", "Tata Tiscon", "SAIL", "JSW Steel", "AP Apollo", "Other"
+  brand: string; // e.g. "Tata Steel", "Tata Tiscon", "SAIL", "JSW Steel", "APL Apollo", "Other"
   category: string; // "TMT Bars", "Pipes & Hollow Sections", "Structural Steel", "Colour Coated & Roofing Sheets", "MS/HR/CR/GI Sheets & Plates", "Weldmesh", "Chain Link & Accessories"
   gradeStandard?: string;
   sizeRange?: string;

@@ -16,7 +16,7 @@ const HERO_SLIDES = [
   {
     title: "AUTHORISED DEALER.",
     highlightWord: "GENUINE STEEL.",
-    desc: "Noida's premier stockist for Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, JSW Neosteel, and AP Apollo pipes.",
+    desc: "Noida's premier stockist for Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, JSW Neosteel, and APL Apollo pipes.",
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80",
     badge: "100% MILL CERTIFIED",
     tagline: "DIRECT FROM PRIMARY MILLS",
@@ -143,7 +143,7 @@ export function HeroSlider() {
                 </div>
                 <div>
                   <div className="text-sm font-bold text-white">Authorised Dealer &amp; Stockist</div>
-                  <div className="text-xs text-slate-400">Tata Steel, SAIL, JSW Steel, Jindal (JE), AP Apollo</div>
+                  <div className="text-xs text-slate-400">Tata Steel, SAIL, JSW Steel, Jindal Steel, APL Apollo</div>
                 </div>
               </div>
 

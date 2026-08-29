@@ -15,20 +15,17 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
     sm: {
       img: "w-10 h-10",
       title: "text-lg",
-      coTitle: "text-base",
-      tagline: "text-[7.5px] tracking-[0.14em]",
+      tagline: "text-[8px] tracking-[0.14em]",
     },
     md: {
-      img: "w-13 h-13",
+      img: "w-12 h-12",
       title: "text-2xl",
-      coTitle: "text-xl",
-      tagline: "text-[9px] tracking-[0.16em]",
+      tagline: "text-[9.5px] tracking-[0.16em]",
     },
     lg: {
       img: "w-16 h-16",
       title: "text-3xl",
-      coTitle: "text-2xl",
-      tagline: "text-[10.5px] tracking-[0.18em]",
+      tagline: "text-[11px] tracking-[0.18em]",
     },
   }[size];
 
@@ -50,17 +47,17 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
       {/* Clean Brand Typography */}
       <div className="flex flex-col">
         <div className="flex items-center gap-1.5 leading-none">
-          <span className={`font-extrabold ${sizeClasses.title} ${textColor} tracking-tight font-sans`}>
+          <span className={`font-black ${sizeClasses.title} ${textColor} tracking-tight font-sans`}>
             RK
           </span>
           <span className={`font-black ${sizeClasses.title} text-red-600 tracking-tight font-sans`}>
             STEEL
           </span>
-          <span className={`font-black ${sizeClasses.coTitle} ${textColor} tracking-tight font-sans`}>
+          <span className={`font-black ${sizeClasses.title} ${textColor} tracking-tight font-sans`}>
             CO
           </span>
         </div>
-        <span className={`uppercase font-bold ${taglineColor} ${sizeClasses.tagline} font-sans mt-1 leading-none`}>
+        <span className={`uppercase font-bold ${taglineColor} ${sizeClasses.tagline} font-sans mt-1.5 leading-none`}>
           All Steel &amp; Iron Items Under One Roof
         </span>
       </div>

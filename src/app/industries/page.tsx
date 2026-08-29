@@ -71,8 +71,8 @@ export default function IndustriesPage() {
             <span className="text-red-400 font-bold">Industries</span>
           </div>
 
-          <div className="inline-block bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1 rounded">
-            TAGLINE: ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          <div className="inline-block bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-extrabold px-3.5 py-1.5 rounded font-sans">
+            ALL STEEL AND IRON ITEMS UNDER ONE ROOF
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight font-sans">

@@ -150,7 +150,7 @@ const BRAND_DETAILS: Record<string, any> = {
     ],
   },
   "jindal-panther": {
-    name: "Jindal Panther TMT (JE)",
+    name: "Jindal Panther TMT",
     parentCompany: "Jindal Steel & Power Ltd.",
     tagline: "Parallel Rib High Yield Rebars for Seismic Protection",
     overview: "Jindal Panther Fe 550D TMT rebars are produced from pure virgin iron ore in integrated plants. With superior yield strength and uniform elongation, Jindal Panther protects high-rise and infrastructure projects across India.",

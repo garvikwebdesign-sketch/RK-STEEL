@@ -62,7 +62,7 @@ export function BrandStrip() {
       subtext: "Pipes & Tubes",
     },
     {
-      name: "Jindal Steel (JE)",
+      name: "Jindal Panther",
       type: "Panther TMT",
       component: JindalSteelLogo,
       href: "/brands",
