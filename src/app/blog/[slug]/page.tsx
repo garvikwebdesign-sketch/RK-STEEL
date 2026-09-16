@@ -5,7 +5,7 @@ import { ArrowLeft, User, Calendar } from "lucide-react";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
-  
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   try {
@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   } catch {
     return { title: "Blog Article | RK STEEL CO" };
   }
+  
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {

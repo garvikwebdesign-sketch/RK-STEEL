@@ -119,23 +119,23 @@ export default async function BrandsPage() {
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
       {/* Header Banner */}
-      <section className="bg-navy-950 text-white py-14 border-b-4 border-red-600">
+      <section className="bg-navy-950 text-white py-16 border-b-4 border-red-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
+          <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3.5 py-1.5 rounded text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 border border-navy-700">
             <ShieldCheck className="w-4 h-4 text-red-500" />
             DIRECT AUTHORISED MILL DISTRIBUTOR HUB • RK STEEL CO
           </div>
-          <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
             Authorised Steel Brands
           </h1>
-          <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
+          <p className="text-slate-200 text-base sm:text-lg max-w-2xl mt-3 font-normal leading-relaxed">
             Dedicated brand landing hubs for Tata Steel, SAIL, JSW Steel, Jindal Panther, and APL Apollo with ready stock availability, weight charts, and today's mill pricing.
           </p>
         </div>
       </section>
 
       {/* Brands Grid */}
-      <section className="py-12">
+      <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {BRANDS_LIST.map((b) => {
@@ -147,37 +147,37 @@ export default async function BrandsPage() {
                 >
                   <div>
                     {/* Header with Official Logo */}
-                    <div className="bg-white p-4 border-b border-gray-100 flex items-center justify-between">
-                      <div className="h-10 flex items-center">
-                        <LogoComponent className="max-h-9" />
+                    <div className="bg-white p-5 border-b border-gray-100 flex items-center justify-between">
+                      <div className="h-11 flex items-center">
+                        <LogoComponent className="max-h-10" />
                       </div>
-                      <span className="text-[10px] font-bold text-red-600 uppercase bg-red-50 px-2.5 py-1 rounded border border-red-100">
+                      <span className="text-xs font-bold text-red-600 uppercase bg-red-50 px-3 py-1 rounded border border-red-100">
                         {b.badge}
                       </span>
                     </div>
 
-                    <div className="relative h-44 bg-navy-950 overflow-hidden">
+                    <div className="relative h-48 bg-navy-950 overflow-hidden">
                       <div
                         className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80"
                         style={{ backgroundImage: `url('${b.image}')` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent" />
-                      <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+                      <div className="absolute bottom-3 left-4 right-4 flex justify-between items-end">
                         <span className="text-xs font-bold text-gray-200 uppercase tracking-wide">
                           {b.parent}
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-6 space-y-3">
+                    <div className="p-6 space-y-3.5">
                       <h3 className="font-heading text-2xl font-bold text-navy-950 group-hover:text-red-600 transition-colors">
                         {b.name}
                       </h3>
-                      <p className="text-xs text-gray-600 leading-relaxed">
+                      <p className="text-sm sm:text-[15px] text-gray-600 leading-relaxed">
                         {b.desc}
                       </p>
 
-                      <div className="border-t border-gray-100 pt-3 space-y-1.5 text-xs text-gray-700">
+                      <div className="border-t border-gray-100 pt-3.5 space-y-2 text-sm text-gray-700">
                         <div className="flex justify-between">
                           <span className="font-semibold text-gray-500">Available Sizes:</span>
                           <span className="font-bold text-navy-900">{b.sizes}</span>
@@ -190,10 +190,10 @@ export default async function BrandsPage() {
                     </div>
                   </div>
 
-                  <div className="p-6 pt-0 space-y-2">
+                  <div className="p-6 pt-0 space-y-2.5">
                     <Link
                       href={`/brands/${b.slug}`}
-                      className="w-full bg-navy-950 hover:bg-red-600 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                      className="w-full bg-navy-950 hover:bg-red-600 text-white font-bold text-sm uppercase px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-sm"
                     >
                       Explore Brand Landing Page
                       <ChevronRight className="w-4 h-4" />
@@ -201,7 +201,7 @@ export default async function BrandsPage() {
 
                     <Link
                       href={`/price-list/${b.slug}`}
-                      className="w-full bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs px-4 py-2 rounded-lg flex items-center justify-center gap-1.5 transition-colors border border-red-200"
+                      className="w-full bg-red-50 hover:bg-red-100 text-red-600 font-bold text-sm px-5 py-2.5 rounded-xl flex items-center justify-center gap-2 transition-colors border border-red-200"
                     >
                       View Today's Rate &amp; Trend
                     </Link>

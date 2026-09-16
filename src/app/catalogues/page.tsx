@@ -97,64 +97,64 @@ export default async function CataloguesPage() {
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
       {/* Header Banner */}
-      <section className="bg-navy-950 text-white py-14 border-b-4 border-red-600">
+      <section className="bg-navy-950 text-white py-16 border-b-4 border-red-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-2 border border-navy-700">
+          <div className="inline-flex items-center gap-2 bg-navy-900 text-red-400 px-3.5 py-1.5 rounded text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 border border-navy-700">
             <Download className="w-4 h-4 text-red-500" />
             DIGITAL PRODUCT CATALOGUES &amp; WEIGHT CHARTS • RK STEEL CO
           </div>
-          <h1 className="font-heading text-4xl sm:text-5xl font-black text-white">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
             Steel Catalogues Download Center
           </h1>
-          <p className="text-gray-300 text-sm max-w-2xl mt-2 font-light">
+          <p className="text-slate-200 text-base sm:text-lg max-w-2xl mt-3 font-normal leading-relaxed">
             Download official mill technical brochures and RK STEEL CO's Complete Master Product Catalogue 2026 in high-resolution PDF format.
           </p>
-          <div className="mt-3 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs font-extrabold px-3.5 py-1.5 rounded font-sans">
+          <div className="mt-4 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs sm:text-sm font-bold px-4 py-2 rounded-lg font-sans">
             ALL STEEL AND IRON ITEMS UNDER ONE ROOF
           </div>
         </div>
       </section>
 
       {/* Catalogues Grid */}
-      <section className="py-12">
+      <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {CATALOGUES.map((cat, idx) => (
               <div
                 key={idx}
-                className={`bg-white rounded-2xl border p-6 shadow-sm hover:shadow-xl transition-all space-y-4 flex flex-col justify-between ${
-                  cat.isMaster ? "border-2 border-red-600 ring-2 ring-red-100 bg-gradient-to-br from-white to-red-50/20" : "border-gray-200"
+                className={`bg-white rounded-2xl border p-7 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between ${
+                  cat.isMaster ? "border-2 border-red-600 ring-4 ring-red-100 bg-gradient-to-br from-white to-red-50/20" : "border-gray-200"
                 }`}
               >
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                    <div className="h-8 flex items-center">
+                <div className="space-y-3.5">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3.5">
+                    <div className="h-9 flex items-center">
                       {!cat.isMaster ? (
-                        <BrandLogo brand={cat.brandKey} className="max-h-7" />
+                        <BrandLogo brand={cat.brandKey} className="max-h-8" />
                       ) : (
-                        <span className="font-extrabold text-xs text-red-600 uppercase tracking-widest font-sans">
+                        <span className="font-extrabold text-xs sm:text-sm text-red-600 uppercase tracking-widest font-sans">
                           RK STEEL CO MASTER
                         </span>
                       )}
                     </div>
-                    <span className="text-xs text-gray-400 font-semibold">{cat.fileSize}</span>
+                    <span className="text-xs sm:text-sm text-gray-500 font-bold">{cat.fileSize}</span>
                   </div>
 
                   <h3 className="font-heading text-2xl font-bold text-navy-950">
                     {cat.title}
                   </h3>
 
-                  <p className="text-xs text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-[15px] text-gray-600 leading-relaxed">
                     {cat.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
+                <div className="pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3.5">
                   <a
                     href={cat.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-2 shadow-sm transition-all"
+                    className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm uppercase px-5 py-3 rounded-xl flex items-center gap-2 shadow-sm transition-all"
                   >
                     <Download className="w-4 h-4" />
                     Download PDF Brochure
@@ -164,7 +164,7 @@ export default async function CataloguesPage() {
                     href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20please%20send%20the%20PDF%20catalogue%20for%20${encodeURIComponent(cat.title)}.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-bold text-[#128C7E] hover:underline flex items-center gap-1"
+                    className="text-sm font-bold text-[#128C7E] hover:underline flex items-center gap-1.5"
                   >
                     Request via WhatsApp →
                   </a>
@@ -177,4 +177,3 @@ export default async function CataloguesPage() {
     </div>
   );
 }
-

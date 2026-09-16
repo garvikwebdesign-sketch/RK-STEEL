@@ -10,6 +10,7 @@ export interface ILead extends Document {
   createdAt: Date;
 }
 
+
 const LeadSchema = new Schema<ILead>(
   {
     name: { type: String, required: true },
@@ -21,6 +22,8 @@ const LeadSchema = new Schema<ILead>(
   },
   { timestamps: true }
 );
+
+
 
 export const Lead: Model<ILead> =
   mongoose.models.Lead || mongoose.model<ILead>("Lead", LeadSchema);

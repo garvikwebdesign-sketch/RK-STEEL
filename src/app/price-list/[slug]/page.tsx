@@ -86,7 +86,7 @@ export default async function SinglePriceListPage({ params }: { params: Promise<
               <div className="font-heading text-4xl font-black text-red-500">
                 ₹{data.todayPricePerMT} <span className="text-sm font-normal text-gray-300">/ MT</span>
               </div>
-              <div className="text-xs text-gray-300">Ex-Stockyard Noida (G-38, Sector-9)</div>
+              <div className="text-xs text-gray-300">Ex-Stockyard Noida (Park, G-38, opp. G Block, Sector 9)</div>
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">

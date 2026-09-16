@@ -71,33 +71,33 @@ export function BrandStrip() {
   ];
 
   return (
-    <section className="bg-white py-10 border-b border-slate-200">
+    <section className="bg-white py-12 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center mb-7">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-700 text-[11px] font-bold uppercase tracking-wider mb-1.5 border border-red-100">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 text-red-700 text-xs font-bold uppercase tracking-wider mb-2 border border-red-100">
             Authorised Dealer &amp; Mill Stockist Hub
           </div>
-          <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500 font-sans">
+          <h2 className="text-sm sm:text-base font-bold uppercase tracking-[0.15em] text-slate-700 font-sans">
             Direct Primary Steel Mill Partnerships
           </h2>
         </div>
 
         {/* Brand Logos Row - Authentic Logos */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 items-stretch justify-center">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 items-stretch justify-center">
           {brands.map((b, idx) => {
             const LogoComp = b.component;
             return (
               <Link
                 key={idx}
                 href={b.href}
-                className="flex flex-col items-center justify-between p-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-red-300 hover:shadow-md transition-all group text-center"
+                className="flex flex-col items-center justify-between p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/70 hover:bg-white hover:border-red-300 hover:shadow-md transition-all group text-center"
               >
-                <div className="h-12 w-full flex items-center justify-center py-1 group-hover:scale-105 transition-transform">
-                  <LogoComp className="max-h-10 max-w-full" />
+                <div className="h-14 w-full flex items-center justify-center py-1 group-hover:scale-105 transition-transform">
+                  <LogoComp className="max-h-11 max-w-full" />
                 </div>
-                <div className="w-full pt-1.5 border-t border-slate-100 mt-1">
-                  <span className="text-[9.5px] font-bold tracking-tight text-slate-600 group-hover:text-red-600 transition-colors uppercase block truncate">
+                <div className="w-full pt-2 border-t border-slate-200/80 mt-1">
+                  <span className="text-[11px] sm:text-xs font-bold tracking-tight text-slate-700 group-hover:text-red-600 transition-colors uppercase block truncate">
                     {b.subtext}
                   </span>
                 </div>

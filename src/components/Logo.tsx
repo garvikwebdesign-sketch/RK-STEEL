@@ -13,24 +13,24 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
 
   const sizeClasses = {
     sm: {
-      img: "w-10 h-10",
+      img: "w-11 h-11",
       title: "text-xl",
-      tagline: "text-[9px] tracking-[0.15em]",
+      tagline: "text-[10px] tracking-[0.15em]",
     },
     md: {
-      img: "w-13 h-13",
-      title: "text-2xl sm:text-[26px]",
-      tagline: "text-[10px] tracking-[0.16em]",
+      img: "w-14 h-14 sm:w-15 sm:h-15 lg:w-[62px] lg:h-[62px]",
+      title: "text-2xl sm:text-[26px] lg:text-[27px]",
+      tagline: "text-[10px] sm:text-[10.5px] lg:text-[11px] tracking-[0.16em]",
     },
     lg: {
-      img: "w-16 h-16",
+      img: "w-20 h-20 sm:w-22 sm:h-22",
       title: "text-3xl sm:text-4xl",
-      tagline: "text-[12px] tracking-[0.18em]",
+      tagline: "text-xs sm:text-sm tracking-[0.18em]",
     },
   }[size];
 
   return (
-    <Link href="/" className={`inline-flex items-center gap-3 group select-none ${className}`}>
+    <Link href="/" className={`inline-flex items-center gap-3 group select-none flex-shrink-0 ${className}`}>
       {/* Authentic Company Logo Emblem */}
       <div
         className={`relative flex items-center justify-center flex-shrink-0 ${sizeClasses.img} rounded-full overflow-hidden border-2 ${

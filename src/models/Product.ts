@@ -5,6 +5,7 @@ export interface IProductImage {
   publicId?: string;
 }
 
+
 export interface IProduct extends Document {
   name: string;
   brand: string; // e.g. "Tata Steel", "Tata Tiscon", "SAIL", "JSW Steel", "APL Apollo", "Other"

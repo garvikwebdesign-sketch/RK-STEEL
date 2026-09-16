@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const lato = Lato({
   subsets: ["latin"],
-  variable: "--font-heading",
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-lato",
+  weight: ["300", "400", "700", "900"],
   display: "swap",
 });
 
@@ -39,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${lato.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-slate-800 font-sans relative selection:bg-red-500 selection:text-white">
         <Navbar />
         <main className="flex-grow">{children}</main>

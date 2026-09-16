@@ -235,21 +235,21 @@ export function SteelCalculators() {
         </div>
 
         {/* Desktop List */}
-        <div className="hidden lg:flex flex-col space-y-1">
+        <div className="hidden lg:flex flex-col space-y-1.5">
           {CALCULATORS.map((calc) => {
             const isSelected = activeTab === calc.id;
             return (
               <button
                 key={calc.id}
                 onClick={() => setActiveTab(calc.id)}
-                className={`text-left p-3 rounded-lg transition-all text-xs flex flex-col ${
+                className={`text-left p-3.5 rounded-xl transition-all flex flex-col ${
                   isSelected
                     ? "bg-red-600 text-white font-bold shadow-md translate-x-1"
                     : "text-gray-300 hover:bg-navy-900 hover:text-white"
                 }`}
               >
-                <span className="font-heading text-sm">{calc.title}</span>
-                <span className={`text-[11px] font-normal ${isSelected ? "text-red-100" : "text-gray-400"}`}>
+                <span className="font-heading text-base font-bold">{calc.title}</span>
+                <span className={`text-xs font-normal mt-0.5 ${isSelected ? "text-red-100" : "text-gray-400"}`}>
                   {calc.subtitle}
                 </span>
               </button>
@@ -262,16 +262,16 @@ export function SteelCalculators() {
       <div className="lg:col-span-8 p-6 md:p-8 flex flex-col justify-between lg:sticky lg:top-[100px]">
           <div className="space-y-6">
             {/* Header */}
-            <div className="border-b border-gray-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+            <div className="border-b border-gray-200 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
               <div>
-                <h3 className="font-heading text-2xl font-bold text-navy-900">
+                <h3 className="font-heading text-2xl sm:text-3xl font-bold text-navy-900">
                   {CALCULATORS.find((c) => c.id === activeTab)?.title}
                 </h3>
-                <p className="text-xs text-gray-500">
-                  Calculated using standard steel density <span className="font-semibold text-navy-900">7,850 kg/m³</span> (constant 0.00785).
+                <p className="text-sm text-gray-600 mt-1">
+                  Calculated using standard steel density <span className="font-bold text-navy-900">7,850 kg/m³</span> (constant 0.00785).
                 </p>
               </div>
-              <span className="text-xs bg-navy-100 text-navy-900 px-3 py-1 rounded-full font-bold">
+              <span className="text-xs sm:text-sm bg-navy-100 text-navy-900 px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap">
                 Live Calculation
               </span>
             </div>
@@ -282,7 +282,7 @@ export function SteelCalculators() {
                 {/* TMT Rebar nominal size quick select */}
                 {activeTab === "round-bar" && (
                   <div>
-                    <label className="block text-xs font-bold text-navy-900 uppercase tracking-wider mb-2">
+                    <label className="block text-xs sm:text-sm font-bold text-navy-900 uppercase tracking-wider mb-2.5">
                       IS 1786 Standard TMT Sizes (mm)
                     </label>
                     <div className="flex flex-wrap gap-2">
@@ -291,7 +291,7 @@ export function SteelCalculators() {
                           key={std.dia}
                           type="button"
                           onClick={() => setTmtDiaMm(std.dia)}
-                          className={`px-2.5 py-1 text-xs rounded border font-semibold transition-all ${
+                          className={`px-3 py-1.5 text-xs sm:text-sm rounded-lg border font-bold transition-all ${
                             tmtDiaMm === std.dia
                               ? "bg-navy-900 text-gold-400 border-navy-900 shadow-sm"
                               : "bg-gray-100 text-gray-700 hover:bg-gray-200 border-gray-300"
@@ -625,24 +625,24 @@ export function SteelCalculators() {
             )}
 
             {/* Results Output Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-navy-950 p-5 rounded-xl border border-navy-800 text-white mt-6">
-              <div className="space-y-1">
-                <div className="text-xs text-gray-400 font-medium">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 bg-navy-950 p-6 sm:p-7 rounded-2xl border border-navy-800 text-white mt-6 shadow-xl">
+              <div className="space-y-1.5">
+                <div className="text-sm text-slate-300 font-medium">
                   {activeTab === "sheet" ? "Single Piece Weight" : "Weight per Meter (kg/m)"}
                 </div>
-                <div className="text-3xl font-heading font-black text-gold-400">
-                  {result.weightPerMeter} <span className="text-sm font-sans font-normal text-gray-300">{activeTab === "sheet" ? "kg" : "kg/m"}</span>
+                <div className="text-4xl sm:text-5xl font-heading font-black text-gold-400">
+                  {result.weightPerMeter} <span className="text-base sm:text-lg font-sans font-normal text-slate-300">{activeTab === "sheet" ? "kg" : "kg/m"}</span>
                 </div>
               </div>
 
-              <div className="space-y-1 sm:border-l sm:border-navy-800 sm:pl-6">
-                <div className="text-xs text-gray-400 font-medium">
+              <div className="space-y-1.5 sm:border-l sm:border-navy-800 sm:pl-7">
+                <div className="text-sm text-slate-300 font-medium">
                   {activeTab === "sheet" ? `Total Weight for ${sheetPieces} pcs` : `Total Weight for ${lengthM}m Length`}
                 </div>
-                <div className="text-3xl font-heading font-black text-white">
-                  {result.totalWeight} <span className="text-sm font-sans font-normal text-gray-300">kg</span>
+                <div className="text-4xl sm:text-5xl font-heading font-black text-white">
+                  {result.totalWeight} <span className="text-base sm:text-lg font-sans font-normal text-slate-300">kg</span>
                 </div>
-                <div className="text-[11px] text-gray-400">
+                <div className="text-xs sm:text-sm text-slate-300 font-semibold pt-1">
                   ≈ {(result.totalWeight / 1000).toFixed(3)} Metric Tonnes
                 </div>
               </div>

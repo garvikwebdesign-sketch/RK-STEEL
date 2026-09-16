@@ -44,34 +44,36 @@ export function Navbar() {
   };
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm transition-all">
+    <header className="w-full max-w-full sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm transition-all overflow-x-clip">
       {/* Top Utility Bar */}
-      <div className="bg-[#0B192C] text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-[12px]">
+      <div className="bg-[#0B192C] text-slate-300 py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-4 text-xs sm:text-[13px]">
           {/* Left: Trust Badge */}
-          <div className="flex items-center gap-2 font-medium">
+          <div className="flex items-center gap-2 font-medium flex-shrink-0">
             <ShieldCheck className="w-4 h-4 text-red-500 flex-shrink-0" />
-            <span className="text-white font-semibold">Est. 1993</span>
+            <span className="text-white font-bold">Est. 1993</span>
             <span className="text-slate-500">|</span>
-            <span className="text-slate-300">30+ Years of Trust</span>
+            <span className="text-slate-200">30+ Years of Trust</span>
           </div>
 
-          {/* Center: Head Office Location */}
-          <div className="hidden lg:flex items-center gap-1.5 text-slate-300">
-            <MapPin className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />
-            <span>Head Office: G-38, Sector - 9, Noida</span>
+          {/* Center: Head Office Location (shown on xl+) */}
+          <div className="hidden xl:flex items-center gap-1.5 text-slate-300 truncate max-w-md">
+            <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
+            <span title="RK STEEL COMPANY TATA TISCON TMT BARS, Park, G- 38, opp. G Block, G Block, Sector 9, Noida, Uttar Pradesh 201301" className="truncate">
+              Park, G-38, opp. G Block, Sector 9, Noida - 201301
+            </span>
           </div>
 
           {/* Right: Working Hours & Admin */}
-          <div className="flex items-center gap-4 text-slate-300">
+          <div className="flex items-center gap-3 sm:gap-4 text-slate-300 flex-shrink-0 ml-auto sm:ml-0">
             <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />
-              <span>Mon – Sat: 8:30 AM - 7:00 PM</span>
+              <Clock className="w-4 h-4 text-red-500 flex-shrink-0" />
+              <span className="whitespace-nowrap">Mon – Sat: 8:30 AM - 7:00 PM</span>
             </div>
             <span className="text-slate-600 hidden sm:inline">|</span>
             <Link
               href="/admin/login"
-              className="text-slate-400 hover:text-white transition-colors text-[11px] font-medium"
+              className="text-slate-300 hover:text-white transition-colors text-xs font-semibold whitespace-nowrap"
             >
               Admin Portal
             </Link>
@@ -81,35 +83,37 @@ export function Navbar() {
 
       {/* Main Navigation Bar */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between gap-3 lg:gap-4 min-h-[86px] py-2.5">
           {/* Clean Company Logo */}
-          <Logo variant="light" size="md" />
+          <div className="flex-shrink-0">
+            <Logo variant="light" size="md" />
+          </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5">
             {/* Home */}
             <Link
               href="/"
-              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+              className={`relative px-2.5 xl:px-3 py-2 text-[14px] xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Home
               {isActive("/") && (
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
               )}
             </Link>
 
             {/* About Us */}
             <Link
               href="/about"
-              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+              className={`relative px-2.5 xl:px-3 py-2 text-[14px] xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/about") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               About Us
               {isActive("/about") && (
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
               )}
             </Link>
 
@@ -120,26 +124,26 @@ export function Navbar() {
               onMouseLeave={() => setProductsOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                className={`flex items-center gap-1 px-2.5 xl:px-3 py-2 text-[14px] xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                   isActive("/products") || isActive("/brands") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
                 }`}
               >
                 Products
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productsOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
               </button>
 
               {productsOpen && (
-                <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-xl border border-slate-100 p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute top-full left-0 w-80 bg-white shadow-xl rounded-xl border border-slate-100 p-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   {productLinks.map((p) => (
                     <Link
                       key={p.href}
                       href={p.href}
-                      className="p-2.5 rounded-lg hover:bg-slate-50 transition-colors block group"
+                      className="p-3 rounded-lg hover:bg-slate-50 transition-colors block group"
                     >
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-red-600">
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-red-600">
                         {p.name}
                       </div>
-                      <div className="text-[11px] text-slate-500">{p.brand}</div>
+                      <div className="text-xs text-slate-500 mt-0.5">{p.brand}</div>
                     </Link>
                   ))}
                 </div>
@@ -149,13 +153,13 @@ export function Navbar() {
             {/* Industries */}
             <Link
               href="/industries"
-              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+              className={`relative px-2.5 xl:px-3 py-2 text-[14px] xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/industries") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Industries
               {isActive("/industries") && (
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
               )}
             </Link>
 
@@ -166,26 +170,26 @@ export function Navbar() {
               onMouseLeave={() => setCalculatorsOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                className={`flex items-center gap-1 px-2.5 xl:px-3 py-2 text-[14px] xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                   isActive("/calculators") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
                 }`}
               >
                 Calculators
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${calculatorsOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${calculatorsOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
               </button>
 
               {calculatorsOpen && (
-                <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-xl border border-slate-100 p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute top-full left-0 w-80 bg-white shadow-xl rounded-xl border border-slate-100 p-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   {calculatorLinks.map((c) => (
                     <Link
                       key={c.name}
                       href={c.href}
-                      className="p-2.5 rounded-lg hover:bg-slate-50 transition-colors block group"
+                      className="p-3 rounded-lg hover:bg-slate-50 transition-colors block group"
                     >
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-red-600">
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-red-600">
                         {c.name}
                       </div>
-                      <div className="text-[11px] text-slate-500">{c.desc}</div>
+                      <div className="text-xs text-slate-500 mt-0.5">{c.desc}</div>
                     </Link>
                   ))}
                 </div>
@@ -199,26 +203,26 @@ export function Navbar() {
               onMouseLeave={() => setKnowledgeOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                className={`flex items-center gap-1 px-2.5 xl:px-3 py-2 text-[14px] xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                   isActive("/price-list") || isActive("/catalogues") || isActive("/blog") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
                 }`}
               >
                 Knowledge Center
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${knowledgeOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${knowledgeOpen ? "rotate-180 text-red-600" : "text-slate-400"}`} />
               </button>
 
               {knowledgeOpen && (
-                <div className="absolute top-full left-0 w-72 bg-white shadow-xl rounded-xl border border-slate-100 p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="absolute top-full left-0 w-80 bg-white shadow-xl rounded-xl border border-slate-100 p-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   {knowledgeLinks.map((k) => (
                     <Link
                       key={k.name}
                       href={k.href}
-                      className="p-2.5 rounded-lg hover:bg-slate-50 transition-colors block group"
+                      className="p-3 rounded-lg hover:bg-slate-50 transition-colors block group"
                     >
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-red-600">
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-red-600">
                         {k.name}
                       </div>
-                      <div className="text-[11px] text-slate-500">{k.desc}</div>
+                      <div className="text-xs text-slate-500 mt-0.5">{k.desc}</div>
                     </Link>
                   ))}
                 </div>
@@ -228,34 +232,34 @@ export function Navbar() {
             {/* Contact Us */}
             <Link
               href="/contact"
-              className={`relative px-3 py-2 text-sm font-semibold transition-colors ${
+              className={`relative px-2.5 xl:px-3 py-2 text-[14px] xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/contact") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Contact Us
               {isActive("/contact") && (
-                <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600 rounded-full" />
+                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
               )}
             </Link>
           </div>
 
           {/* Right Rate & Phone Call Widget */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center flex-shrink-0">
             <a
               href="tel:9999307984"
-              className="flex items-center gap-3 group p-1.5 rounded-xl hover:bg-slate-50 transition-all"
+              className="flex items-center gap-2 xl:gap-2.5 group py-1.5 px-2 xl:px-2.5 rounded-xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-200"
             >
-              <div className="w-11 h-11 bg-red-600 group-hover:bg-red-700 text-white rounded-xl flex items-center justify-center shadow-md shadow-red-600/20 transition-all flex-shrink-0">
-                <Phone className="w-5 h-5 fill-current" />
+              <div className="w-10 h-10 xl:w-11 xl:h-11 bg-red-600 group-hover:bg-red-700 text-white rounded-xl flex items-center justify-center shadow-md shadow-red-600/20 transition-all flex-shrink-0">
+                <Phone className="w-4 h-4 xl:w-5 xl:h-5 fill-current" />
               </div>
-              <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase font-semibold text-slate-500 tracking-wider leading-none mb-1">
+              <div className="flex flex-col text-left whitespace-nowrap">
+                <span className="text-[10px] xl:text-xs uppercase font-bold text-slate-500 tracking-wider leading-none mb-0.5">
                   Call for Today's Rate
                 </span>
-                <span className="text-sm font-extrabold text-slate-900 group-hover:text-red-600 leading-tight transition-colors">
+                <span className="text-sm xl:text-base font-extrabold text-slate-900 group-hover:text-red-600 leading-tight transition-colors">
                   +91 99993 07984
                 </span>
-                <span className="text-[11px] font-semibold text-slate-500 group-hover:text-slate-700 leading-tight transition-colors">
+                <span className="hidden xl:block text-[11px] font-semibold text-slate-600 group-hover:text-slate-800 leading-tight transition-colors mt-0.5">
                   9953364645 | 9811364645
                 </span>
               </div>
@@ -263,7 +267,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center flex-shrink-0">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none transition-colors"
@@ -277,60 +281,60 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl max-h-[85vh] overflow-y-auto">
+        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-xl max-h-[85vh] overflow-y-auto">
           <Link
             href="/"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             Home
           </Link>
           <Link
             href="/about"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             About Us
           </Link>
           <Link
             href="/products"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             Products & Brands
           </Link>
           <Link
             href="/industries"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             Industries We Serve
           </Link>
           <Link
             href="/calculators"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             Steel Calculators
           </Link>
           <Link
             href="/price-list"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             Daily Price Lists
           </Link>
           <Link
             href="/catalogues"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             Product Catalogues PDF
           </Link>
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-bold text-slate-900 hover:bg-slate-50"
+            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             Contact Us
           </Link>
@@ -338,16 +342,16 @@ export function Navbar() {
           <div className="pt-3 border-t border-slate-100 space-y-2">
             <a
               href="tel:9999307984"
-              className="w-full text-center bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md"
+              className="w-full text-center bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl text-base font-bold flex items-center justify-center gap-2 shadow-md"
             >
-              <Phone className="w-4 h-4 fill-current" />
+              <Phone className="w-5 h-5 fill-current" />
               Call +91 99993 07984
             </a>
             <a
               href="https://wa.me/919999307984?text=Hello%20RK%20Steel%20Co%2C%20I%20want%20to%20get%20today%27s%20steel%20price%20quote."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full text-center bg-[#25D366] hover:bg-[#128C7E] text-white py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md"
+              className="w-full text-center bg-[#25D366] hover:bg-[#128C7E] text-white py-3.5 rounded-xl text-base font-bold flex items-center justify-center gap-2 shadow-md"
             >
               WhatsApp Price Enquiry
             </a>
