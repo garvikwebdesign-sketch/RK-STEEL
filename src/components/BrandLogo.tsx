@@ -173,64 +173,11 @@ export function TataSteelLogo({ className = "h-10" }: { className?: string }) {
  */
 export function JindalSteelLogo({ className = "h-10" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 250 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <img
+      src="/logos/jindal-steel.png"
+      alt="Jindal Steel & Power Official Logo"
       className={`w-auto max-w-full object-contain select-none ${className}`}
-      aria-label="Jindal Steel & Power Official Logo"
-    >
-      <circle cx="28" cy="30" r="22" fill="#0284C7" />
-      <path
-        d="M18 36C18 30 22 22 28 16C34 22 38 30 38 36C38 41.5 33.5 45 28 45C22.5 45 18 41.5 18 36Z"
-        fill="#EA580C"
-      />
-      <circle cx="28" cy="35" r="5" fill="white" />
-      <text
-        x="60"
-        y="29"
-        fill="#0F172A"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="19"
-        fontWeight="900"
-        letterSpacing="2"
-      >
-        JINDAL
-      </text>
-      <text
-        x="148"
-        y="29"
-        fill="#EA580C"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="17"
-        fontWeight="900"
-        letterSpacing="1.5"
-      >
-        STEEL
-      </text>
-      <text
-        x="60"
-        y="45"
-        fill="#0284C7"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="9"
-        fontWeight="800"
-        letterSpacing="2"
-      >
-        JINDAL PANTHER TMT
-      </text>
-      <text
-        x="60"
-        y="54"
-        fill="#64748B"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="6.5"
-        fontWeight="700"
-        letterSpacing="0.8"
-      >
-        JINDAL STEEL & POWER
-      </text>
-    </svg>
+    />
   );
 }
 
