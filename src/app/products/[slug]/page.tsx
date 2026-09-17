@@ -48,14 +48,15 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
         <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           {/* Left Column Image */}
-          <div className="lg:col-span-5 bg-navy-950 p-6 flex flex-col justify-between relative min-h-[350px]">
-            {product.images?.[0]?.url ? (
-              <div
-                className="w-full h-full bg-cover bg-center rounded-xl min-h-[300px]"
-                style={{ backgroundImage: `url('${product.images[0].url}')` }}
+          <div className="lg:col-span-5 bg-slate-900 p-6 flex flex-col justify-between relative min-h-[350px]">
+            {product.images?.[0]?.url || product.imageUrl ? (
+              <img
+                src={product.images?.[0]?.url || product.imageUrl}
+                alt={product.name || "Steel Product"}
+                className="w-full h-full object-cover rounded-xl min-h-[300px]"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-500 font-heading text-2xl">
+              <div className="w-full h-full flex flex-col items-center justify-center text-slate-300 font-heading text-2xl min-h-[300px]">
                 RK STEEL CO
               </div>
             )}

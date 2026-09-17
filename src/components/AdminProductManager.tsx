@@ -74,14 +74,14 @@ export function AdminProductManager({ initialProducts }: { initialProducts: any[
   const handleOpenEdit = (prod: any) => {
     setEditingId(prod._id);
     setFormData({
-      name: prod.name || "",
+      name: prod.name || prod.title || "",
       brand: prod.brand || "Tata Steel",
       category: prod.category || "TMT Bars",
       gradeStandard: prod.gradeStandard || "",
       sizeRange: prod.sizeRange || "",
       description: prod.description || "",
       specsText: prod.specs ? prod.specs.join("\n") : "",
-      imageUrl: prod.images?.[0]?.url || "",
+      imageUrl: prod.images?.[0]?.url || prod.imageUrl || "",
       authorisedDealer: !!prod.authorisedDealer,
     });
     setModalOpen(true);
@@ -112,6 +112,7 @@ export function AdminProductManager({ initialProducts }: { initialProducts: any[
 
     const payload = {
       name: formData.name,
+      title: formData.name,
       brand: formData.brand,
       category: formData.category,
       gradeStandard: formData.gradeStandard,
@@ -119,6 +120,7 @@ export function AdminProductManager({ initialProducts }: { initialProducts: any[
       description: formData.description,
       specs,
       images: formData.imageUrl ? [{ url: formData.imageUrl }] : [],
+      imageUrl: formData.imageUrl,
       authorisedDealer: formData.authorisedDealer,
     };
 
@@ -192,6 +194,7 @@ export function AdminProductManager({ initialProducts }: { initialProducts: any[
           <table className="w-full text-left text-xs">
             <thead className="bg-navy-950 text-white font-bold uppercase tracking-wider">
               <tr>
+                <th className="p-4 w-16">Image</th>
                 <th className="p-4">Product Name</th>
                 <th className="p-4">Brand</th>
                 <th className="p-4">Category</th>
@@ -200,40 +203,57 @@ export function AdminProductManager({ initialProducts }: { initialProducts: any[
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {filtered.map((prod) => (
-                <tr key={prod._id} className="hover:bg-gray-50">
-                  <td className="p-4 font-bold text-navy-900">{prod.name}</td>
-                  <td className="p-4 text-gray-700">{prod.brand}</td>
-                  <td className="p-4 text-gray-600">{prod.category}</td>
-                  <td className="p-4">
-                    {prod.authorisedDealer ? (
-                      <span className="bg-red-100 text-red-700 font-bold px-2 py-0.5 rounded text-[10px] inline-flex items-center gap-1">
-                        <ShieldCheck className="w-3 h-3" /> Authorised
-                      </span>
-                    ) : (
-                      <span className="text-gray-400 text-[10px]">Standard</span>
-                    )}
-                  </td>
-                  <td className="p-4 text-right space-x-2">
-                    <button
-                      type="button"
-                      onClick={() => handleOpenEdit(prod)}
-                      className="bg-navy-100 text-navy-900 p-2 rounded hover:bg-navy-900 hover:text-white transition-colors"
-                      title="Edit Product"
-                    >
-                      <Edit3 className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setDeleteConfirmId(prod._id)}
-                      className="bg-red-100 text-red-600 p-2 rounded hover:bg-red-600 hover:text-white transition-colors"
-                      title="Delete Product"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {filtered.map((prod) => {
+                const thumb = prod.images?.[0]?.url || prod.imageUrl || "";
+                return (
+                  <tr key={prod._id} className="hover:bg-gray-50">
+                    <td className="p-4">
+                      <div className="w-12 h-12 rounded-lg bg-gray-100 border border-gray-200 overflow-hidden flex items-center justify-center flex-shrink-0">
+                        {thumb ? (
+                          <img
+                            src={thumb}
+                            alt={prod.name || "Product"}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <span className="text-[9px] text-gray-400 font-bold">NO IMG</span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="p-4 font-bold text-navy-900">{prod.name || prod.title}</td>
+                    <td className="p-4 text-gray-700">{prod.brand}</td>
+                    <td className="p-4 text-gray-600">{prod.category}</td>
+                    <td className="p-4">
+                      {prod.authorisedDealer ? (
+                        <span className="bg-red-100 text-red-700 font-bold px-2 py-0.5 rounded text-[10px] inline-flex items-center gap-1">
+                          <ShieldCheck className="w-3 h-3" /> Authorised
+                        </span>
+                      ) : (
+                        <span className="text-gray-400 text-[10px]">Standard</span>
+                      )}
+                    </td>
+                    <td className="p-4 text-right space-x-2">
+                      <button
+                        type="button"
+                        onClick={() => handleOpenEdit(prod)}
+                        className="bg-navy-100 text-navy-900 p-2 rounded hover:bg-navy-900 hover:text-white transition-colors"
+                        title="Edit Product"
+                      >
+                        <Edit3 className="w-4 h-4" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setDeleteConfirmId(prod._id)}
+                        className="bg-red-100 text-red-600 p-2 rounded hover:bg-red-600 hover:text-white transition-colors"
+                        title="Delete Product"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -393,6 +413,23 @@ export function AdminProductManager({ initialProducts }: { initialProducts: any[
                     )}
                   </div>
                 </div>
+
+                {formData.imageUrl && (
+                  <div className="mt-2.5 p-2 bg-gray-50 border border-gray-200 rounded-lg flex items-center gap-3">
+                    <img
+                      src={formData.imageUrl}
+                      alt="Preview"
+                      className="w-14 h-14 object-cover rounded border border-gray-300 flex-shrink-0"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = "none";
+                      }}
+                    />
+                    <div className="text-[11px] text-gray-500 overflow-hidden flex-1">
+                      <span className="font-bold text-gray-800 block">Image Preview</span>
+                      <span className="truncate block font-mono text-[10px] text-gray-600">{formData.imageUrl}</span>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center gap-2 pt-2">

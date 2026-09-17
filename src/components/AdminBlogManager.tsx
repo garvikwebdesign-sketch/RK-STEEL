@@ -153,7 +153,7 @@ export function AdminBlogManager({ initialPosts }: { initialPosts: any[] }) {
 
         <button
           onClick={handleOpenCreate}
-          className="bg-navy-900 hover:bg-navy-800 text-gold-400 font-bold text-xs uppercase px-5 py-3 rounded-lg flex items-center gap-2 shadow"
+          className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase px-5 py-3 rounded-lg flex items-center gap-2 shadow"
         >
           <Plus className="w-4 h-4" /> Create New Blog Article
         </button>

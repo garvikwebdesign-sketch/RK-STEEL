@@ -1,13 +1,12 @@
-import bcrypt from "bcryptjs";
-import { connectToDatabase } from "./db";
-import { Admin } from "@/models/Admin";
-import { Product } from "@/models/Product";
-import { BlogPost } from "@/models/BlogPost";
+const mongoose = require("mongoose");
 
-export const initialProducts = [
+const MONGODB_URI = "mongodb+srv://samarpansingh17_db_user:DyKdGAmK5iYltVHv@cluster0.ikaahha.mongodb.net/rk_steel";
+
+const products = [
   // 1. TMT Bars (3 Products)
   {
     name: "Tata Tiscon 550SD TMT Rebars",
+    title: "Tata Tiscon 550SD TMT Rebars",
     brand: "Tata Tiscon",
     category: "TMT Bars",
     gradeStandard: "Fe 550SD (Super Ductile) / IS 1786:2008",
@@ -21,11 +20,13 @@ export const initialProducts = [
       "Direct Tata Steel warranty test certificate with batch QR code on every bundle"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-tiscon-550sd"
   },
   {
     name: "Tata Tiscon CRS 550D TMT Rebars",
+    title: "Tata Tiscon CRS 550D TMT Rebars",
     brand: "Tata Tiscon",
     category: "TMT Bars",
     gradeStandard: "Fe 550D CRS (Corrosion Resistant Steel) / IS 1786",
@@ -39,11 +40,13 @@ export const initialProducts = [
       "Exceeds IS 1786 corrosion resistance and mechanical requirements"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f8?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f8?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-tiscon-crs-550d"
   },
   {
     name: "Tata Tiscon Superlinks & Ultima GFX Stirrups",
+    title: "Tata Tiscon Superlinks & Ultima GFX Stirrups",
     brand: "Tata Tiscon",
     category: "TMT Bars",
     gradeStandard: "Fe 500D / IS 1786 Machine-Made Stirrups / IS 13920",
@@ -57,6 +60,7 @@ export const initialProducts = [
       "Available in Ultima GFX zinc-polymer coated variants for anti-rust protection"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-tiscon-superlinks-stirrups"
   },
@@ -64,6 +68,7 @@ export const initialProducts = [
   // 2. Pipes & Hollow Sections (3 Products)
   {
     name: "Tata Structura Square Hollow Sections (SHS)",
+    title: "Tata Structura Square Hollow Sections (SHS)",
     brand: "Tata Structura",
     category: "Pipes & Hollow Sections",
     gradeStandard: "YSt 210 / YSt 310 / YSt 355 / IS 4923",
@@ -77,11 +82,13 @@ export const initialProducts = [
       "Direct authorised distribution from RK STEEL CO Noida stockyard"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-structura-square-hollow-sections"
   },
   {
     name: "Tata Structura Rectangular Hollow Sections (RHS)",
+    title: "Tata Structura Rectangular Hollow Sections (RHS)",
     brand: "Tata Structura",
     category: "Pipes & Hollow Sections",
     gradeStandard: "YSt 210 / YSt 310 / YSt 355 / IS 4923",
@@ -95,11 +102,13 @@ export const initialProducts = [
       "Available in standard 6m and custom factory cut lengths"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-structura-rectangular-hollow-sections"
   },
   {
     name: "Tata Structura Circular Hollow Sections (CHS / Pipes)",
+    title: "Tata Structura Circular Hollow Sections (CHS / Pipes)",
     brand: "Tata Structura",
     category: "Pipes & Hollow Sections",
     gradeStandard: "IS 1161 / IS 1239 / YSt 210 / YSt 310",
@@ -113,6 +122,7 @@ export const initialProducts = [
       "Fully compliant with National Building Code (NBC) requirements"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-structura-circular-hollow-sections"
   },
@@ -120,6 +130,7 @@ export const initialProducts = [
   // 3. Colour Coated & Roofing Sheets (3 Products)
   {
     name: "Tata Durashine® Roof Profile Colour Coated Sheets",
+    title: "Tata Durashine® Roof Profile Colour Coated Sheets",
     brand: "Tata Durashine",
     category: "Colour Coated & Roofing Sheets",
     gradeStandard: "Galvalume AZ150 / IS 15965 / AS 1397 (550 MPa)",
@@ -133,11 +144,13 @@ export const initialProducts = [
       "Up to 4x longer rust-free life compared to standard galvanised iron sheets"
     ],
     images: [{ url: "https://tatasteelcolors.com/wp-content/uploads/2024/12/roof.jpg" }],
+    imageUrl: "https://tatasteelcolors.com/wp-content/uploads/2024/12/roof.jpg",
     authorisedDealer: true,
     slug: "tata-durashine-roof-profile-sheets"
   },
   {
     name: "Tata Durashine® Wall Cladding Profile Sheets",
+    title: "Tata Durashine® Wall Cladding Profile Sheets",
     brand: "Tata Durashine",
     category: "Colour Coated & Roofing Sheets",
     gradeStandard: "Galvalume AZ150 / IS 15965 / AS 1397",
@@ -151,11 +164,13 @@ export const initialProducts = [
       "Direct authorised dealer supply with Tata Steel warranty certification"
     ],
     images: [{ url: "https://tatasteelcolors.com/wp-content/uploads/2024/12/wall.jpg" }],
+    imageUrl: "https://tatasteelcolors.com/wp-content/uploads/2024/12/wall.jpg",
     authorisedDealer: true,
     slug: "tata-durashine-wall-cladding-sheets"
   },
   {
     name: "Tata Durashine® Tile Profile Sheets & Accessories",
+    title: "Tata Durashine® Tile Profile Sheets & Accessories",
     brand: "Tata Durashine",
     category: "Colour Coated & Roofing Sheets",
     gradeStandard: "Galvalume AZ150 / IS 15965",
@@ -169,6 +184,7 @@ export const initialProducts = [
       "Available in warm terracotta, deep brown, and heritage red colors"
     ],
     images: [{ url: "https://tatasteelcolors.com/wp-content/uploads/2026/02/durashine-roof-and-wall2-copy-2.webp" }],
+    imageUrl: "https://tatasteelcolors.com/wp-content/uploads/2026/02/durashine-roof-and-wall2-copy-2.webp",
     authorisedDealer: true,
     slug: "tata-durashine-tile-profile-sheets"
   },
@@ -176,6 +192,7 @@ export const initialProducts = [
   // 4. MS/HR/CR/GI Sheets & Plates (3 Products)
   {
     name: "Tata Astrum Hot Rolled (HR) Steel Sheets & Plates",
+    title: "Tata Astrum Hot Rolled (HR) Steel Sheets & Plates",
     brand: "Tata Astrum",
     category: "MS/HR/CR/GI Sheets & Plates",
     gradeStandard: "IS 2062 E250 / E350 (Grade A, B, BR) / ASTM A36",
@@ -189,11 +206,13 @@ export const initialProducts = [
       "Supplied with authentic Tata Steel mill test certificates and heat traceability"
     ],
     images: [{ url: "https://www.tatasteel.com/media/3293/tata-astrum2.jpg" }],
+    imageUrl: "https://www.tatasteel.com/media/3293/tata-astrum2.jpg",
     authorisedDealer: true,
     slug: "tata-astrum-hr-sheets-plates"
   },
   {
     name: "Tata Astrum Hot Rolled (HR) Steel Coils",
+    title: "Tata Astrum Hot Rolled (HR) Steel Coils",
     brand: "Tata Astrum",
     category: "MS/HR/CR/GI Sheets & Plates",
     gradeStandard: "IS 2062 / IS 10748 / Commercial & High Tensile",
@@ -207,11 +226,13 @@ export const initialProducts = [
       "Trusted by automotive OEMs, yellow-goods makers, and structural pipe roll-formers"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-astrum-hr-steel-coils"
   },
   {
     name: "Tata Steelium Cold Rolled (CR) & Tata Kosh GI Sheets",
+    title: "Tata Steelium Cold Rolled (CR) & Tata Kosh GI Sheets",
     brand: "Tata Steel",
     category: "MS/HR/CR/GI Sheets & Plates",
     gradeStandard: "CR: IS 513 CR1/CR2/CR3 (Deep Drawing) | GI: IS 277 (120 - 275 GSM Zinc)",
@@ -225,6 +246,7 @@ export const initialProducts = [
       "Widely used in electrical control panels, HVAC ducting, appliances, and auto body panels"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "tata-steelium-cr-tata-kosh-gi-sheets"
   },
@@ -232,6 +254,7 @@ export const initialProducts = [
   // 5. Structural Steel (3 Products)
   {
     name: "Mild Steel (MS) Equal & Unequal Structural Angles",
+    title: "Mild Steel (MS) Equal & Unequal Structural Angles",
     brand: "SAIL / Jindal / Primary Mills",
     category: "Structural Steel",
     gradeStandard: "IS 2062:2011 E250 / E350 (Grade A & BR)",
@@ -245,11 +268,13 @@ export const initialProducts = [
       "Supplied with complete mill test certificate confirming chemical and mechanical properties"
     ],
     images: [{ url: "https://ssellp.com/wp-content/uploads/2023/03/MS-Angle-Channel-Beam.png" }],
+    imageUrl: "https://ssellp.com/wp-content/uploads/2023/03/MS-Angle-Channel-Beam.png",
     authorisedDealer: true,
     slug: "mild-steel-equal-unequal-structural-angles"
   },
   {
     name: "Mild Steel (MS) Structural Channels (ISMC Sections)",
+    title: "Mild Steel (MS) Structural Channels (ISMC Sections)",
     brand: "SAIL / RINL (Vizag) / Jindal Steel",
     category: "Structural Steel",
     gradeStandard: "IS 2062:2011 E250 / IS 808 (ISMC)",
@@ -263,11 +288,13 @@ export const initialProducts = [
       "Ready stock available at standard weights per meter with test reports"
     ],
     images: [{ url: "https://ssellp.com/wp-content/uploads/2023/03/MS-Angle-Channel-Beam.png" }],
+    imageUrl: "https://ssellp.com/wp-content/uploads/2023/03/MS-Angle-Channel-Beam.png",
     authorisedDealer: true,
     slug: "mild-steel-structural-channels-ismc"
   },
   {
     name: "Mild Steel (MS) Beams & Joists (ISMB / Heavy Columns)",
+    title: "Mild Steel (MS) Beams & Joists (ISMB / Heavy Columns)",
     brand: "SAIL / Jindal Steel / JSPL",
     category: "Structural Steel",
     gradeStandard: "IS 2062:2011 E250 / E350 / IS 808 (ISMB, NPB, WPB)",
@@ -281,6 +308,7 @@ export const initialProducts = [
       "Available in standard mill lengths of 11m, 12m, and custom cut lengths"
     ],
     images: [{ url: "https://ssellp.com/wp-content/uploads/2023/03/MS-Angle-Channel-Beam.png" }],
+    imageUrl: "https://ssellp.com/wp-content/uploads/2023/03/MS-Angle-Channel-Beam.png",
     authorisedDealer: true,
     slug: "mild-steel-beams-joists-ismb"
   },
@@ -288,6 +316,7 @@ export const initialProducts = [
   // 6. Weldmesh (3 Products)
   {
     name: "Heavy Duty MS Structural Reinforcement Weldmesh",
+    title: "Heavy Duty MS Structural Reinforcement Weldmesh",
     brand: "RK Steel / Authorised Mill",
     category: "Weldmesh",
     gradeStandard: "IS 1566 / IS 432 Hard Drawn High Tensile Wire",
@@ -301,11 +330,13 @@ export const initialProducts = [
       "Tested for weld shear strength and wire tensile strength per IS 1566"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1590402494587-44b71d7772f6?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1590402494587-44b71d7772f6?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "heavy-duty-ms-reinforcement-weldmesh"
   },
   {
     name: "Galvanised (GI) Welded Wire Mesh Rolls & Sheets",
+    title: "Galvanised (GI) Welded Wire Mesh Rolls & Sheets",
     brand: "RK Steel / Authorised Mill",
     category: "Weldmesh",
     gradeStandard: "IS 280 Hot Dip Galvanised Wire (80 - 120 GSM Zinc)",
@@ -319,11 +350,13 @@ export const initialProducts = [
       "Clean silver finish without sharp burrs or weld flash"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1590725140246-20150b073016?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1590725140246-20150b073016?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "galvanised-gi-welded-wire-mesh"
   },
   {
     name: "Stainless Steel SS 304 Welded Wire Mesh",
+    title: "Stainless Steel SS 304 Welded Wire Mesh",
     brand: "RK Steel / Ganpat / Premium Mill",
     category: "Weldmesh",
     gradeStandard: "AISI 304 / ASTM A580 Food Grade Stainless Steel",
@@ -337,6 +370,7 @@ export const initialProducts = [
       "100% genuine SS 304 material test certificate provided"
     ],
     images: [{ url: "https://www.ganpatind.com/wp-content/uploads/2017/11/ss-304-angle.jpg" }],
+    imageUrl: "https://www.ganpatind.com/wp-content/uploads/2017/11/ss-304-angle.jpg",
     authorisedDealer: true,
     slug: "stainless-steel-ss304-welded-wire-mesh"
   },
@@ -344,6 +378,7 @@ export const initialProducts = [
   // 7. Chain Link & Accessories (3 Products)
   {
     name: "Heavy Galvanised (GI) Diamond Chain Link Fencing",
+    title: "Heavy Galvanised (GI) Diamond Chain Link Fencing",
     brand: "RK Steel / Authorised Mill",
     category: "Chain Link & Accessories",
     gradeStandard: "IS 2721 Heavy Zinc Coated Galvanised Wire",
@@ -357,11 +392,13 @@ export const initialProducts = [
       "Easy installation with standard MS pipe or angle fence posts"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "heavy-galvanised-gi-chain-link-fencing"
   },
   {
     name: "PVC Coated Security Chain Link Fencing",
+    title: "PVC Coated Security Chain Link Fencing",
     brand: "RK Steel / Authorised Mill",
     category: "Chain Link & Accessories",
     gradeStandard: "Galvanised core wire with Extruded UV-Resistant Virgin PVC",
@@ -375,11 +412,13 @@ export const initialProducts = [
       "Supplied in compact tightly-wrapped rolls for safe transport"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "pvc-coated-security-chain-link-fencing"
   },
   {
     name: "High-Security Barbed Wire & Concertina Razor Wire Coils",
+    title: "High-Security Barbed Wire & Concertina Razor Wire Coils",
     brand: "RK Steel / Tata Wiron / Premium Mill",
     category: "Chain Link & Accessories",
     gradeStandard: "IS 278 (Barbed Wire) & ASTM F1910 (Razor Wire CBT-65 / BTO-22)",
@@ -393,92 +432,47 @@ export const initialProducts = [
       "High-security defense specification for military, government, and industrial campuses"
     ],
     images: [{ url: "https://images.unsplash.com/photo-1516216628859-9bcceabb84ca?auto=format&fit=crop&w=800&q=80" }],
+    imageUrl: "https://images.unsplash.com/photo-1516216628859-9bcceabb84ca?auto=format&fit=crop&w=800&q=80",
     authorisedDealer: true,
     slug: "barbed-wire-concertina-razor-wire-coils"
   }
 ];
 
-export const initialBlogPosts = [
-  {
-    title: "Why Tata Tiscon 550SD is the Gold Standard for Earthquake-Resistant Construction in NCR",
-    slug: "tata-tiscon-550sd-earthquake-resistant-steel-ncr",
-    excerpt: "Discover how Tata Tiscon 550SD Super Ductile rebars safeguard high-rise residential and commercial buildings across Seismic Zone IV regions like Delhi-NCR.",
-    contentHtml: `<p>Delhi-NCR, including Noida, Greater Noida, and Gurgaon, falls under <strong>Seismic Zone IV</strong>—a high-risk zone for severe earthquake ground movement. Building strong foundations in this region requires steel rebars that combine high yield strength with exceptional ductility.</p>
-    <h3>What makes Fe 550SD Super Ductile?</h3>
-    <p>Standard TMT bars can become brittle under extreme cyclical loading. Tata Tiscon 550SD features a unique micro-structure achieved through controlled Thermo-Mechanical Treatment. The 'SD' designation stands for Super Ductile, meaning the rebar can undergo significant elongation without snapping under seismic stress.</p>
-    <ul>
-      <li><strong>Higher Elongation (16%+):</strong> Allows the building structure to absorb dynamic energy during tremors.</li>
-      <li><strong>Uniform Rib Pattern:</strong> Formulated using CNC-notch machines to ensure bond strength with concrete matrix.</li>
-      <li><strong>GreenPro Certified:</strong> Reduced environmental impact during manufacturing.</li>
-    </ul>
-    <p>As an <strong>Authorised Dealer of Tata Steel in Noida since 1993</strong>, RK STEEL CO supplies 100% genuine Tata Tiscon rebars complete with manufacturer test certificates for every batch. Tagline: All Steel and Iron Items Under One Roof.</p>`,
-    coverImage: { url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" },
-    author: "RK STEEL CO Technical Team",
-    tags: ["Tata Tiscon", "TMT Bars", "Construction Tips", "Noida Steel"],
-    published: true
-  },
-  {
-    title: "Guide to Steel Weight Calculation: Formulas for Pipes, Sheets & Structural Sections",
-    slug: "guide-to-steel-weight-calculation-formulas",
-    excerpt: "Learn how civil engineers and site supervisors calculate unit steel weights in kg/m for MS pipes, square hollow sections, sheets, and angles using standard density constants.",
-    contentHtml: `<p>Accurate steel weight estimation is essential for procurement, transport budgeting, and structural design. Steel density is universally benchmarked at <strong>7,850 kg/m³</strong> (or 0.00785 kg/cm³).</p>
-    <h3>Key Formulas Used by Steel Traders:</h3>
-    <ol>
-      <li><strong>Steel Sheet / Plate:</strong> Weight (kg) = Length (m) × Width (m) × Thickness (mm) × 7.85</li>
-      <li><strong>Circular Pipe:</strong> Weight (kg/m) = 0.02466 × Thickness (mm) × (Outer Diameter - Thickness)</li>
-      <li><strong>Square Hollow Tube:</strong> Weight (kg/m) = 0.0314 × Thickness (mm) × (Side - Thickness)</li>
-      <li><strong>Round TMT Bar:</strong> Weight (kg/m) = 0.006165 × Diameter² (mm)</li>
-    </ol>
-    <p>You can also use the live interactive <a href="/calculators">RK STEEL CO Weight Calculators</a> on our website for instant estimates across 9 different shapes!</p>`,
-    coverImage: { url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" },
-    author: "RK STEEL CO Editorial",
-    tags: ["Calculators", "Civil Engineering", "Steel Specs"],
-    published: true
-  },
-  {
-    title: "Choosing Roofing Sheets: Tata Durashine Galvalume vs. Standard GI Sheets",
-    slug: "choosing-roofing-sheets-tata-durashine-vs-gi",
-    excerpt: "Comparing thermal reflectivity, lifespan, and aesthetic durability between Galvalume colour-coated sheets and conventional galvanised sheets for industrial sheds and residential homes.",
-    contentHtml: `<p>When building factory roofs, warehouses, or residential terrace sheds, choosing the right roofing sheet material directly impacts maintenance costs and indoor comfort.</p>
-    <h3>Tata Durashine Galvalume Sheets:</h3>
-    <p>Tata Durashine uses a 55% Aluminium-Zinc alloy coating. Aluminium provides barrier corrosion resistance while zinc provides sacrificial protection. The result is a sheet that lasts up to 4 times longer than standard GI sheets under tropical weather.</p>
-    <h3>Benefits:</h3>
-    <ul>
-      <li>High solar reflection keeps factory floors cooler by 3°C - 5°C.</li>
-      <li>Fitted with leak-proof anti-capillary grooves.</li>
-      <li>Vibrant long-lasting paint finishes (Castle Red, Ocean Blue).</li>
-    </ul>`,
-    coverImage: { url: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" },
-    author: "RK STEEL CO Technical Team",
-    tags: ["Tata Durashine", "Roofing Sheets", "Industrial Sheds"],
-    published: true
-  }
-];
+async function seed() {
+  console.log("Connecting to MongoDB Atlas...");
+  await mongoose.connect(MONGODB_URI);
+  console.log("Connected successfully!");
 
-export async function seedDatabase() {
-  await connectToDatabase();
+  const collection = mongoose.connection.db.collection("products");
 
-  // 1. Seed Admin
-  const adminUsername = process.env.ADMIN_SEED_USERNAME || "admin";
-  const adminPassword = process.env.ADMIN_SEED_PASSWORD || "admin123";
-  const existingAdmin = await Admin.findOne({ username: adminUsername });
-  if (!existingAdmin) {
-    const passwordHash = await bcrypt.hash(adminPassword, 10);
-    await Admin.create({ username: adminUsername, passwordHash });
-    console.log("Seeded initial admin account");
+  console.log("Clearing previous placeholder/duplicate products in collection...");
+  await collection.deleteMany({});
+
+  console.log(`Inserting ${products.length} comprehensive products (3 per category across 7 categories)...`);
+  const result = await collection.insertMany(products.map(p => ({
+    ...p,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  })));
+
+  console.log(`Successfully inserted ${result.insertedCount} products!`);
+
+  // Verification
+  const categories = await collection.distinct("category");
+  console.log("\n--- Verification Summary by Category ---");
+  for (const cat of categories) {
+    const items = await collection.find({ category: cat }).toArray();
+    console.log(`\n📁 Category: "${cat}" (${items.length} products)`);
+    items.forEach((item, idx) => {
+      console.log(`   ${idx + 1}. ${item.name} [Brand: ${item.brand}] [Slug: ${item.slug}]`);
+    });
   }
 
-  // 2. Seed Products
-  const productCount = await Product.countDocuments();
-  if (productCount === 0) {
-    await Product.insertMany(initialProducts);
-    console.log("Seeded initial catalogue products");
-  }
-
-  // 3. Seed Blog Posts
-  const blogCount = await BlogPost.countDocuments();
-  if (blogCount === 0) {
-    await BlogPost.insertMany(initialBlogPosts);
-    console.log("Seeded initial blog posts");
-  }
+  await mongoose.disconnect();
+  console.log("\nDisconnected from MongoDB. Seeding process complete!");
 }
+
+seed().catch(err => {
+  console.error("Seeding error:", err);
+  process.exit(1);
+});
