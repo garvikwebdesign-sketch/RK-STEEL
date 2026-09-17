@@ -96,27 +96,21 @@ export function Navbar() {
             {/* Home */}
             <Link
               href="/"
-              className={`relative px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
+              className={`px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Home
-              {isActive("/") && (
-                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
-              )}
             </Link>
 
             {/* About Us */}
             <Link
               href="/about"
-              className={`relative px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
+              className={`px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/about") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               About Us
-              {isActive("/about") && (
-                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
-              )}
             </Link>
 
             {/* Products Dropdown */}
@@ -155,14 +149,11 @@ export function Navbar() {
             {/* Industries */}
             <Link
               href="/industries"
-              className={`relative px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
+              className={`px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/industries") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Industries
-              {isActive("/industries") && (
-                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
-              )}
             </Link>
 
             {/* Calculators Dropdown */}
@@ -234,14 +225,11 @@ export function Navbar() {
             {/* Contact Us */}
             <Link
               href="/contact"
-              className={`relative px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
+              className={`px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap ${
                 isActive("/contact") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
               }`}
             >
               Contact Us
-              {isActive("/contact") && (
-                <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-red-600 rounded-full" />
-              )}
             </Link>
           </div>
 

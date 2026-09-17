@@ -108,17 +108,17 @@ h3, .h3 {
   border-radius: 2px;
 }
 
-/* Modern clean scrollbar */
+/* Modern subtle neutral scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B192C;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #DC2626;
-  border-radius: 4px;
+  background: #CBD5E1;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B91C1C;
+  background: #94A3B8;
 }
