@@ -18,9 +18,9 @@ export function Logo({ variant = "light", className = "", size = "md" }: LogoPro
       tagline: "text-[10px] tracking-[0.15em]",
     },
     md: {
-      img: "w-14 h-14 sm:w-15 sm:h-15 lg:w-[62px] lg:h-[62px]",
-      title: "text-2xl sm:text-[26px] lg:text-[27px]",
-      tagline: "text-[10px] sm:text-[10.5px] lg:text-[11px] tracking-[0.16em]",
+      img: "w-12 h-12 sm:w-14 sm:h-14 lg:w-[50px] lg:h-[50px] xl:w-[60px] xl:h-[60px]",
+      title: "text-xl sm:text-2xl lg:text-[22px] xl:text-[26px]",
+      tagline: "text-[9px] sm:text-[10px] lg:text-[10px] xl:text-[10.5px] tracking-[0.14em]",
     },
     lg: {
       img: "w-20 h-20 sm:w-22 sm:h-22",

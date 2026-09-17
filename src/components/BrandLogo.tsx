@@ -239,62 +239,10 @@ export function JindalSteelLogo({ className = "h-10" }: { className?: string }) 
  */
 export function TataAstrumLogo({ className = "h-10" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 240 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <img
+      src="/logos/tata-astrum.png"
+      alt="Tata Astrum HR Sheets and Coils"
       className={`w-auto max-w-full object-contain select-none ${className}`}
-      aria-label="Tata Astrum & Steelium Official Logo"
-    >
-      <circle cx="26" cy="30" r="20" fill="#005A9C" />
-      <path
-        d="M18 22C21 22 24 23.5 26 26.5C28 23.5 31 22 34 22V25C31.5 25 29 26.5 27.5 29V39H24.5V29C23 26.5 20.5 25 18 25V22Z"
-        fill="white"
-      />
-      <text
-        x="56"
-        y="24"
-        fill="#005A9C"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="13"
-        fontWeight="900"
-        letterSpacing="2"
-      >
-        TATA
-      </text>
-      <text
-        x="56"
-        y="42"
-        fill="#1E293B"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="17"
-        fontWeight="900"
-        letterSpacing="1"
-      >
-        ASTRUM
-      </text>
-      <text
-        x="138"
-        y="42"
-        fill="#0284C7"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="12"
-        fontWeight="800"
-        letterSpacing="1"
-      >
-        & STEELIUM
-      </text>
-      <text
-        x="56"
-        y="53"
-        fill="#64748B"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="7"
-        fontWeight="700"
-        letterSpacing="1"
-      >
-        HR & CR STEEL SHEETS & PLATES
-      </text>
-    </svg>
+    />
   );
 }

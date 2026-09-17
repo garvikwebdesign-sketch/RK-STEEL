@@ -4,6 +4,7 @@ import {
   TataTisconLogo,
   TataStructuraLogo,
   TataDurashineLogo,
+  TataAstrumLogo,
   SailLogo,
   JswSteelLogo,
   AplApolloLogo,
@@ -39,6 +40,13 @@ export function BrandStrip() {
       component: TataDurashineLogo,
       href: "/brands/tata-durashine",
       subtext: "Galvalume Sheets",
+    },
+    {
+      name: "Tata Astrum",
+      type: "HR Sheets & Coils",
+      component: TataAstrumLogo,
+      href: "/brands/tata-astrum",
+      subtext: "HR Sheets & Plates",
     },
     {
       name: "SAIL",
@@ -84,7 +92,7 @@ export function BrandStrip() {
         </div>
 
         {/* Brand Logos Row - Authentic Logos */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 items-stretch justify-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3 items-stretch justify-center">
           {brands.map((b, idx) => {
             const LogoComp = b.component;
             return (
