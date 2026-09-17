@@ -435,7 +435,7 @@ export function SteelCalculators({ activeTabProp, onTabChange }: SteelCalculator
                 onClick={() => handleTabChange(calc.id)}
                 className={`text-left p-3 rounded-xl transition-all flex flex-col ${
                   isSelected
-                    ? "bg-red-600 text-white font-bold shadow-md translate-x-1"
+                    ? "bg-red-600 text-white font-bold shadow-md"
                     : "text-slate-300 hover:bg-slate-800/80 hover:text-white"
                 }`}
               >
