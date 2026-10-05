@@ -3,8 +3,9 @@ import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
 import { Lead } from "@/models/Lead";
 import { PriceList } from "@/models/PriceList";
+import { Catalogue } from "@/models/Catalogue";
 import Link from "next/link";
-import { Package, FileText, MessageSquare, Plus, ShieldCheck, TrendingUp } from "lucide-react";
+import { Package, FileText, MessageSquare, Plus, ShieldCheck, TrendingUp, BookOpen } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export default async function AdminDashboardPage() {
   const blogCount = await BlogPost.countDocuments();
   const leadCount = await Lead.countDocuments();
   const priceListCount = await PriceList.countDocuments();
+  const catalogueCount = await Catalogue.countDocuments();
   const recentLeads = await Lead.find().sort({ createdAt: -1 }).limit(5).lean();
 
   return (
@@ -30,43 +32,56 @@ export default async function AdminDashboardPage() {
             <h1 className="font-heading text-3xl font-bold text-navy-900">Admin Command Dashboard</h1>
           </div>
           <p className="text-xs text-gray-500 mt-1">
-            Full management access for products, rate card circulars, technical blog posts, and customer leads.
+            Full management access for catalogues, rate cards, products, articles, and customer leads.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-2">
           <Link
-            href="/admin/price-lists"
+            href="/admin/catalogues"
             className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
           >
-            <TrendingUp className="w-4 h-4" /> Upload Rate Card
+            <BookOpen className="w-4 h-4" /> Upload Catalogue
+          </Link>
+          <Link
+            href="/admin/price-lists"
+            className="bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
+          >
+            <TrendingUp className="w-4 h-4 text-gold-400" /> Upload Rate Card
           </Link>
           <Link
             href="/admin/products"
-            className="bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
-          >
-            <Plus className="w-4 h-4" /> Add Product
-          </Link>
-          <Link
-            href="/admin/blog"
             className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
           >
-            <Plus className="w-4 h-4 text-gold-400" /> New Blog Post
+            <Plus className="w-4 h-4" /> Add Product
           </Link>
         </div>
       </div>
 
       {/* Stats Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-between">
+          <div>
+            <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">PDF Catalogues</div>
+            <div className="font-heading text-4xl font-black text-red-600 mt-1">{catalogueCount}</div>
+            <Link href="/admin/catalogues" className="text-xs font-bold text-red-600 hover:underline mt-2 inline-block">
+              Manage Catalogues →
+            </Link>
+          </div>
+          <div className="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center">
+            <BookOpen className="w-6 h-6" />
+          </div>
+        </div>
+
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-between">
           <div>
             <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">Rate Cards &amp; Flyers</div>
-            <div className="font-heading text-4xl font-black text-red-600 mt-1">{priceListCount}</div>
+            <div className="font-heading text-4xl font-black text-navy-900 mt-1">{priceListCount}</div>
             <Link href="/admin/price-lists" className="text-xs font-bold text-red-600 hover:underline mt-2 inline-block">
               Manage Rate Cards →
             </Link>
           </div>
-          <div className="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-navy-100 text-navy-900 rounded-xl flex items-center justify-center">
             <TrendingUp className="w-6 h-6" />
           </div>
         </div>
@@ -79,7 +94,7 @@ export default async function AdminDashboardPage() {
               Manage Products →
             </Link>
           </div>
-          <div className="w-12 h-12 bg-navy-100 text-navy-900 rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-slate-100 text-slate-800 rounded-xl flex items-center justify-center">
             <Package className="w-6 h-6" />
           </div>
         </div>

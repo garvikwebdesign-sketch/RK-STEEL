@@ -1,6 +1,9 @@
 import Link from "next/link";
-import { ShieldCheck, Download, FileText, ExternalLink, Phone } from "lucide-react";
+import { Download } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
+import { connectToDatabase } from "@/lib/db";
+import { Catalogue } from "@/models/Catalogue";
+import { initialCatalogues } from "@/lib/seedData";
 
 export const dynamic = "force-dynamic";
 
@@ -9,91 +12,49 @@ export const metadata = {
   description: "View and download official product catalogues and weight charts for Tata Tiscon, SAIL SEQR, Tata Structura, Tata Durashine, JSW Neosteel, APL Apollo, Jindal Panther, and RK STEEL CO Master Catalogue 2026.",
 };
 
-const CATALOGUES = [
-  {
-    title: "RK STEEL CO – MASTER PRODUCT CATALOGUE 2026",
-    brand: "RK STEEL CO",
-    brandKey: "tata-steel",
-    desc: "Complete comprehensive master product catalogue covering TMT rebars, structural channels, beams, hollow sections, sheets, plates, roofing, and fencing accessories. All Steel & Iron Items Under One Roof.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: true,
-    fileSize: "4.2 MB PDF",
-  },
-  {
-    title: "Tata Tiscon 550SD Product Catalogue",
-    brand: "Tata Tiscon",
-    brandKey: "tata-tiscon",
-    desc: "Official Tata Tiscon technical brochure with mechanical properties, rib pattern details, bendability guidelines, and chemical composition specs.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "2.1 MB PDF",
-  },
-  {
-    title: "SAIL SEQR 550D TMT Brochure",
-    brand: "SAIL",
-    brandKey: "sail",
-    desc: "Official Steel Authority of India Ltd. SEQR TMT rebar specifications, weight tolerances, and IS 1786 certification charts.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "1.8 MB PDF",
-  },
-  {
-    title: "Tata Structura Hollow Sections Catalogue",
-    brand: "Tata Structura",
-    brandKey: "tata-structura",
-    desc: "Square and rectangular hollow tube size matrix, section modulus properties, radius of gyration, and fabrication guidelines.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "3.5 MB PDF",
-  },
-  {
-    title: "Tata Durashine Roofing Sheets Catalogue",
-    brand: "Tata Durashine",
-    brandKey: "tata-durashine",
-    desc: "Colour coated Galvalume profile dimensions, roof truss spacing recommendations, ridge cap accessories, and colour swatches.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "2.9 MB PDF",
-  },
-  {
-    title: "Tata Astrum & Steelium Sheets Brochure",
-    brand: "Tata Astrum",
-    brandKey: "tata-astrum",
-    desc: "Hot rolled and cold rolled steel sheet specifications, coil width ranges, thickness tolerances, and chemical grades.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "2.4 MB PDF",
-  },
-  {
-    title: "JSW Neosteel TMT Rebars Catalogue",
-    brand: "JSW Steel",
-    brandKey: "jsw-steel",
-    desc: "JSW Neosteel product range, physical properties, grade Fe 550D test results, and standard bundle details.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "1.9 MB PDF",
-  },
-  {
-    title: "APL Apollo Tubes & Pipes Catalogue",
-    brand: "APL Apollo",
-    brandKey: "apl-apollo",
-    desc: "ERW black steel pipes, galvanised (GI) tubes, structural hollow sections size & wall thickness chart.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "3.1 MB PDF",
-  },
-  {
-    title: "Jindal Panther TMT Rebars Catalogue",
-    brand: "Jindal Steel & Power",
-    brandKey: "jindal-steel",
-    desc: "Jindal Panther Fe 550D rebar engineering specs, parallel rib bond values, and bendability test standards.",
-    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    isMaster: false,
-    fileSize: "2.5 MB PDF",
-  },
-];
-
 export default async function CataloguesPage() {
+  let cataloguesList: Array<{
+    id?: string;
+    title: string;
+    brand: string;
+    brandKey: string;
+    desc: string;
+    pdfUrl: string;
+    isMaster: boolean;
+    fileSize: string;
+  }> = initialCatalogues.map((c, i) => ({
+    id: `seed-${i}`,
+    title: c.title,
+    brand: c.brand,
+    brandKey: c.brandKey,
+    desc: c.desc,
+    pdfUrl: c.pdfUrl,
+    isMaster: !!c.isMaster,
+    fileSize: c.fileSize || "PDF",
+  }));
+
+  try {
+    await connectToDatabase();
+    const dbCatalogues = await Catalogue.find({ isActive: true })
+      .sort({ isMaster: -1, order: 1, createdAt: -1 })
+      .lean();
+
+    if (dbCatalogues && dbCatalogues.length > 0) {
+      cataloguesList = dbCatalogues.map((cat: any) => ({
+        id: String(cat._id),
+        title: cat.title,
+        brand: cat.brand,
+        brandKey: cat.brandKey || "tata-steel",
+        desc: cat.desc || "",
+        pdfUrl: cat.pdfUrl,
+        isMaster: !!cat.isMaster,
+        fileSize: cat.fileSize || "PDF",
+      }));
+    }
+  } catch (error) {
+    console.error("Error loading dynamic catalogues from MongoDB:", error);
+  }
+
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
       {/* Header Banner */}
@@ -109,8 +70,13 @@ export default async function CataloguesPage() {
           <p className="text-slate-200 text-base sm:text-lg max-w-2xl mt-3 font-normal leading-relaxed">
             Download official mill technical brochures and RK STEEL CO's Complete Master Product Catalogue 2026 in high-resolution PDF format.
           </p>
-          <div className="mt-4 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs sm:text-sm font-bold px-4 py-2 rounded-lg font-sans">
-            ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <span className="inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs sm:text-sm font-bold px-4 py-2 rounded-lg font-sans">
+              ALL STEEL AND IRON ITEMS UNDER ONE ROOF
+            </span>
+            <span className="inline-block bg-navy-900 border border-slate-700 text-slate-300 text-xs sm:text-sm font-medium px-3.5 py-2 rounded-lg">
+              Showing {cataloguesList.length} Official Catalogues
+            </span>
           </div>
         </div>
       </section>
@@ -119,9 +85,9 @@ export default async function CataloguesPage() {
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {CATALOGUES.map((cat, idx) => (
+            {cataloguesList.map((cat, idx) => (
               <div
-                key={idx}
+                key={cat.id || idx}
                 className={`bg-white rounded-2xl border p-7 shadow-sm hover:shadow-xl transition-all space-y-5 flex flex-col justify-between ${
                   cat.isMaster ? "border-2 border-red-600 ring-4 ring-red-100 bg-gradient-to-br from-white to-red-50/20" : "border-gray-200"
                 }`}

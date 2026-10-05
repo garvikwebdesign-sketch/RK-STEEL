@@ -4,6 +4,7 @@ import { Admin } from "@/models/Admin";
 import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
 import { PriceList } from "@/models/PriceList";
+import { Catalogue } from "@/models/Catalogue";
 
 export const initialProducts = [
   // 1. TMT Bars (3 Products)
@@ -498,6 +499,108 @@ export const initialPriceLists = [
   },
 ];
 
+export const initialCatalogues = [
+  {
+    title: "RK STEEL CO – MASTER PRODUCT CATALOGUE 2026",
+    brand: "RK STEEL CO",
+    brandKey: "tata-steel",
+    desc: "Complete comprehensive master product catalogue covering TMT rebars, structural channels, beams, hollow sections, sheets, plates, roofing, and fencing accessories. All Steel & Iron Items Under One Roof.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: true,
+    fileSize: "4.2 MB PDF",
+    isActive: true,
+    order: 1,
+  },
+  {
+    title: "Tata Tiscon 550SD Product Catalogue",
+    brand: "Tata Tiscon",
+    brandKey: "tata-tiscon",
+    desc: "Official Tata Tiscon technical brochure with mechanical properties, rib pattern details, bendability guidelines, and chemical composition specs.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "2.1 MB PDF",
+    isActive: true,
+    order: 2,
+  },
+  {
+    title: "SAIL SEQR 550D TMT Brochure",
+    brand: "SAIL",
+    brandKey: "sail",
+    desc: "Official Steel Authority of India Ltd. SEQR TMT rebar specifications, weight tolerances, and IS 1786 certification charts.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "1.8 MB PDF",
+    isActive: true,
+    order: 3,
+  },
+  {
+    title: "Tata Structura Hollow Sections Catalogue",
+    brand: "Tata Structura",
+    brandKey: "tata-structura",
+    desc: "Square and rectangular hollow tube size matrix, section modulus properties, radius of gyration, and fabrication guidelines.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "3.5 MB PDF",
+    isActive: true,
+    order: 4,
+  },
+  {
+    title: "Tata Durashine Roofing Sheets Catalogue",
+    brand: "Tata Durashine",
+    brandKey: "tata-durashine",
+    desc: "Colour coated Galvalume profile dimensions, roof truss spacing recommendations, ridge cap accessories, and colour swatches.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "2.9 MB PDF",
+    isActive: true,
+    order: 5,
+  },
+  {
+    title: "Tata Astrum & Steelium Sheets Brochure",
+    brand: "Tata Astrum",
+    brandKey: "tata-astrum",
+    desc: "Hot rolled and cold rolled steel sheet specifications, coil width ranges, thickness tolerances, and chemical grades.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "2.4 MB PDF",
+    isActive: true,
+    order: 6,
+  },
+  {
+    title: "JSW Neosteel TMT Rebars Catalogue",
+    brand: "JSW Steel",
+    brandKey: "jsw-steel",
+    desc: "JSW Neosteel product range, physical properties, grade Fe 550D test results, and standard bundle details.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "1.9 MB PDF",
+    isActive: true,
+    order: 7,
+  },
+  {
+    title: "APL Apollo Tubes & Pipes Catalogue",
+    brand: "APL Apollo",
+    brandKey: "apl-apollo",
+    desc: "ERW black steel pipes, galvanised (GI) tubes, structural hollow sections size & wall thickness chart.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "3.1 MB PDF",
+    isActive: true,
+    order: 8,
+  },
+  {
+    title: "Jindal Panther TMT Rebars Catalogue",
+    brand: "Jindal Steel & Power",
+    brandKey: "jindal-steel",
+    desc: "Jindal Panther Fe 550D rebar engineering specs, parallel rib bond values, and bendability test standards.",
+    pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    isMaster: false,
+    fileSize: "2.5 MB PDF",
+    isActive: true,
+    order: 9,
+  },
+];
+
 export async function seedDatabase() {
   await connectToDatabase();
 
@@ -530,6 +633,13 @@ export async function seedDatabase() {
   if (priceListCount === 0) {
     await PriceList.insertMany(initialPriceLists);
     console.log("Seeded initial rate cards and price lists");
+  }
+
+  // 5. Seed Catalogues
+  const catalogueCount = await Catalogue.countDocuments();
+  if (catalogueCount === 0) {
+    await Catalogue.insertMany(initialCatalogues);
+    console.log("Seeded initial brand catalogues");
   }
 }
 

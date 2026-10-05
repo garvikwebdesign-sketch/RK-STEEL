@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Package, FileText, MessageSquare, LogOut, Globe, ShieldCheck, TrendingUp } from "lucide-react";
+import { LayoutDashboard, Package, FileText, MessageSquare, LogOut, Globe, ShieldCheck, TrendingUp, BookOpen } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -21,6 +21,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const navItems = [
     { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
     { name: "Price Lists & Flyers", href: "/admin/price-lists", icon: TrendingUp },
+    { name: "PDF Catalogues", href: "/admin/catalogues", icon: BookOpen },
     { name: "Products CRUD", href: "/admin/products", icon: Package },
     { name: "Blog Posts CRUD", href: "/admin/blog", icon: FileText },
     { name: "Inquiries & Leads", href: "/admin/leads", icon: MessageSquare },
