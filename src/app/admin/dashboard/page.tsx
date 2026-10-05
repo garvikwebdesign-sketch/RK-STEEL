@@ -2,8 +2,9 @@ import { connectToDatabase } from "@/lib/db";
 import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
 import { Lead } from "@/models/Lead";
+import { PriceList } from "@/models/PriceList";
 import Link from "next/link";
-import { Package, FileText, MessageSquare, Plus, ShieldCheck } from "lucide-react";
+import { Package, FileText, MessageSquare, Plus, ShieldCheck, TrendingUp } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ export default async function AdminDashboardPage() {
   const productCount = await Product.countDocuments();
   const blogCount = await BlogPost.countDocuments();
   const leadCount = await Lead.countDocuments();
+  const priceListCount = await PriceList.countDocuments();
   const recentLeads = await Lead.find().sort({ createdAt: -1 }).limit(5).lean();
 
   return (
@@ -28,20 +30,26 @@ export default async function AdminDashboardPage() {
             <h1 className="font-heading text-3xl font-bold text-navy-900">Admin Command Dashboard</h1>
           </div>
           <p className="text-xs text-gray-500 mt-1">
-            Full management access for products, technical blog posts, and customer leads.
+            Full management access for products, rate card circulars, technical blog posts, and customer leads.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-2">
           <Link
-            href="/admin/products"
+            href="/admin/price-lists"
             className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
+          >
+            <TrendingUp className="w-4 h-4" /> Upload Rate Card
+          </Link>
+          <Link
+            href="/admin/products"
+            className="bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
           >
             <Plus className="w-4 h-4" /> Add Product
           </Link>
           <Link
             href="/admin/blog"
-            className="bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
+            className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow"
           >
             <Plus className="w-4 h-4 text-gold-400" /> New Blog Post
           </Link>
@@ -49,7 +57,20 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Stats Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-between">
+          <div>
+            <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">Rate Cards &amp; Flyers</div>
+            <div className="font-heading text-4xl font-black text-red-600 mt-1">{priceListCount}</div>
+            <Link href="/admin/price-lists" className="text-xs font-bold text-red-600 hover:underline mt-2 inline-block">
+              Manage Rate Cards →
+            </Link>
+          </div>
+          <div className="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center">
+            <TrendingUp className="w-6 h-6" />
+          </div>
+        </div>
+
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center justify-between">
           <div>
             <div className="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Products</div>
@@ -71,7 +92,7 @@ export default async function AdminDashboardPage() {
               Manage Blog Posts →
             </Link>
           </div>
-          <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-slate-100 text-slate-800 rounded-xl flex items-center justify-center">
             <FileText className="w-6 h-6" />
           </div>
         </div>
@@ -84,7 +105,7 @@ export default async function AdminDashboardPage() {
               View All Submissions →
             </Link>
           </div>
-          <div className="w-12 h-12 bg-gold-100 text-gold-600 rounded-xl flex items-center justify-center">
+          <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center">
             <MessageSquare className="w-6 h-6" />
           </div>
         </div>

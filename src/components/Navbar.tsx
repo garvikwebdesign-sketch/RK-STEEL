@@ -156,6 +156,19 @@ export function Navbar() {
               Industries
             </Link>
 
+            {/* Direct Prominent Price Lists & Flyers Link */}
+            <Link
+              href="/price-list"
+              className={`px-2 xl:px-2.5 2xl:px-3 py-2 text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] font-bold transition-colors whitespace-nowrap flex items-center gap-1.5 ${
+                isActive("/price-list") ? "text-red-600 font-bold" : "text-slate-800 hover:text-red-600"
+              }`}
+            >
+              <span>Price Lists &amp; Flyers</span>
+              <span className="bg-red-600 text-white text-[9px] font-black uppercase px-1.5 py-0.5 rounded-full tracking-wider animate-pulse">
+                LIVE
+              </span>
+            </Link>
+
             {/* Calculators Dropdown */}
             <div
               className="relative"
@@ -310,9 +323,12 @@ export function Navbar() {
           <Link
             href="/price-list"
             onClick={() => setMobileOpen(false)}
-            className="block px-3 py-2.5 rounded-lg text-base font-bold text-slate-900 hover:bg-slate-50"
+            className="flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-bold text-red-600 bg-red-50/70 hover:bg-red-100 border border-red-100"
           >
-            Daily Price Lists
+            <span>Price Lists &amp; Rate Flyers</span>
+            <span className="bg-red-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-full">
+              LIVE
+            </span>
           </Link>
           <Link
             href="/catalogues"

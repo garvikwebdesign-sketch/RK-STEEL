@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { ShieldCheck, TrendingDown, TrendingUp, Download, Phone, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { connectToDatabase } from "@/lib/db";
+import { PriceList } from "@/models/PriceList";
+import { RateCardsGallery } from "@/components/RateCardsGallery";
 
 export const dynamic = "force-dynamic";
 
@@ -58,6 +61,28 @@ export default async function SinglePriceListPage({ params }: { params: Promise<
   const { slug } = await params;
   const data = SINGLE_PRICE_DATA[slug] || SINGLE_PRICE_DATA["tata-tiscon"];
 
+  let rateCards: any[] = [];
+  try {
+    await connectToDatabase();
+    const rawCards = await PriceList.find({
+      isActive: true,
+      $or: [
+        { brandSlug: slug },
+        { brandSlug: { $regex: slug.replace(/-/g, " "), $options: "i" } },
+      ],
+    })
+      .sort({ createdAt: -1 })
+      .lean();
+
+    rateCards = rawCards.map((doc: any) => ({
+      ...doc,
+      _id: doc._id.toString(),
+      createdAt: doc.createdAt?.toISOString() || new Date().toISOString(),
+    }));
+  } catch (err) {
+    console.error("Failed to fetch brand rate cards:", err);
+  }
+
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
       {/* Header */}
@@ -78,7 +103,12 @@ export default async function SinglePriceListPage({ params }: { params: Promise<
 
       {/* Main Content */}
       <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Official Rate Cards / Flyers if uploaded */}
+          {rateCards.length > 0 && (
+            <RateCardsGallery initialCards={rateCards} />
+          )}
+
           {/* Top Stat Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-navy-950 text-white p-6 rounded-2xl border border-navy-800 shadow-lg space-y-2">

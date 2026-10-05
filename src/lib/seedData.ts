@@ -3,6 +3,7 @@ import { connectToDatabase } from "./db";
 import { Admin } from "@/models/Admin";
 import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
+import { PriceList } from "@/models/PriceList";
 
 export const initialProducts = [
   // 1. TMT Bars (3 Products)
@@ -455,6 +456,48 @@ export const initialBlogPosts = [
   }
 ];
 
+export const initialPriceLists = [
+  {
+    title: "Tata Tiscon 550SD Recommended Consumer Price List",
+    brand: "Tata Tiscon",
+    brandSlug: "tata-tiscon",
+    category: "TMT Bars",
+    effectiveDate: "1st OCTOBER 2026",
+    validityRegion: "Valid in West UP",
+    flyerUrl: "/uploads/price-lists/tata-tiscon-550sd-oct-2026.jpg",
+    pdfUrl: "",
+    items: [
+      { size: "6 mm", pricePerPiece: 245, unit: "Per Piece" },
+      { size: "8 mm", pricePerPiece: 417, unit: "Per Piece" },
+      { size: "10 mm", pricePerPiece: 635, unit: "Per Piece" },
+      { size: "12 mm", pricePerPiece: 891, unit: "Per Piece" },
+      { size: "16 mm", pricePerPiece: 1586, unit: "Per Piece" },
+      { size: "20 mm", pricePerPiece: 2479, unit: "Per Piece" },
+      { size: "25 mm", pricePerPiece: 3864, unit: "Per Piece" },
+      { size: "32 mm", pricePerPiece: 6379, unit: "Per Piece" },
+    ],
+    notes: [
+      "The above prices are on each piece basis and are inclusive of all taxes.",
+      "All dimensions are subject to BIS Tolerances.",
+      "Customers can confirm the number of pieces received at the time of delivery.",
+      "Valid in West UP.",
+      "Special 2% Discount on purchase through Tata Steel Aashiyana scheme (**till stock lasts).",
+    ],
+    isActive: true,
+    isFeatured: true,
+    currentPricePerMT: 54500,
+    unit: "Piece",
+    priceHistory: [
+      {
+        date: new Date(),
+        pricePerMT: 54500,
+        changeVsPrevious: 0,
+        notes: "Official flyer circular effective 1st October 2026",
+      },
+    ],
+  },
+];
+
 export async function seedDatabase() {
   await connectToDatabase();
 
@@ -481,4 +524,12 @@ export async function seedDatabase() {
     await BlogPost.insertMany(initialBlogPosts);
     console.log("Seeded initial blog posts");
   }
+
+  // 4. Seed Rate Cards & Price Lists
+  const priceListCount = await PriceList.countDocuments();
+  if (priceListCount === 0) {
+    await PriceList.insertMany(initialPriceLists);
+    console.log("Seeded initial rate cards and price lists");
+  }
 }
+

@@ -457,6 +457,55 @@ async function seed() {
 
   console.log(`Successfully inserted ${result.insertedCount} products!`);
 
+  // Seed initial rate card for Tata Tiscon 550SD (1st October 2026)
+  const priceListCollection = mongoose.connection.db.collection("pricelists");
+  const existingRateCard = await priceListCollection.findOne({ brandSlug: "tata-tiscon" });
+  if (!existingRateCard) {
+    console.log("Seeding Tata Tiscon 550SD Rate Card (Effective 1st October 2026)...");
+    await priceListCollection.insertOne({
+      title: "Tata Tiscon 550SD Recommended Consumer Price List",
+      brand: "Tata Tiscon",
+      brandSlug: "tata-tiscon",
+      category: "TMT Bars",
+      effectiveDate: "1st OCTOBER 2026",
+      validityRegion: "Valid in West UP",
+      flyerUrl: "/uploads/price-lists/tata-tiscon-550sd-oct-2026.jpg",
+      pdfUrl: "",
+      items: [
+        { size: "6 mm", pricePerPiece: 245, unit: "Per Piece" },
+        { size: "8 mm", pricePerPiece: 417, unit: "Per Piece" },
+        { size: "10 mm", pricePerPiece: 635, unit: "Per Piece" },
+        { size: "12 mm", pricePerPiece: 891, unit: "Per Piece" },
+        { size: "16 mm", pricePerPiece: 1586, unit: "Per Piece" },
+        { size: "20 mm", pricePerPiece: 2479, unit: "Per Piece" },
+        { size: "25 mm", pricePerPiece: 3864, unit: "Per Piece" },
+        { size: "32 mm", pricePerPiece: 6379, unit: "Per Piece" },
+      ],
+      notes: [
+        "The above prices are on each piece basis and are inclusive of all taxes.",
+        "All dimensions are subject to BIS Tolerances.",
+        "Customers can confirm the number of pieces received at the time of delivery.",
+        "Valid in West UP.",
+        "Special 2% Discount on purchase through Tata Steel Aashiyana scheme (**till stock lasts).",
+      ],
+      isActive: true,
+      isFeatured: true,
+      currentPricePerMT: 54500,
+      unit: "Piece",
+      priceHistory: [
+        {
+          date: new Date(),
+          pricePerMT: 54500,
+          changeVsPrevious: 0,
+          notes: "Official flyer circular effective 1st October 2026",
+        },
+      ],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+    console.log("Tata Tiscon 550SD Rate Card seeded successfully!");
+  }
+
   // Verification
   const categories = await collection.distinct("category");
   console.log("\n--- Verification Summary by Category ---");

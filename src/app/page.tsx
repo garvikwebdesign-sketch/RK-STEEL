@@ -6,6 +6,8 @@ import { ArrowRight, Calculator, Phone, ChevronRight, TrendingUp, Download, Mess
 import { connectToDatabase } from "@/lib/db";
 import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
+import { PriceList } from "@/models/PriceList";
+import { RateCardsGallery } from "@/components/RateCardsGallery";
 import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
@@ -15,15 +17,31 @@ async function getFeaturedData() {
     await connectToDatabase();
     const products = await Product.find({ authorisedDealer: true }).limit(6).lean();
     const posts = await BlogPost.find({ published: true }).limit(3).lean();
-    return { products, posts };
+    const rawCards = await PriceList.find({
+      isActive: true,
+      $or: [
+        { flyerUrl: { $exists: true, $ne: "" } },
+        { "items.0": { $exists: true } },
+      ],
+    })
+      .sort({ isFeatured: -1, createdAt: -1 })
+      .lean();
+
+    const rateCards = rawCards.map((doc: any) => ({
+      ...doc,
+      _id: doc._id.toString(),
+      createdAt: doc.createdAt?.toISOString() || new Date().toISOString(),
+    }));
+
+    return { products, posts, rateCards };
   } catch {
-    return { products: [], posts: [] };
+    return { products: [], posts: [], rateCards: [] };
   }
 }
 
 export default async function HomePage() {
   await headers();
-  const { products, posts } = await getFeaturedData();
+  const { products, posts, rateCards } = await getFeaturedData();
 
   const categories = [
     {
@@ -66,6 +84,15 @@ export default async function HomePage() {
 
       {/* 3. WHY PARTNER VALUE PROPOSITIONS */}
       <WhyUsStrip />
+
+      {/* 3.5 OFFICIAL BRAND PRICE FLYERS & RATE CARDS SHOWCASE */}
+      {rateCards.length > 0 && (
+        <section className="py-16 bg-slate-50 border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <RateCardsGallery initialCards={rateCards} />
+          </div>
+        </section>
+      )}
 
       {/* 4. PRODUCTS RANGE SECTION */}
       <section className="py-16 bg-white border-b border-slate-100">

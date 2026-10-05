@@ -2,6 +2,9 @@ import Link from "next/link";
 import { ShieldCheck, TrendingUp, TrendingDown, Download, Phone, ArrowRight, FileText } from "lucide-react";
 import { headers } from "next/headers";
 import { BrandLogo } from "@/components/BrandLogo";
+import { connectToDatabase } from "@/lib/db";
+import { PriceList } from "@/models/PriceList";
+import { RateCardsGallery } from "@/components/RateCardsGallery";
 
 export const dynamic = "force-dynamic";
 
@@ -143,6 +146,27 @@ const PRICE_HUB_DATA = [
 
 export default async function PriceListHubPage() {
   await headers();
+  let rateCards: any[] = [];
+  try {
+    await connectToDatabase();
+    const rawCards = await PriceList.find({
+      isActive: true,
+      $or: [
+        { flyerUrl: { $exists: true, $ne: "" } },
+        { "items.0": { $exists: true } },
+      ],
+    })
+      .sort({ isFeatured: -1, createdAt: -1 })
+      .lean();
+    rateCards = rawCards.map((doc: any) => ({
+      ...doc,
+      _id: doc._id.toString(),
+      createdAt: doc.createdAt?.toISOString() || new Date().toISOString(),
+    }));
+  } catch (err) {
+    console.error("Failed to fetch rate cards:", err);
+  }
+
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
       {/* Header Banner */}
@@ -166,9 +190,28 @@ export default async function PriceListHubPage() {
 
       {/* Main Content */}
       <section className="py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          {/* Price Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          {/* 1. Official Uploaded Rate Cards & Circular Flyers */}
+          {rateCards.length > 0 && (
+            <RateCardsGallery initialCards={rateCards} />
+          )}
+
+          {/* 2. Benchmark Metric Ton (MT) Price Overview */}
+          <div className="space-y-6">
+            <div className="border-b border-slate-200 pb-4">
+              <span className="text-xs font-bold text-red-600 uppercase tracking-wider bg-red-50 px-3 py-1 rounded-md border border-red-100">
+                Metric Ton Benchmarks
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 font-sans">
+                Live Wholesale Ex-Stockyard Rates (Per MT)
+              </h3>
+              <p className="text-sm text-slate-600 mt-1">
+                Comparative wholesale baseline pricing with 30-day volatility index for bulk procurement.
+              </p>
+            </div>
+
+            {/* Price Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PRICE_HUB_DATA.map((item) => (
               <div
                 key={item.brandSlug}
@@ -261,6 +304,7 @@ export default async function PriceListHubPage() {
             ))}
           </div>
         </div>
+      </div>
       </section>
     </div>
   );
