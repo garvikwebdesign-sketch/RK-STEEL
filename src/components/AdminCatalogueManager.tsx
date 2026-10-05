@@ -82,6 +82,12 @@ export function AdminCatalogueManager({
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Check 4.5 MB serverless limit
+    if (file.size > 4.5 * 1024 * 1024) {
+      alert(`The selected file (${(file.size / (1024 * 1024)).toFixed(1)} MB) exceeds 4.5 MB. Vercel serverless functions reject payloads above 4.5 MB. Please compress the PDF or enter an external URL link.`);
+      return;
+    }
+
     // Auto-calculate file size string
     const sizeInMb = (file.size / (1024 * 1024)).toFixed(1);
     setFileSize(`${sizeInMb} MB PDF`);
@@ -95,14 +101,25 @@ export function AdminCatalogueManager({
         method: "POST",
         body: formData,
       });
-      const data = await res.json();
-      if (data.url) {
+
+      let data: any = {};
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error(
+          res.status === 413
+            ? "File exceeds the 4.5 MB serverless upload limit. Please compress the file or provide an external URL."
+            : `Server returned status ${res.status}. Check your connection.`
+        );
+      }
+
+      if (res.ok && data.url) {
         setPdfUrl(data.url);
       } else {
         alert(data.error || "PDF upload failed");
       }
-    } catch {
-      alert("Error uploading PDF file");
+    } catch (err: any) {
+      alert(err.message || "Error uploading PDF file");
     } finally {
       setUploading(false);
     }

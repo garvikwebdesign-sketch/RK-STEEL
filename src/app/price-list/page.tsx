@@ -4,6 +4,9 @@ import { headers } from "next/headers";
 import { BrandLogo } from "@/components/BrandLogo";
 import { connectToDatabase } from "@/lib/db";
 import { PriceList } from "@/models/PriceList";
+import { WholesaleRate } from "@/models/WholesaleRate";
+import { SiteSetting } from "@/models/SiteSetting";
+import { initialWholesaleRates } from "@/lib/seedData";
 import { RateCardsGallery } from "@/components/RateCardsGallery";
 
 export const dynamic = "force-dynamic";
@@ -13,142 +16,16 @@ export const metadata = {
   description: "Check today's live steel price list in Noida & Delhi NCR for Tata Tiscon TMT, SAIL SEQR 550D, Tata Structura, Tata Durashine, JSW Neosteel, Jindal Panther, and APL Apollo at RK STEEL CO.",
 };
 
-const PRICE_HUB_DATA = [
-  {
-    brandSlug: "tata-tiscon",
-    brandName: "TATA TISCON",
-    category: "TMT Rebars (550SD)",
-    todayPrice: "54,500",
-    yesterdayPrice: "55,000",
-    changeVsPrev: -500,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "54,500" },
-      { day: "Yesterday", price: "55,000" },
-      { day: "7 Days Ago", price: "55,200" },
-      { day: "30 Days Ago", price: "56,000" },
-    ],
-  },
-  {
-    brandSlug: "sail-seqr",
-    brandName: "SAIL SEQR 550D",
-    category: "Integrated Mill TMT",
-    todayPrice: "52,800",
-    yesterdayPrice: "53,000",
-    changeVsPrev: -200,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "52,800" },
-      { day: "Yesterday", price: "53,000" },
-      { day: "7 Days Ago", price: "53,500" },
-      { day: "30 Days Ago", price: "54,200" },
-    ],
-  },
-  {
-    brandSlug: "tata-structura",
-    brandName: "TATA STRUCTURA",
-    category: "Hollow Sections & Pipes",
-    todayPrice: "58,200",
-    yesterdayPrice: "58,200",
-    changeVsPrev: 0,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "58,200" },
-      { day: "Yesterday", price: "58,200" },
-      { day: "7 Days Ago", price: "58,500" },
-      { day: "30 Days Ago", price: "59,000" },
-    ],
-  },
-  {
-    brandSlug: "tata-durashine",
-    brandName: "TATA DURASHINE",
-    category: "Colour Coated Sheets",
-    todayPrice: "68,500",
-    yesterdayPrice: "68,000",
-    changeVsPrev: 500,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "68,500" },
-      { day: "Yesterday", price: "68,000" },
-      { day: "7 Days Ago", price: "68,000" },
-      { day: "30 Days Ago", price: "69,200" },
-    ],
-  },
-  {
-    brandSlug: "tata-astrum",
-    brandName: "TATA ASTRUM & STEELIUM",
-    category: "HR / CR Sheets & Coils",
-    todayPrice: "56,000",
-    yesterdayPrice: "56,500",
-    changeVsPrev: -500,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "56,000" },
-      { day: "Yesterday", price: "56,500" },
-      { day: "7 Days Ago", price: "57,000" },
-      { day: "30 Days Ago", price: "57,800" },
-    ],
-  },
-  {
-    brandSlug: "jsw-neosteel",
-    brandName: "JSW NEO STEEL",
-    category: "Primary Grade TMT",
-    todayPrice: "53,500",
-    yesterdayPrice: "53,800",
-    changeVsPrev: -300,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "53,500" },
-      { day: "Yesterday", price: "53,800" },
-      { day: "7 Days Ago", price: "54,000" },
-      { day: "30 Days Ago", price: "55,100" },
-    ],
-  },
-  {
-    brandSlug: "apl-apollo",
-    brandName: "APL APOLLO PIPES",
-    category: "MS / GI Pipes & Tubes",
-    todayPrice: "59,000",
-    yesterdayPrice: "59,000",
-    changeVsPrev: 0,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "59,000" },
-      { day: "Yesterday", price: "59,000" },
-      { day: "7 Days Ago", price: "59,500" },
-      { day: "30 Days Ago", price: "60,200" },
-    ],
-  },
-  {
-    brandSlug: "jindal-panther",
-    brandName: "JINDAL PANTHER",
-    category: "High Yield TMT Bars",
-    todayPrice: "53,200",
-    yesterdayPrice: "53,500",
-    changeVsPrev: -300,
-    unit: "MT",
-    pdfUrl: "/catalogues",
-    history: [
-      { day: "Today", price: "53,200" },
-      { day: "Yesterday", price: "53,500" },
-      { day: "7 Days Ago", price: "53,800" },
-      { day: "30 Days Ago", price: "54,500" },
-    ],
-  },
-];
-
 export default async function PriceListHubPage() {
   await headers();
   let rateCards: any[] = [];
+  let wholesaleRates: any[] = [];
+  let showWholesaleSection = true;
+
   try {
     await connectToDatabase();
+
+    // 1. Fetch Rate Cards
     const rawCards = await PriceList.find({
       isActive: true,
       $or: [
@@ -158,13 +35,34 @@ export default async function PriceListHubPage() {
     })
       .sort({ isFeatured: -1, createdAt: -1 })
       .lean();
+
     rateCards = rawCards.map((doc: any) => ({
       ...doc,
       _id: doc._id.toString(),
       createdAt: doc.createdAt?.toISOString() || new Date().toISOString(),
     }));
+
+    // 2. Check Wholesale Section Visibility Toggle
+    const settingDoc = await SiteSetting.findOne({ key: "showWholesaleRatesSection" }).lean();
+    if (settingDoc && settingDoc.value === false) {
+      showWholesaleSection = false;
+    }
+
+    // 3. Fetch Wholesale Rates if Section is Active
+    if (showWholesaleSection) {
+      const dbWholesale = await WholesaleRate.find({ isActive: true })
+        .sort({ order: 1, createdAt: 1 })
+        .lean();
+
+      if (dbWholesale && dbWholesale.length > 0) {
+        wholesaleRates = dbWholesale;
+      } else {
+        wholesaleRates = initialWholesaleRates;
+      }
+    }
   } catch (err) {
-    console.error("Failed to fetch rate cards:", err);
+    console.error("Failed to fetch price list data:", err);
+    wholesaleRates = initialWholesaleRates;
   }
 
   return (
@@ -196,27 +94,28 @@ export default async function PriceListHubPage() {
             <RateCardsGallery initialCards={rateCards} />
           )}
 
-          {/* 2. Benchmark Metric Ton (MT) Price Overview */}
-          <div className="space-y-6">
-            <div className="border-b border-slate-200 pb-4">
-              <span className="text-xs font-bold text-red-600 uppercase tracking-wider bg-red-50 px-3 py-1 rounded-md border border-red-100">
-                Metric Ton Benchmarks
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 font-sans">
-                Live Wholesale Ex-Stockyard Rates (Per MT)
-              </h3>
-              <p className="text-sm text-slate-600 mt-1">
-                Comparative wholesale baseline pricing with 30-day volatility index for bulk procurement.
-              </p>
-            </div>
+          {/* 2. Benchmark Metric Ton (MT) Price Overview (Toggleable & Manageable via Admin) */}
+          {showWholesaleSection && wholesaleRates.length > 0 && (
+            <div className="space-y-6">
+              <div className="border-b border-slate-200 pb-4">
+                <span className="text-xs font-bold text-red-600 uppercase tracking-wider bg-red-50 px-3 py-1 rounded-md border border-red-100">
+                  Metric Ton Benchmarks
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 font-sans">
+                  Live Wholesale Ex-Stockyard Rates (Per MT)
+                </h3>
+                <p className="text-sm text-slate-600 mt-1">
+                  Comparative wholesale baseline pricing with 30-day volatility index for bulk procurement.
+                </p>
+              </div>
 
-            {/* Price Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PRICE_HUB_DATA.map((item) => (
-              <div
-                key={item.brandSlug}
-                className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-red-500/50 transition-all p-7 space-y-6 flex flex-col justify-between"
-              >
+              {/* Price Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {wholesaleRates.map((item: any) => (
+                <div
+                  key={item.brandSlug || item._id}
+                  className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-red-500/50 transition-all p-7 space-y-6 flex flex-col justify-between"
+                >
                 <div className="space-y-4">
                   {/* Card Brand Header */}
                   <div className="flex justify-between items-start border-b border-gray-100 pb-3.5">
@@ -263,7 +162,7 @@ export default async function PriceListHubPage() {
                       Price History Trend:
                     </div>
                     <div className="grid grid-cols-2 gap-2.5 text-xs sm:text-sm">
-                      {item.history.map((h, hIdx) => (
+                      {item.history.map((h: any, hIdx: number) => (
                         <div key={hIdx} className="flex justify-between bg-gray-50 p-2.5 rounded-lg text-gray-700">
                           <span className="text-gray-500">{h.day}:</span>
                           <span className="font-bold text-navy-950">₹{h.price}</span>
@@ -302,10 +201,11 @@ export default async function PriceListHubPage() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
-      </section>
+    </section>
     </div>
   );
 }

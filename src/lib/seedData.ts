@@ -5,6 +5,8 @@ import { Product } from "@/models/Product";
 import { BlogPost } from "@/models/BlogPost";
 import { PriceList } from "@/models/PriceList";
 import { Catalogue } from "@/models/Catalogue";
+import { WholesaleRate } from "@/models/WholesaleRate";
+import { SiteSetting } from "@/models/SiteSetting";
 
 export const initialProducts = [
   // 1. TMT Bars (3 Products)
@@ -601,6 +603,153 @@ export const initialCatalogues = [
   },
 ];
 
+export const initialWholesaleRates = [
+  {
+    brandSlug: "tata-tiscon",
+    brandName: "TATA TISCON",
+    category: "TMT Rebars (550SD)",
+    todayPrice: "54,500",
+    yesterdayPrice: "55,000",
+    changeVsPrev: -500,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 1,
+    isActive: true,
+    history: [
+      { day: "Today", price: "54,500" },
+      { day: "Yesterday", price: "55,000" },
+      { day: "7 Days Ago", price: "55,200" },
+      { day: "30 Days Ago", price: "56,000" },
+    ],
+  },
+  {
+    brandSlug: "sail-seqr",
+    brandName: "SAIL SEQR 550D",
+    category: "Integrated Mill TMT",
+    todayPrice: "52,800",
+    yesterdayPrice: "53,000",
+    changeVsPrev: -200,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 2,
+    isActive: true,
+    history: [
+      { day: "Today", price: "52,800" },
+      { day: "Yesterday", price: "53,000" },
+      { day: "7 Days Ago", price: "53,500" },
+      { day: "30 Days Ago", price: "54,200" },
+    ],
+  },
+  {
+    brandSlug: "tata-structura",
+    brandName: "TATA STRUCTURA",
+    category: "Hollow Sections & Pipes",
+    todayPrice: "58,200",
+    yesterdayPrice: "58,200",
+    changeVsPrev: 0,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 3,
+    isActive: true,
+    history: [
+      { day: "Today", price: "58,200" },
+      { day: "Yesterday", price: "58,200" },
+      { day: "7 Days Ago", price: "58,500" },
+      { day: "30 Days Ago", price: "59,000" },
+    ],
+  },
+  {
+    brandSlug: "tata-durashine",
+    brandName: "TATA DURASHINE",
+    category: "Colour Coated Sheets",
+    todayPrice: "68,500",
+    yesterdayPrice: "68,000",
+    changeVsPrev: 500,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 4,
+    isActive: true,
+    history: [
+      { day: "Today", price: "68,500" },
+      { day: "Yesterday", price: "68,000" },
+      { day: "7 Days Ago", price: "68,000" },
+      { day: "30 Days Ago", price: "69,200" },
+    ],
+  },
+  {
+    brandSlug: "tata-astrum",
+    brandName: "TATA ASTRUM & STEELIUM",
+    category: "HR / CR Sheets & Coils",
+    todayPrice: "56,000",
+    yesterdayPrice: "56,500",
+    changeVsPrev: -500,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 5,
+    isActive: true,
+    history: [
+      { day: "Today", price: "56,000" },
+      { day: "Yesterday", price: "56,500" },
+      { day: "7 Days Ago", price: "57,000" },
+      { day: "30 Days Ago", price: "57,800" },
+    ],
+  },
+  {
+    brandSlug: "jsw-neosteel",
+    brandName: "JSW NEO STEEL",
+    category: "Primary Grade TMT",
+    todayPrice: "53,500",
+    yesterdayPrice: "53,800",
+    changeVsPrev: -300,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 6,
+    isActive: true,
+    history: [
+      { day: "Today", price: "53,500" },
+      { day: "Yesterday", price: "53,800" },
+      { day: "7 Days Ago", price: "54,000" },
+      { day: "30 Days Ago", price: "55,100" },
+    ],
+  },
+  {
+    brandSlug: "apl-apollo",
+    brandName: "APL APOLLO PIPES",
+    category: "MS / GI Pipes & Tubes",
+    todayPrice: "59,000",
+    yesterdayPrice: "59,000",
+    changeVsPrev: 0,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 7,
+    isActive: true,
+    history: [
+      { day: "Today", price: "59,000" },
+      { day: "Yesterday", price: "59,000" },
+      { day: "7 Days Ago", price: "59,500" },
+      { day: "30 Days Ago", price: "60,200" },
+    ],
+  },
+  {
+    brandSlug: "jindal-panther",
+    brandName: "JINDAL PANTHER",
+    category: "High Yield TMT Bars",
+    todayPrice: "53,200",
+    yesterdayPrice: "53,500",
+    changeVsPrev: -300,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 8,
+    isActive: true,
+    history: [
+      { day: "Today", price: "53,200" },
+      { day: "Yesterday", price: "53,500" },
+      { day: "7 Days Ago", price: "53,800" },
+      { day: "30 Days Ago", price: "54,500" },
+    ],
+  },
+];
+
 export async function seedDatabase() {
   await connectToDatabase();
 
@@ -640,6 +789,20 @@ export async function seedDatabase() {
   if (catalogueCount === 0) {
     await Catalogue.insertMany(initialCatalogues);
     console.log("Seeded initial brand catalogues");
+  }
+
+  // 6. Seed Wholesale Benchmark Rates
+  const wholesaleCount = await WholesaleRate.countDocuments();
+  if (wholesaleCount === 0) {
+    await WholesaleRate.insertMany(initialWholesaleRates);
+    console.log("Seeded initial wholesale benchmark rates");
+  }
+
+  // 7. Seed Default Site Setting for Wholesale Section
+  const wholesaleSetting = await SiteSetting.findOne({ key: "showWholesaleRatesSection" });
+  if (!wholesaleSetting) {
+    await SiteSetting.create({ key: "showWholesaleRatesSection", value: true });
+    console.log("Seeded default showWholesaleRatesSection site setting");
   }
 }
 
