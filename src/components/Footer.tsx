@@ -89,19 +89,27 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Col 4: Head Office Contact */}
+        {/* Col 4: Office & Godown Contact */}
         <div>
           <h4 className="text-sm text-white font-bold tracking-wider mb-4 uppercase font-sans border-b border-slate-800 pb-2">
-            HEAD OFFICE
+            OFFICE &amp; GODOWN
           </h4>
           <ul className="space-y-3.5 text-sm text-slate-300">
             <li className="flex items-start gap-2.5">
               <MapPin className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block font-bold">HEAD OFFICE &amp; STOCKYARD</strong>
-                <span className="text-slate-300 block leading-relaxed">
-                  Park, G-38, opp. G Block, Sector 9, Noida, Uttar Pradesh 201301
-                </span>
+              <div className="space-y-2">
+                <div>
+                  <strong className="text-white block font-bold text-xs uppercase tracking-wider">OFFICE:</strong>
+                  <span className="text-slate-300 block leading-relaxed text-xs">
+                    G-38, Sector-9, Noida, Uttar Pradesh 201301
+                  </span>
+                </div>
+                <div>
+                  <strong className="text-white block font-bold text-xs uppercase tracking-wider">GODOWN:</strong>
+                  <span className="text-slate-300 block leading-relaxed text-xs">
+                    B-26, Sector-9, Noida, Uttar Pradesh 201301
+                  </span>
+                </div>
               </div>
             </li>
             <li className="flex items-start gap-2.5">

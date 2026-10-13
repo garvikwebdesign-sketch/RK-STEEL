@@ -58,11 +58,11 @@ export function Navbar() {
             <span className="text-slate-200">30+ Years of Trust</span>
           </div>
 
-          {/* Center: Head Office Location (shown on xl+) */}
-          <div className="hidden xl:flex items-center gap-1.5 text-slate-300 truncate max-w-md">
+          {/* Center: Office & Godown Location (shown on xl+) */}
+          <div className="hidden xl:flex items-center gap-1.5 text-slate-300 truncate max-w-lg">
             <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
-            <span title="RK STEEL COMPANY TATA TISCON TMT BARS, Park, G- 38, opp. G Block, G Block, Sector 9, Noida, Uttar Pradesh 201301" className="truncate">
-              Park, G-38, opp. G Block, Sector 9, Noida - 201301
+            <span title="Office: G-38, Sector-9, Noida | Godown: B-26, Sector-9, Noida" className="truncate">
+              Office: G-38, Sector-9 | Godown: B-26, Sector-9, Noida
             </span>
           </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   Download,
   Eye,
@@ -242,9 +243,17 @@ export function RateCardsGallery({ initialCards }: { initialCards: RateCardRecor
                         Recommended Consumer Price List
                       </h4>
                     </div>
-                    <span className="text-xs text-slate-500 font-medium">
-                      Effective: <strong className="text-slate-900">{effectiveDate}</strong>
-                    </span>
+                    <div className="flex flex-col items-end gap-1">
+                      <span className="text-xs text-slate-500 font-medium">
+                        Effective: <strong className="text-slate-900">{effectiveDate}</strong>
+                      </span>
+                      <Link
+                        href={`/price-list/${brandSlug}`}
+                        className="text-xs font-bold text-red-600 hover:text-red-700 underline flex items-center gap-1"
+                      >
+                        Dedicated {brand} Page →
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Size-wise table */}
@@ -253,7 +262,15 @@ export function RateCardsGallery({ initialCards }: { initialCards: RateCardRecor
                       <table className="w-full text-left border-collapse">
                         <thead>
                           <tr className="bg-amber-400 text-slate-950 text-xs sm:text-sm font-extrabold uppercase font-sans">
-                            <th className="py-3 px-4 border-b border-amber-500">Sizes (in mm)</th>
+                            <th className="py-3 px-4 border-b border-amber-500">
+                              {brandSlug === "tata-structura" || card.category === "Pipes & Hollow Sections"
+                                ? "Wall Thickness (mm)"
+                                : brandSlug === "tata-kosh" || (card.category && card.category.includes("GI"))
+                                ? "Gauge / Thickness / Size"
+                                : brandSlug === "tata-durashine" || (card.category && card.category.includes("Roofing"))
+                                ? "Thickness / Profile / Size"
+                                : "Sizes (in mm)"}
+                            </th>
                             <th className="py-3 px-4 border-b border-amber-500 text-right">
                               Recommended Price ({card.items[0]?.unit || "Per Piece"})
                             </th>
@@ -299,7 +316,13 @@ export function RateCardsGallery({ initialCards }: { initialCards: RateCardRecor
                   )}
 
                   {/* Immediate Action Buttons */}
-                  <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                  <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+                    <Link
+                      href={`/price-list/${brandSlug}`}
+                      className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all text-center whitespace-nowrap"
+                    >
+                      View Detailed Chart →
+                    </Link>
                     <a
                       href={`https://wa.me/919999307984?text=Hello%20RK%20Steel%20Company%2C%20I%20am%20referring%20to%20the%20${encodeURIComponent(card.title)}%20(Effective%20${encodeURIComponent(card.effectiveDate)}).%20Please%20quote%20for%20my%20requirement.`}
                       target="_blank"
@@ -307,15 +330,15 @@ export function RateCardsGallery({ initialCards }: { initialCards: RateCardRecor
                       className="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all"
                     >
                       <MessageSquare className="w-4 h-4 fill-current" />
-                      Order at this Rate on WhatsApp
+                      Order on WhatsApp
                     </a>
 
                     <a
                       href="tel:9999307984"
-                      className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider py-3.5 px-5 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all"
+                      className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all whitespace-nowrap"
                     >
                       <Phone className="w-4 h-4" />
-                      Call Desk: 9999307984
+                      Call Desk
                     </a>
                   </div>
                 </div>

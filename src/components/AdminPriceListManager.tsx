@@ -40,6 +40,8 @@ interface PriceListRecord {
   validityRegion?: string;
   flyerUrl?: string;
   pdfUrl?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   items: PriceItem[];
   notes: string[];
   isActive: boolean;
@@ -71,6 +73,7 @@ const BRAND_OPTIONS = [
   "Tata Structura",
   "Tata Durashine",
   "Tata Astrum",
+  "Tata Kosh",
   "APL Apollo",
   "Jindal Steel",
   "Other",
@@ -81,6 +84,7 @@ const CATEGORY_OPTIONS = [
   "Pipes & Hollow Sections",
   "Structural Steel",
   "Colour Coated & Roofing Sheets",
+  "Tata Kosh Galvanised (GI) Sheets",
   "MS/HR/CR/GI Sheets & Plates",
   "Weldmesh",
   "Chain Link & Accessories",
@@ -99,7 +103,10 @@ export function AdminPriceListManager({
   // Form states for Rate Cards / Flyers
   const [title, setTitle] = useState("");
   const [brand, setBrand] = useState("Tata Tiscon");
+  const [brandSlug, setBrandSlug] = useState("tata-tiscon");
   const [category, setCategory] = useState("TMT Bars");
+  const [metaTitle, setMetaTitle] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
   const [effectiveDate, setEffectiveDate] = useState("1st October 2026");
   const [validityRegion, setValidityRegion] = useState("Valid in West UP");
   const [flyerUrl, setFlyerUrl] = useState("");
@@ -230,7 +237,10 @@ export function AdminPriceListManager({
   const resetForm = () => {
     setTitle("");
     setBrand("Tata Tiscon");
+    setBrandSlug("tata-tiscon");
     setCategory("TMT Bars");
+    setMetaTitle("");
+    setMetaDescription("");
     setEffectiveDate("1st October 2026");
     setValidityRegion("Valid in West UP");
     setFlyerUrl("");
@@ -263,7 +273,10 @@ export function AdminPriceListManager({
     setEditingId(record._id);
     setTitle(record.title || (record as any).productName || "");
     setBrand(record.brand || (record as any).brandName || "Tata Tiscon");
+    setBrandSlug(record.brandSlug || "tata-tiscon");
     setCategory(record.category || "TMT Bars");
+    setMetaTitle(record.metaTitle || "");
+    setMetaDescription(record.metaDescription || "");
     setEffectiveDate(record.effectiveDate || "1st October 2026");
     setValidityRegion(record.validityRegion || "Valid in West UP");
     setFlyerUrl(record.flyerUrl || "");
@@ -325,6 +338,9 @@ export function AdminPriceListManager({
     const payload = {
       title,
       brand,
+      brandSlug: brandSlug || brand.toLowerCase().replace(/[^a-z0-9]/g, "-"),
+      metaTitle,
+      metaDescription,
       category,
       effectiveDate,
       validityRegion,
@@ -1009,7 +1025,18 @@ export function AdminPriceListManager({
                   </label>
                   <select
                     value={brand}
-                    onChange={(e) => setBrand(e.target.value)}
+                    onChange={(e) => {
+                      const newBrand = e.target.value;
+                      setBrand(newBrand);
+                      if (newBrand === "Tata Tiscon") setBrandSlug("tata-tiscon");
+                      else if (newBrand === "Tata Structura") setBrandSlug("tata-structura");
+                      else if (newBrand === "Tata Durashine") setBrandSlug("tata-durashine");
+                      else if (newBrand === "Tata Kosh") setBrandSlug("tata-kosh");
+                      else if (newBrand === "SAIL") setBrandSlug("sail-seqr");
+                      else if (newBrand === "JSW Steel") setBrandSlug("jsw-neosteel");
+                      else if (newBrand === "APL Apollo") setBrandSlug("apl-apollo");
+                      else if (newBrand === "Jindal Steel") setBrandSlug("jindal-panther");
+                    }}
                     className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-red-500"
                   >
                     {BRAND_OPTIONS.map((b) => (
@@ -1018,6 +1045,50 @@ export function AdminPriceListManager({
                       </option>
                     ))}
                   </select>
+                </div>
+              </div>
+
+              {/* URL Slug & SEO Metadata */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-slate-50 rounded-xl border border-slate-200">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                    URL Slug * (e.g. tata-structura)
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. tata-tiscon or tata-kosh"
+                    value={brandSlug}
+                    onChange={(e) => setBrandSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
+                    className="w-full px-3 py-2 text-xs font-mono rounded-lg border border-slate-200 bg-white"
+                  />
+                  <span className="text-[10px] text-slate-400">Links to /price-list/{brandSlug}</span>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                    SEO Meta Title
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Tata Tiscon Price List in Noida | RK Steel Company"
+                    value={metaTitle}
+                    onChange={(e) => setMetaTitle(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 bg-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                    SEO Meta Description
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Meta description for search engines..."
+                    value={metaDescription}
+                    onChange={(e) => setMetaDescription(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-200 bg-white"
+                  />
                 </div>
               </div>
 
@@ -1236,6 +1307,7 @@ export function AdminPriceListManager({
                     <option value="tata-structura">Tata Structura</option>
                     <option value="tata-durashine">Tata Durashine</option>
                     <option value="tata-astrum">Tata Astrum</option>
+                    <option value="tata-kosh">Tata Kosh</option>
                     <option value="jsw-neosteel">JSW Neosteel</option>
                     <option value="apl-apollo">APL Apollo</option>
                     <option value="jindal-panther">Jindal Panther</option>

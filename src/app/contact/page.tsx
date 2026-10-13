@@ -2,8 +2,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { MapPin, Phone, Mail, Clock, ShieldCheck, Award, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Contact Us | RK STEEL CO Noida Head Office",
-  description: "Contact RK STEEL COMPANY TATA TISCON TMT BARS at Park, G-38, opp. G Block, Sector 9, Noida, Uttar Pradesh 201301. Call 9999307984 | 9953364645 | 9811364645 or email sn_rksteel@yahoo.co.in. All steel and iron items under one roof.",
+  title: "Contact Us | RK STEEL CO Noida Office & Godown",
+  description: "Contact RK STEEL COMPANY at Office: G-38, Sector-9, Noida & Godown: B-26, Sector-9, Noida, Uttar Pradesh 201301. Call 9999307984 | 9953364645 | 9811364645 or email sn_rksteel@yahoo.co.in. All steel and iron items under one roof.",
 };
 
 export default async function ContactPage({
@@ -16,18 +16,30 @@ export default async function ContactPage({
   const businessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "RK STEEL COMPANY TATA TISCON TMT BARS",
-    "image": "https://rksteel.co.in/logo.png",
+    "name": "RK STEEL COMPANY",
+    "image": "https://www.rksteelcompany.in/logo.png",
     "telephone": "+919999307984",
     "email": "sn_rksteel@yahoo.co.in",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Park, G-38, opp. G Block",
-      "addressLocality": "Sector 9, Noida",
-      "addressRegion": "Uttar Pradesh",
-      "postalCode": "201301",
-      "addressCountry": "IN"
-    },
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "name": "Office",
+        "streetAddress": "G-38, Sector-9",
+        "addressLocality": "Noida",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "201301",
+        "addressCountry": "IN"
+      },
+      {
+        "@type": "PostalAddress",
+        "name": "Godown",
+        "streetAddress": "B-26, Sector-9",
+        "addressLocality": "Noida",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "201301",
+        "addressCountry": "IN"
+      }
+    ],
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -49,7 +61,7 @@ export default async function ContactPage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center gap-2.5 mb-3">
             <span className="text-xs sm:text-sm font-bold text-red-400 uppercase tracking-widest bg-navy-900 px-3.5 py-1.5 rounded border border-navy-700">
-              RK STEEL CO • NOIDA HEAD OFFICE &amp; STOCKYARD
+              RK STEEL CO • OFFICE: G-38, SECTOR-9 | GODOWN: B-26, SECTOR-9, NOIDA
             </span>
             <span className="text-xs sm:text-sm font-bold text-slate-300 uppercase tracking-wider bg-slate-800 px-3.5 py-1.5 rounded border border-slate-700">
               ALL STEEL AND IRON ITEMS UNDER ONE ROOF
@@ -86,11 +98,19 @@ export default async function ContactPage({
               <div className="space-y-5 text-sm">
                 <div className="flex items-start gap-3.5">
                   <MapPin className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-navy-950 font-bold uppercase tracking-wider text-xs">HEAD OFFICE &amp; STOCKYARD:</strong>
-                    <span className="text-gray-800 font-medium text-sm sm:text-base leading-snug block mt-0.5">
-                      Park, G-38, opp. G Block, Sector 9, Noida, Uttar Pradesh 201301
-                    </span>
+                  <div className="space-y-3">
+                    <div>
+                      <strong className="block text-navy-950 font-bold uppercase tracking-wider text-xs">OFFICE:</strong>
+                      <span className="text-gray-800 font-medium text-sm sm:text-base leading-snug block mt-0.5">
+                        G-38, Sector-9, Noida, Uttar Pradesh 201301
+                      </span>
+                    </div>
+                    <div>
+                      <strong className="block text-navy-950 font-bold uppercase tracking-wider text-xs">GODOWN:</strong>
+                      <span className="text-gray-800 font-medium text-sm sm:text-base leading-snug block mt-0.5">
+                        B-26, Sector-9, Noida, Uttar Pradesh 201301
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -133,8 +153,8 @@ export default async function ContactPage({
               </h3>
               <div className="flex-1 min-h-[280px] rounded-xl overflow-hidden border border-gray-200 shadow-inner">
                 <iframe
-                  title="RK STEEL COMPANY TATA TISCON TMT BARS Noida Location Map"
-                  src="https://maps.google.com/maps?q=RK+STEEL+COMPANY+TATA+TISCON+TMT+BARS+Park+G-38+opp+G+Block+Sector+9+Noida+Uttar+Pradesh+201301&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  title="RK STEEL COMPANY Noida Location Map"
+                  src="https://maps.google.com/maps?q=RK+STEEL+COMPANY+G-38+Sector+9+Noida+Uttar+Pradesh+201301&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -142,14 +162,24 @@ export default async function ContactPage({
                   loading="lazy"
                 />
               </div>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=RK+STEEL+COMPANY+TATA+TISCON+TMT+BARS+Park+G-38+opp+G+Block+Sector+9+Noida+Uttar+Pradesh+201301"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs sm:text-sm font-bold text-red-600 hover:text-red-700 flex items-center justify-center gap-1.5 pt-1"
-              >
-                <span>Open in Google Maps →</span>
-              </a>
+              <div className="flex flex-col gap-1.5 pt-1 text-center">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=RK+STEEL+COMPANY+G-38+Sector+9+Noida+Uttar+Pradesh+201301"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs sm:text-sm font-bold text-red-600 hover:text-red-700 flex items-center justify-center gap-1.5"
+                >
+                  <span>Office: G-38, Sector-9 (Google Maps) →</span>
+                </a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=B-26+Sector+9+Noida+Uttar+Pradesh+201301"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs sm:text-sm font-semibold text-slate-600 hover:text-red-600 flex items-center justify-center gap-1.5"
+                >
+                  <span>Godown: B-26, Sector-9 (Google Maps) →</span>
+                </a>
+              </div>
             </div>
           </div>
 

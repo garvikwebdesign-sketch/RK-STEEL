@@ -12,9 +12,10 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.rksteelcompany.in"),
   title: "RK STEEL CO | Tata Steel, SAIL, JSW, Jindal, APL Apollo | All Steel and Iron Items Under One Roof",
   description:
-    "Established in 1993, RK STEEL CO is Noida's premier stockist & authorised dealer of Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, SAIL SEQR, JSW Neosteel, Jindal Panther, and APL Apollo pipes. All steel and iron items under one roof with 30+ years of excellence.",
+    "Established in 1993, RK STEEL CO is Noida's premier stockist & authorised dealer of Tata Tiscon TMT, Tata Structura Pipes, Tata Durashine Roofing, Tata Kosh GI Sheets, SAIL SEQR, JSW Neosteel, Jindal Panther, and APL Apollo pipes. All steel and iron items under one roof with 30+ years of excellence.",
   keywords: [
     "RK STEEL CO",
     "RK Steel Co",

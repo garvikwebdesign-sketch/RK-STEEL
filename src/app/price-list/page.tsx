@@ -12,8 +12,11 @@ import { RateCardsGallery } from "@/components/RateCardsGallery";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Daily Steel Price List & Market Updates Noida | Tata Tiscon, SAIL, JSW, Jindal | RK STEEL CO",
-  description: "Check today's live steel price list in Noida & Delhi NCR for Tata Tiscon TMT, SAIL SEQR 550D, Tata Structura, Tata Durashine, JSW Neosteel, Jindal Panther, and APL Apollo at RK STEEL CO.",
+  title: "Daily Steel Price List & Market Updates Noida | Tata Tiscon, Structura, Durashine, Tata Kosh | RK STEEL CO",
+  description: "Check today's live steel price list in Noida & Delhi NCR for Tata Tiscon TMT, Tata Structura, Tata Durashine, Tata Kosh GI Sheets, SAIL SEQR, JSW Neosteel, Jindal Panther, and APL Apollo at RK STEEL CO.",
+  alternates: {
+    canonical: "/price-list",
+  },
 };
 
 export default async function PriceListHubPage() {
@@ -78,7 +81,7 @@ export default async function PriceListHubPage() {
             Steel Price Lists &amp; Market Updates
           </h1>
           <p className="text-slate-200 text-base sm:text-lg max-w-2xl mt-3 font-normal leading-relaxed">
-            Live today's steel price list for Tata Tiscon, SAIL SEQR, Tata Structura, JSW Steel, Jindal Panther, and APL Apollo in Noida &amp; Delhi NCR with historical trend tracking.
+            Live today's steel price list for Tata Tiscon, Tata Structura, Tata Durashine, Tata Kosh, SAIL SEQR, JSW Steel, Jindal Panther, and APL Apollo in Noida &amp; Delhi NCR with historical trend tracking.
           </p>
           <div className="mt-4 inline-block bg-red-950/70 border border-red-500/40 text-red-300 text-xs sm:text-sm font-bold px-4 py-2 rounded-lg font-sans">
             ALL STEEL AND IRON ITEMS UNDER ONE ROOF

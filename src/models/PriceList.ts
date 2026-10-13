@@ -23,6 +23,8 @@ export interface IPriceList extends Document {
   validityRegion?: string; // e.g. "Valid in West UP / Delhi NCR"
   flyerUrl?: string; // High-res image or flyer circular
   pdfUrl?: string; // Downloadable official PDF circular
+  metaTitle?: string;
+  metaDescription?: string;
   items: IPriceItem[];
   notes: string[]; // Disclaimers, BIS tolerance notes, tax info
   isActive: boolean;
@@ -64,6 +66,8 @@ const PriceListSchema = new Schema<IPriceList>(
     validityRegion: { type: String, default: "Valid in West UP / Delhi NCR" },
     flyerUrl: { type: String, default: "" },
     pdfUrl: { type: String, default: "" },
+    metaTitle: { type: String, default: "" },
+    metaDescription: { type: String, default: "" },
     items: [PriceItemSchema],
     notes: { type: [String], default: [] },
     isActive: { type: Boolean, default: true, index: true },

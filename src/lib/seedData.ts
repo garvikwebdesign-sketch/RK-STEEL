@@ -748,6 +748,24 @@ export const initialWholesaleRates = [
       { day: "30 Days Ago", price: "54,500" },
     ],
   },
+  {
+    brandSlug: "tata-kosh",
+    brandName: "TATA KOSH",
+    category: "Galvanised (GI) Sheets & Coils",
+    todayPrice: "66,000",
+    yesterdayPrice: "66,000",
+    changeVsPrev: 0,
+    unit: "MT",
+    pdfUrl: "/catalogues",
+    order: 9,
+    isActive: true,
+    history: [
+      { day: "Today", price: "66,000" },
+      { day: "Yesterday", price: "66,000" },
+      { day: "7 Days Ago", price: "66,500" },
+      { day: "30 Days Ago", price: "67,200" },
+    ],
+  },
 ];
 
 export async function seedDatabase() {

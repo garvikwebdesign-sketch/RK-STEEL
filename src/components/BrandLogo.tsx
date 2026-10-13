@@ -7,6 +7,7 @@ export type BrandKey =
   | "tata-durashine"
   | "tata-astrum"
   | "tata-steelium"
+  | "tata-kosh"
   | "sail"
   | "jsw-steel"
   | "apl-apollo"
@@ -49,6 +50,9 @@ export function BrandLogo({
   }
   if (normKey.includes("astrum") || normKey.includes("steelium")) {
     return <TataAstrumLogo className={`${containerSizeClass} ${className}`} />;
+  }
+  if (normKey.includes("kosh")) {
+    return <TataKoshLogo className={`${containerSizeClass} ${className}`} />;
   }
   if (normKey.includes("tata")) {
     return <TataSteelLogo className={`${containerSizeClass} ${className}`} />;
@@ -191,5 +195,23 @@ export function TataAstrumLogo({ className = "h-10" }: { className?: string }) {
       alt="Tata Astrum HR Sheets and Coils"
       className={`w-auto max-w-full object-contain select-none ${className}`}
     />
+  );
+}
+
+/**
+ * 10. TATA KOSH GI SHEETS LOGO
+ */
+export function TataKoshLogo({ className = "h-10" }: { className?: string }) {
+  return (
+    <div className={`inline-flex items-center gap-1.5 font-heading font-black tracking-tight text-navy-950 ${className}`}>
+      <img
+        src="/logos/tata-tiscon.jpeg"
+        alt="Tata Steel Logo"
+        className="h-full w-auto object-contain select-none mix-blend-multiply"
+      />
+      <span className="text-xs uppercase bg-blue-900 text-white px-1.5 py-0.5 rounded font-sans font-bold">
+        KOSH GI
+      </span>
+    </div>
   );
 }
