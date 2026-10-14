@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/db";
 import { PriceList } from "@/models/PriceList";
+import { WholesaleRate } from "@/models/WholesaleRate";
 import { getAdminSession } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
@@ -61,6 +62,19 @@ export async function POST(request: NextRequest) {
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "");
 
+    const numericPrice = Number(currentPricePerMT) || 0;
+    const initialHistory =
+      numericPrice > 0
+        ? [
+            {
+              date: new Date(),
+              pricePerMT: numericPrice,
+              changeVsPrevious: 0,
+              notes: `Approved rate effective ${effectiveDate}`,
+            },
+          ]
+        : [];
+
     const newPriceList = await PriceList.create({
       title,
       brand,
@@ -74,17 +88,34 @@ export async function POST(request: NextRequest) {
       notes: Array.isArray(notes) ? notes : [],
       isActive: isActive !== undefined ? isActive : true,
       isFeatured: !!isFeatured,
-      currentPricePerMT: Number(currentPricePerMT) || 0,
+      currentPricePerMT: numericPrice,
       unit: unit || "Piece",
-      priceHistory: [
-        {
-          date: new Date(),
-          pricePerMT: Number(currentPricePerMT) || 0,
-          changeVsPrevious: 0,
-          notes: `Uploaded circular effective ${effectiveDate}`,
-        },
-      ],
+      priceHistory: initialHistory,
     });
+
+    // Auto-synchronize with WholesaleRate
+    try {
+      if (numericPrice > 0) {
+        await WholesaleRate.findOneAndUpdate(
+          { brandSlug: calculatedSlug },
+          {
+            brandSlug: calculatedSlug,
+            brandName: brand.toUpperCase(),
+            category: category || "TMT Bars",
+            todayPrice: numericPrice.toLocaleString("en-IN"),
+            yesterdayPrice: "",
+            changeVsPrev: 0,
+            unit: unit || "MT",
+            pdfUrl: pdfUrl || "/catalogues",
+            history: [{ day: "Approved Rate", price: numericPrice.toLocaleString("en-IN") }],
+            isActive: isActive !== undefined ? isActive : true,
+          },
+          { upsert: true }
+        );
+      }
+    } catch (syncErr) {
+      console.error("Failed to auto-sync WholesaleRate on create:", syncErr);
+    }
 
     return NextResponse.json({ success: true, priceList: newPriceList }, { status: 201 });
   } catch (error: any) {

@@ -35,8 +35,8 @@ const BRAND_CONFIGS: Record<string, BrandConfig> = {
     brandName: "Tata Tiscon Price List in Noida",
     category: "Fe 550SD Super Ductile TMT Rebars",
     todayPricePerMT: "54,500",
-    yesterdayPricePerMT: "55,000",
-    changeVsPrev: -500,
+    yesterdayPricePerMT: "",
+    changeVsPrev: 0,
     unit: "MT",
     sizeHeader: "Diameter Size",
     rateHeader: "Price per 12m Piece (₹/Piece)",
@@ -57,8 +57,8 @@ const BRAND_CONFIGS: Record<string, BrandConfig> = {
   "tata-structura": {
     brandName: "Tata Structura Price List in Noida",
     category: "Square & Rectangular Hollow Sections (SHS / RHS) & Steel Tubes",
-    todayPricePerMT: "58,200",
-    yesterdayPricePerMT: "58,200",
+    todayPricePerMT: "72,500",
+    yesterdayPricePerMT: "",
     changeVsPrev: 0,
     unit: "MT",
     sizeHeader: "Section Dimensions / Type",
@@ -68,24 +68,24 @@ const BRAND_CONFIGS: Record<string, BrandConfig> = {
     metaTitle: "Tata Structura Price List in Noida | RK Steel Company",
     metaDescription: "Check today's live Tata Structura steel hollow sections and pipes price list in Noida & Delhi NCR at RK STEEL CO. Ex-stockyard prices, wall thickness options & fast delivery.",
     sizesPrice: [
-      { size: "SHS 25 x 25 mm", spec: "1.6 mm - 2.0 mm", pricePerMT: "58,200", piecePrice: "510 - 620" },
-      { size: "SHS 40 x 40 mm", spec: "2.0 mm - 2.5 mm", pricePerMT: "58,200", piecePrice: "1,020 - 1,240" },
-      { size: "SHS 50 x 50 mm", spec: "2.0 mm - 3.2 mm", pricePerMT: "58,200", piecePrice: "1,320 - 2,050" },
-      { size: "SHS 72 x 72 mm", spec: "2.5 mm - 4.0 mm", pricePerMT: "58,200", piecePrice: "2,550 - 3,950" },
-      { size: "SHS 100 x 100 mm", spec: "3.0 mm - 5.0 mm", pricePerMT: "58,200", piecePrice: "4,300 - 6,800" },
-      { size: "RHS 50 x 25 mm", spec: "1.6 mm - 2.5 mm", pricePerMT: "58,200", piecePrice: "790 - 1,180" },
-      { size: "RHS 80 x 40 mm", spec: "2.0 mm - 3.2 mm", pricePerMT: "58,200", piecePrice: "1,620 - 2,510" },
-      { size: "RHS 100 x 50 mm", spec: "2.5 mm - 4.0 mm", pricePerMT: "58,200", piecePrice: "2,680 - 4,150" },
-      { size: "RHS 122 x 61 mm", spec: "3.0 mm - 5.0 mm", pricePerMT: "58,200", piecePrice: "3,950 - 6,300" },
-      { size: "RHS 150 x 75 mm", spec: "3.2 mm - 6.0 mm", pricePerMT: "58,200", piecePrice: "5,100 - 9,200" },
+      { size: "SHS 25 x 25 mm", spec: "1.6 mm - 2.0 mm", pricePerMT: "72,500", piecePrice: "510 - 620" },
+      { size: "SHS 40 x 40 mm", spec: "2.0 mm - 2.5 mm", pricePerMT: "72,500", piecePrice: "1,020 - 1,240" },
+      { size: "SHS 50 x 50 mm", spec: "2.0 mm - 3.2 mm", pricePerMT: "72,500", piecePrice: "1,320 - 2,050" },
+      { size: "SHS 72 x 72 mm", spec: "2.5 mm - 4.0 mm", pricePerMT: "72,500", piecePrice: "2,550 - 3,950" },
+      { size: "SHS 100 x 100 mm", spec: "3.0 mm - 5.0 mm", pricePerMT: "72,500", piecePrice: "4,300 - 6,800" },
+      { size: "RHS 50 x 25 mm", spec: "1.6 mm - 2.5 mm", pricePerMT: "72,500", piecePrice: "790 - 1,180" },
+      { size: "RHS 80 x 40 mm", spec: "2.0 mm - 3.2 mm", pricePerMT: "72,500", piecePrice: "1,620 - 2,510" },
+      { size: "RHS 100 x 50 mm", spec: "2.5 mm - 4.0 mm", pricePerMT: "72,500", piecePrice: "2,680 - 4,150" },
+      { size: "RHS 122 x 61 mm", spec: "3.0 mm - 5.0 mm", pricePerMT: "72,500", piecePrice: "3,950 - 6,300" },
+      { size: "RHS 150 x 75 mm", spec: "3.2 mm - 6.0 mm", pricePerMT: "72,500", piecePrice: "5,100 - 9,200" },
     ],
   },
   "tata-durashine": {
     brandName: "Tata Durashine Roofing Sheets Price List in Noida",
     category: "Colour Coated Galvalume Profile Sheets, Corrugated & Accessories",
     todayPricePerMT: "68,500",
-    yesterdayPricePerMT: "68,000",
-    changeVsPrev: 500,
+    yesterdayPricePerMT: "",
+    changeVsPrev: 0,
     unit: "MT",
     sizeHeader: "Profile Type & Description",
     specHeader: "Thickness (mm / Gauge)",
@@ -105,8 +105,8 @@ const BRAND_CONFIGS: Record<string, BrandConfig> = {
   "tata-kosh": {
     brandName: "Tata Kosh GI Sheet Price List in Noida",
     category: "Tata Kosh Galvanised (GI) Plain & Corrugated Sheets",
-    todayPricePerMT: "66,000",
-    yesterdayPricePerMT: "66,000",
+    todayPricePerMT: "65,000",
+    yesterdayPricePerMT: "",
     changeVsPrev: 0,
     unit: "MT",
     sizeHeader: "Sheet Gauge & Thickness",
@@ -129,8 +129,8 @@ const BRAND_CONFIGS: Record<string, BrandConfig> = {
     brandName: "SAIL SEQR 550D Price List in Noida",
     category: "Integrated Primary Mill TMT Rebars",
     todayPricePerMT: "52,800",
-    yesterdayPricePerMT: "53,000",
-    changeVsPrev: -200,
+    yesterdayPricePerMT: "",
+    changeVsPrev: 0,
     unit: "MT",
     sizeHeader: "Diameter Size",
     rateHeader: "Approx Price per 12m Piece (₹/Piece)",
@@ -245,28 +245,79 @@ export default async function SinglePriceListPage({
     // 2. Fetch live wholesale benchmark for this brand
     dbWholesale = await WholesaleRate.findOne({ brandSlug: slug }).lean();
 
-    // 3. Extract actual saved history records ONLY if available in DB
+    // 3. Extract actual saved history records ONLY if available in DB and price > 0
     const primaryCard = rateCards[0];
     if (primaryCard?.priceHistory && primaryCard.priceHistory.length > 0) {
-      historyRecords = primaryCard.priceHistory.map((h: any) => ({
-        date: new Date(h.date).toLocaleDateString("en-IN", { month: "short", day: "numeric" }),
-        price: h.pricePerMT,
-        note: h.notes || "Recorded Rate",
-      }));
+      historyRecords = primaryCard.priceHistory
+        .filter((h: any) => h.pricePerMT && Number(h.pricePerMT) > 0)
+        .map((h: any) => ({
+          date: new Date(h.date).toLocaleDateString("en-IN", { month: "short", day: "numeric" }),
+          price: Number(h.pricePerMT),
+          changeVsPrevious: Number(h.changeVsPrevious) || 0,
+          note: h.notes || "Approved Rate",
+        }));
     } else if (dbWholesale?.history && dbWholesale.history.length > 0) {
-      historyRecords = dbWholesale.history.map((h: any) => ({
-        date: h.day,
-        price: h.price,
-        note: "Volatility Benchmark",
-      }));
+      historyRecords = dbWholesale.history
+        .filter((h: any) => {
+          const num = parseInt(String(h.price).replace(/[^0-9]/g, ""));
+          return num > 0 && h.day !== "7 Days Ago" && h.day !== "30 Days Ago";
+        })
+        .map((h: any) => ({
+          date: h.day,
+          price: parseInt(String(h.price).replace(/[^0-9]/g, "")),
+          changeVsPrevious: 0,
+          note: "Approved Benchmark",
+        }));
     }
   } catch (err) {
     console.error("Failed to fetch brand rate data:", err);
   }
 
-  // Use live DB wholesale price if configured
-  const todayPrice = dbWholesale?.todayPrice || baseCfg.todayPricePerMT;
-  const changeVsPrev = dbWholesale?.changeVsPrev ?? baseCfg.changeVsPrev;
+  const primaryCard = rateCards[0];
+
+  // Benchmark Rate: Priority order is approved DB PriceList -> approved DB Wholesale -> config
+  let todayPrice = "Contact for Rate";
+  if (primaryCard?.currentPricePerMT && Number(primaryCard.currentPricePerMT) > 0) {
+    todayPrice = Number(primaryCard.currentPricePerMT).toLocaleString("en-IN");
+  } else if (dbWholesale?.todayPrice && dbWholesale.todayPrice !== "0") {
+    todayPrice = String(dbWholesale.todayPrice);
+  } else if (baseCfg.todayPricePerMT && baseCfg.todayPricePerMT !== "0") {
+    todayPrice = baseCfg.todayPricePerMT;
+  }
+
+  // Price Movement: Automatically calculated from real rate revisions
+  let calculatedChange = 0;
+  let hasPriceMovement = false;
+
+  if (historyRecords.length >= 2) {
+    const latest = historyRecords[historyRecords.length - 1];
+    const prev = historyRecords[historyRecords.length - 2];
+    calculatedChange = latest.price - prev.price;
+    hasPriceMovement = calculatedChange !== 0;
+  } else if (historyRecords.length === 1 && historyRecords[0].changeVsPrevious !== 0) {
+    calculatedChange = historyRecords[0].changeVsPrevious;
+    hasPriceMovement = calculatedChange !== 0;
+  } else if (dbWholesale?.changeVsPrev && Number(dbWholesale.changeVsPrev) !== 0) {
+    calculatedChange = Number(dbWholesale.changeVsPrev);
+    hasPriceMovement = true;
+  }
+
+  // Table items: Use uploaded DB items if available; otherwise use baseCfg
+  const displayItems =
+    primaryCard?.items && primaryCard.items.length > 0
+      ? primaryCard.items.map((item: any) => ({
+          size: item.size,
+          spec: item.unit || baseCfg.category,
+          pricePerMT:
+            item.pricePerMT && item.pricePerMT > 0
+              ? Number(item.pricePerMT).toLocaleString("en-IN")
+              : todayPrice,
+          piecePrice:
+            item.pricePerPiece && item.pricePerPiece > 0
+              ? `₹${Number(item.pricePerPiece).toLocaleString("en-IN")}`
+              : `₹${todayPrice} / MT`,
+        }))
+      : baseCfg.sizesPrice;
 
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
@@ -320,20 +371,25 @@ export default async function SinglePriceListPage({
               <div>
                 <div className="text-xs text-gray-500 font-semibold uppercase">Daily Price Trend</div>
                 <div className="mt-1">
-                  {changeVsPrev < 0 ? (
-                    <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 bg-green-50 px-3 py-1 rounded-lg border border-green-200">
-                      <TrendingDown className="w-4 h-4" />
-                      ↓ ₹{Math.abs(changeVsPrev)} / MT vs Yesterday
-                    </span>
-                  ) : changeVsPrev > 0 ? (
-                    <span className="inline-flex items-center gap-1 text-sm font-bold text-red-700 bg-red-50 px-3 py-1 rounded-lg border border-red-200">
-                      <TrendingUp className="w-4 h-4" />
-                      ↑ ₹{changeVsPrev} / MT vs Yesterday
-                    </span>
+                  {hasPriceMovement ? (
+                    calculatedChange < 0 ? (
+                      <span className="inline-flex items-center gap-1 text-sm font-bold text-green-700 bg-green-50 px-3 py-1 rounded-lg border border-green-200">
+                        <TrendingDown className="w-4 h-4" />
+                        ↓ ₹{Math.abs(calculatedChange).toLocaleString("en-IN")} / {baseCfg.unit} vs Previous Revision
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 text-sm font-bold text-red-700 bg-red-50 px-3 py-1 rounded-lg border border-red-200">
+                        <TrendingUp className="w-4 h-4" />
+                        ↑ ₹{calculatedChange.toLocaleString("en-IN")} / {baseCfg.unit} vs Previous Revision
+                      </span>
+                    )
                   ) : (
-                    <span className="text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg">
-                      Stable Today
-                    </span>
+                    <div className="space-y-0.5">
+                      <span className="text-xs font-bold text-slate-800 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+                        Current Approved Rate
+                      </span>
+                      <div className="text-[11px] text-slate-500 font-medium">Market Stable • Verified Ex-Stockyard</div>
+                    </div>
                   )}
                 </div>
               </div>
@@ -353,7 +409,7 @@ export default async function SinglePriceListPage({
           </div>
 
           {/* 3. Product-Specific Size / Dimension Breakdown Table */}
-          {baseCfg.sizesPrice && baseCfg.sizesPrice.length > 0 && (
+          {displayItems && displayItems.length > 0 && (
             <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm space-y-4">
               <div className="border-b border-gray-100 pb-3">
                 <h3 className="font-heading text-2xl font-bold text-navy-950">
@@ -377,7 +433,7 @@ export default async function SinglePriceListPage({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    {baseCfg.sizesPrice.map((row, rIdx) => (
+                    {displayItems.map((row: any, rIdx: number) => (
                       <tr key={rIdx} className="hover:bg-gray-50 transition-colors">
                         <td className="p-3 font-bold text-navy-950 text-sm">{row.size}</td>
                         {baseCfg.specHeader && (
@@ -387,7 +443,7 @@ export default async function SinglePriceListPage({
                           ₹{row.pricePerMT} / MT
                         </td>
                         <td className="p-3 font-bold text-navy-950">
-                          ₹{row.piecePrice}
+                          {row.piecePrice}
                         </td>
                         <td className="p-3">
                           <span className="inline-flex items-center gap-1 text-green-700 font-semibold bg-green-50 px-2 py-0.5 rounded text-[11px]">
@@ -417,17 +473,27 @@ export default async function SinglePriceListPage({
           {/* 4. Price Movement History — ONLY SHOWN IF ACTUAL RECORDS EXIST IN DATABASE */}
           {historyRecords.length > 0 && (
             <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-4">
-              <h3 className="font-heading text-2xl font-bold text-navy-950">
-                Price Movement History (₹ / MT)
-              </h3>
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                <h3 className="font-heading text-2xl font-bold text-navy-950">
+                  Price Movement History (₹ / {baseCfg.unit})
+                </h3>
+                <span className="text-xs text-slate-500 font-medium">
+                  Verified Price Updates
+                </span>
+              </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 pt-2">
                 {historyRecords.map((h, hIdx) => (
                   <div key={hIdx} className="bg-gray-50 border border-gray-200 p-4 rounded-xl text-center space-y-1">
                     <div className="text-xs text-gray-500 font-semibold">{h.date}</div>
                     <div className="font-heading text-lg font-black text-navy-950">
-                      ₹{typeof h.price === "number" ? h.price.toLocaleString("en-IN") : h.price}
+                      ₹{h.price.toLocaleString("en-IN")}
                     </div>
-                    <div className="text-[10px] text-gray-500 italic">{h.note}</div>
+                    {h.changeVsPrevious !== 0 && (
+                      <div className={`text-[11px] font-bold ${h.changeVsPrevious > 0 ? "text-red-600" : "text-green-600"}`}>
+                        {h.changeVsPrevious > 0 ? `+₹${h.changeVsPrevious}` : `-₹${Math.abs(h.changeVsPrevious)}`}
+                      </div>
+                    )}
+                    <div className="text-[10px] text-gray-500 italic truncate" title={h.note}>{h.note}</div>
                   </div>
                 ))}
               </div>

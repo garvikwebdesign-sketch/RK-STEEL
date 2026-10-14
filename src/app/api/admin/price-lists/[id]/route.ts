@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/db";
 import { PriceList } from "@/models/PriceList";
+import { WholesaleRate } from "@/models/WholesaleRate";
 import { getAdminSession } from "@/lib/auth";
 
 export async function GET(
@@ -40,12 +41,47 @@ export async function PUT(
     await connectToDatabase();
     const body = await request.json();
 
+    const existing = await PriceList.findById(id);
+    if (!existing) {
+      return NextResponse.json({ success: false, error: "Price list not found" }, { status: 404 });
+    }
+
     if (body.brand && !body.brandSlug) {
       body.brandSlug = body.brand
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "");
     }
+
+    const oldPrice = Number(existing.currentPricePerMT) || 0;
+    const newPrice = Number(body.currentPricePerMT) || 0;
+
+    // Filter out any invalid / 0 price history records
+    let history = (existing.priceHistory || []).filter(
+      (h: any) => h.pricePerMT && Number(h.pricePerMT) > 0
+    );
+
+    let priceMovement = 0;
+    if (newPrice > 0 && oldPrice > 0 && newPrice !== oldPrice) {
+      priceMovement = newPrice - oldPrice;
+      history.push({
+        date: new Date(),
+        pricePerMT: newPrice,
+        changeVsPrevious: priceMovement,
+        notes: body.effectiveDate
+          ? `Rate revision effective ${body.effectiveDate}`
+          : "Price update",
+      });
+    } else if (history.length === 0 && newPrice > 0) {
+      history.push({
+        date: new Date(),
+        pricePerMT: newPrice,
+        changeVsPrevious: 0,
+        notes: `Approved base rate effective ${body.effectiveDate || "today"}`,
+      });
+    }
+
+    body.priceHistory = history;
 
     const updated = await PriceList.findByIdAndUpdate(id, body, {
       new: true,
@@ -54,6 +90,39 @@ export async function PUT(
 
     if (!updated) {
       return NextResponse.json({ success: false, error: "Price list not found" }, { status: 404 });
+    }
+
+    // Auto-synchronize with WholesaleRate for single source of truth
+    try {
+      const brandSlug = updated.brandSlug;
+      const formattedToday = newPrice > 0 ? newPrice.toLocaleString("en-IN") : (existing.currentPricePerMT ? Number(existing.currentPricePerMT).toLocaleString("en-IN") : "");
+      const formattedYesterday = (oldPrice > 0 && oldPrice !== newPrice) ? oldPrice.toLocaleString("en-IN") : "";
+
+      if (brandSlug && formattedToday) {
+        const wholesaleHistory = history.slice(-4).map((h: any) => ({
+          day: new Date(h.date).toLocaleDateString("en-IN", { month: "short", day: "numeric" }),
+          price: Number(h.pricePerMT).toLocaleString("en-IN"),
+        }));
+
+        await WholesaleRate.findOneAndUpdate(
+          { brandSlug },
+          {
+            brandSlug,
+            brandName: updated.brand.toUpperCase(),
+            category: updated.category,
+            todayPrice: formattedToday,
+            yesterdayPrice: formattedYesterday,
+            changeVsPrev: priceMovement,
+            unit: updated.unit || "MT",
+            pdfUrl: updated.pdfUrl || "/catalogues",
+            history: wholesaleHistory.length > 0 ? wholesaleHistory : [{ day: "Approved Rate", price: formattedToday }],
+            isActive: updated.isActive,
+          },
+          { upsert: true }
+        );
+      }
+    } catch (syncErr) {
+      console.error("Failed to auto-sync WholesaleRate:", syncErr);
     }
 
     return NextResponse.json({ success: true, priceList: updated });

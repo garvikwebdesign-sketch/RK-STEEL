@@ -372,6 +372,7 @@ export function AdminPriceListManager({
         } else {
           setPriceLists((prev) => [data.priceList, ...prev]);
         }
+        await loadWholesaleRates();
         setModalOpen(false);
         resetForm();
       } else {
@@ -485,6 +486,13 @@ export function AdminPriceListManager({
         } else {
           setWholesaleRates((prev) => [...prev, data.rate]);
         }
+        try {
+          const plRes = await fetch("/api/admin/price-lists");
+          const plData = await plRes.json();
+          if (plData.success) {
+            setPriceLists(plData.priceLists);
+          }
+        } catch {}
         setWholesaleModalOpen(false);
       } else {
         alert(data.error || "Failed to save wholesale rate");
@@ -1136,6 +1144,30 @@ export function AdminPriceListManager({
                     onChange={(e) => setValidityRegion(e.target.value)}
                     className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-red-500"
                   />
+                </div>
+
+                <div className="md:col-span-2 bg-red-50/60 p-4 rounded-2xl border border-red-100 space-y-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-900 flex flex-wrap items-center justify-between gap-1">
+                    <span className="flex items-center gap-1.5">
+                      <span className="text-red-600 font-extrabold text-sm">₹</span>
+                      <span>Benchmark Base Price (₹) *</span>
+                    </span>
+                    <span className="text-[11px] font-semibold text-red-600 normal-case bg-white px-2 py-0.5 rounded border border-red-200">
+                      Single Approved Source — Syncs Homepage, Benchmark &amp; Brand Page
+                    </span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="e.g. 54500 (Base Ex-Stockyard rate in ₹)"
+                    value={currentPricePerMT}
+                    onChange={(e) =>
+                      setCurrentPricePerMT(e.target.value === "" ? "" : Number(e.target.value))
+                    }
+                    className="w-full px-4 py-2.5 text-base font-bold text-slate-900 rounded-xl border border-red-200 bg-white focus:outline-none focus:border-red-500 shadow-sm"
+                  />
+                  <p className="text-[11px] text-slate-600">
+                    When you update this rate, price movement (e.g. +₹500 / -₹500) and history are automatically calculated and reflected across the entire site.
+                  </p>
                 </div>
               </div>
 

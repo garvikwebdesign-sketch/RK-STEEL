@@ -51,21 +51,21 @@ export default async function PriceListHubPage() {
       showWholesaleSection = false;
     }
 
-    // 3. Fetch Wholesale Rates if Section is Active
+    // 3. Fetch Wholesale Rates if Section is Active (filter out empty or 0 rates)
     if (showWholesaleSection) {
-      const dbWholesale = await WholesaleRate.find({ isActive: true })
+      const dbWholesale = await WholesaleRate.find({
+        isActive: true,
+        todayPrice: { $nin: ["0", ""] },
+      })
         .sort({ order: 1, createdAt: 1 })
         .lean();
 
       if (dbWholesale && dbWholesale.length > 0) {
         wholesaleRates = dbWholesale;
-      } else {
-        wholesaleRates = initialWholesaleRates;
       }
     }
   } catch (err) {
     console.error("Failed to fetch price list data:", err);
-    wholesaleRates = initialWholesaleRates;
   }
 
   return (
@@ -128,16 +128,16 @@ export default async function PriceListHubPage() {
                     {item.changeVsPrev < 0 ? (
                       <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-green-700 bg-green-50 px-3 py-1 rounded-lg border border-green-200">
                         <TrendingDown className="w-4 h-4" />
-                        ↓ ₹{Math.abs(item.changeVsPrev)}/MT
+                        ↓ ₹{Math.abs(item.changeVsPrev).toLocaleString("en-IN")}/MT
                       </span>
                     ) : item.changeVsPrev > 0 ? (
                       <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-red-700 bg-red-50 px-3 py-1 rounded-lg border border-red-200">
                         <TrendingUp className="w-4 h-4" />
-                        ↑ ₹{item.changeVsPrev}/MT
+                        ↑ ₹{item.changeVsPrev.toLocaleString("en-IN")}/MT
                       </span>
                     ) : (
-                      <span className="text-xs sm:text-sm font-bold text-gray-500 bg-gray-100 px-3 py-1 rounded-lg">
-                        Stable
+                      <span className="text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-lg">
+                        Approved Rate
                       </span>
                     )}
                   </div>
@@ -153,26 +153,46 @@ export default async function PriceListHubPage() {
 
                   {/* Today Price Highlight */}
                   <div className="bg-navy-950 text-white p-5 rounded-2xl space-y-1 shadow-md">
-                    <div className="text-xs text-gray-300 font-semibold uppercase tracking-wider">Today's Estimated Rate</div>
+                    <div className="text-xs text-gray-300 font-semibold uppercase tracking-wider">Today's Benchmark Rate</div>
                     <div className="font-heading text-3xl sm:text-4xl font-black text-red-500">
-                      ₹{item.todayPrice} <span className="text-sm font-sans font-normal text-gray-300">/ {item.unit}</span>
+                      ₹{item.todayPrice} <span className="text-sm font-sans font-normal text-gray-300">/ {item.unit || "MT"}</span>
                     </div>
                   </div>
 
-                  {/* 30-Day Trend Table */}
-                  <div className="space-y-2 pt-2">
-                    <div className="text-xs sm:text-sm font-bold text-navy-950 uppercase border-b border-gray-100 pb-1.5">
-                      Price History Trend:
-                    </div>
-                    <div className="grid grid-cols-2 gap-2.5 text-xs sm:text-sm">
-                      {item.history.map((h: any, hIdx: number) => (
-                        <div key={hIdx} className="flex justify-between bg-gray-50 p-2.5 rounded-lg text-gray-700">
-                          <span className="text-gray-500">{h.day}:</span>
-                          <span className="font-bold text-navy-950">₹{h.price}</span>
+                  {/* Verified Trend Table (Shown only when real history records exist) */}
+                  {item.history &&
+                    item.history.filter(
+                      (h: any) =>
+                        h.price &&
+                        h.price !== "0" &&
+                        h.day !== "7 Days Ago" &&
+                        h.day !== "30 Days Ago"
+                    ).length > 0 && (
+                      <div className="space-y-2 pt-2">
+                        <div className="text-xs sm:text-sm font-bold text-navy-950 uppercase border-b border-gray-100 pb-1.5">
+                          Verified Price History:
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                        <div className="grid grid-cols-2 gap-2.5 text-xs sm:text-sm">
+                          {item.history
+                            .filter(
+                              (h: any) =>
+                                h.price &&
+                                h.price !== "0" &&
+                                h.day !== "7 Days Ago" &&
+                                h.day !== "30 Days Ago"
+                            )
+                            .map((h: any, hIdx: number) => (
+                              <div
+                                key={hIdx}
+                                className="flex justify-between bg-gray-50 p-2.5 rounded-lg text-gray-700"
+                              >
+                                <span className="text-gray-500">{h.day}:</span>
+                                <span className="font-bold text-navy-950">₹{h.price}</span>
+                              </div>
+                            ))}
+                        </div>
+                      </div>
+                    )}
                 </div>
 
                 {/* Actions */}

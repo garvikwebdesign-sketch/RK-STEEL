@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ShieldCheck, CheckCircle2, ArrowRight, Download, Phone, Calculator, FileText, TrendingUp, PackageCheck, Award } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
+import { connectToDatabase } from "@/lib/db";
+import { PriceList } from "@/models/PriceList";
+import { WholesaleRate } from "@/models/WholesaleRate";
 
 export const dynamic = "force-dynamic";
 
@@ -204,6 +207,22 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const brand = BRAND_DETAILS[slug] || BRAND_DETAILS["tata-tiscon"];
 
+  let livePrice = brand.todayPricePerMT;
+  try {
+    await connectToDatabase();
+    const pl = await PriceList.findOne({ brandSlug: slug, isActive: true }).lean();
+    if (pl?.currentPricePerMT && Number(pl.currentPricePerMT) > 0) {
+      livePrice = Number(pl.currentPricePerMT).toLocaleString("en-IN");
+    } else {
+      const ws = await WholesaleRate.findOne({ brandSlug: slug, isActive: true }).lean();
+      if (ws?.todayPrice && ws.todayPrice !== "0") {
+        livePrice = String(ws.todayPrice);
+      }
+    }
+  } catch (e) {
+    // Fallback to static
+  }
+
   return (
     <div className="space-y-0 bg-gray-50 min-h-screen">
       {/* Header Banner */}
@@ -241,8 +260,10 @@ export default async function BrandDetailPage({ params }: { params: Promise<{ sl
                 ₹
               </div>
               <div>
-                <div className="text-xs text-gray-500 font-medium">Today's Estimated Rate</div>
-                <div className="font-heading text-xl font-bold text-navy-950">₹{brand.todayPricePerMT} <span className="text-xs font-normal text-gray-500">/ MT</span></div>
+                <div className="text-xs text-gray-500 font-medium">Approved Benchmark Rate</div>
+                <div className="font-heading text-xl font-bold text-navy-950">
+                  ₹{livePrice} <span className="text-xs font-normal text-gray-500">/ MT</span>
+                </div>
               </div>
             </div>
 
